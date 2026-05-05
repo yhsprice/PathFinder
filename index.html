@@ -292,24 +292,102 @@
       box-shadow: 0 10px 25px rgba(2, 132, 199, 0.16);
     }
 
+    .quiz-section {
+      padding: 70px 8%;
+      background: #eef6ff;
+      color: #0f172a;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .quiz-box {
+      max-width: 900px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 28px;
+      padding: 34px;
+      box-shadow: 0 18px 45px rgba(15, 23, 42, 0.12);
+      border: 1px solid #cbd5e1;
+    }
+
+    #progressText {
+      color: #0284c7;
+      font-weight: 800;
+      margin-bottom: 16px;
+    }
+
+    #questionBox h3 {
+      font-size: 1.8rem;
+      margin-bottom: 22px;
+    }
+
+    .quiz-options {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+
+    .quiz-options button {
+      border: 1px solid #cbd5e1;
+      background: #f8fafc;
+      border-radius: 18px;
+      padding: 17px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.2s ease;
+      color: #0f172a;
+    }
+
+    .quiz-options button:hover {
+      transform: translateY(-3px);
+      background: #e0f2fe;
+      border-color: #0284c7;
+      color: #0369a1;
+    }
+
+    .result-card h3 {
+      font-size: 2rem;
+      color: #0369a1;
+      margin-bottom: 16px;
+    }
+
+    .result-card h4 {
+      margin-top: 24px;
+      margin-bottom: 10px;
+      font-size: 1.1rem;
+    }
+
+    .result-card p {
+      color: #475569;
+      line-height: 1.7;
+      margin-bottom: 12px;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+
+    .tag-row span {
+      background: #e0f2fe;
+      color: #075985;
+      border: 1px solid #bae6fd;
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.92rem;
+    }
+
     .cta {
       text-align: center;
       background: #07111f;
       color: white;
       padding: 80px 8%;
-    }
-
-    .cta h2 {
-      font-size: clamp(2rem, 4vw, 3.4rem);
-      margin-bottom: 18px;
-    }
-
-    .cta p {
-      color: #cbd5e1;
-      max-width: 700px;
-      margin: 0 auto 28px;
-      line-height: 1.7;
-      font-size: 1.08rem;
     }
 
     footer {
@@ -336,7 +414,8 @@
       }
 
       .feature-grid,
-      .choice-grid {
+      .choice-grid,
+      .quiz-options {
         grid-template-columns: 1fr;
       }
     }
@@ -457,6 +536,13 @@
         </div>
       </section>
 
+      <section class="quiz-section hidden" id="quizArea">
+        <div class="quiz-box">
+          <div id="progressText">Question 1 of 5</div>
+          <div id="questionBox"></div>
+        </div>
+      </section>
+
       <section class="cta" id="start">
         <h2>Your future does not have to be figured out today.</h2>
         <p>
@@ -473,12 +559,133 @@
   </div>
 
   <script>
+    const quizQuestions = [
+      {
+        question: "What kind of future sounds best right now?",
+        options: ["Freedom", "Stability", "High income", "Helping people", "Creativity", "Adventure", "Leadership", "Low stress"]
+      },
+      {
+        question: "What kind of work would you rather do?",
+        options: ["Solve problems", "Build things", "Help people", "Create something", "Organize details", "Lead a team", "Work with technology", "Work outdoors"]
+      },
+      {
+        question: "What drains you the fastest?",
+        options: ["Too much talking", "Sitting all day", "Repetitive work", "High pressure", "Physical labor", "Strict routines", "Unclear directions", "Being micromanaged"]
+      },
+      {
+        question: "What matters most in a career path?",
+        options: ["Good pay", "Job security", "Flexible schedule", "Helping others", "Room to grow", "Low debt", "Fast training", "Meaningful work"]
+      },
+      {
+        question: "How serious are you about figuring this out today?",
+        options: ["Just curious", "A little serious", "Pretty serious", "I need direction now"]
+      }
+    ];
+
+    let currentQuestion = 0;
+    let answers = [];
+
     function startQuiz() {
-      alert("Next step: we will build the discovery quiz page.");
+      document.getElementById("quizArea").classList.remove("hidden");
+      document.getElementById("quizArea").scrollIntoView({ behavior: "smooth" });
+      currentQuestion = 0;
+      answers = [];
+      showQuestion();
     }
 
     function lostMode() {
-      alert("No problem. PathFinder will start with easy exploration questions first.");
+      document.getElementById("quizArea").classList.remove("hidden");
+      document.getElementById("quizArea").scrollIntoView({ behavior: "smooth" });
+      currentQuestion = 0;
+      answers = ["I have no idea what I want"];
+      showQuestion();
+    }
+
+    function showQuestion() {
+      const questionBox = document.getElementById("questionBox");
+      const progressText = document.getElementById("progressText");
+      const q = quizQuestions[currentQuestion];
+
+      progressText.textContent = `Question ${currentQuestion + 1} of ${quizQuestions.length}`;
+
+      questionBox.innerHTML = `
+        <h3>${q.question}</h3>
+        <div class="quiz-options">
+          ${q.options.map(option => `<button onclick="selectAnswer('${option.replace(/'/g, "\'")}')">${option}</button>`).join("")}
+        </div>
+      `;
+    }
+
+    function selectAnswer(answer) {
+      answers.push(answer);
+      currentQuestion++;
+
+      if (currentQuestion < quizQuestions.length) {
+        showQuestion();
+      } else {
+        showResults();
+      }
+    }
+
+    function showResults() {
+      const questionBox = document.getElementById("questionBox");
+      const progressText = document.getElementById("progressText");
+      progressText.textContent = "Your first PathFinder snapshot";
+
+      const answerText = answers.join(" ").toLowerCase();
+
+      let pathway = "Explorer Path";
+      let description = "You may not know exactly what you want yet, but you are ready to explore options without pressure. That is a perfectly valid starting point.";
+      let careers = ["Career Exploration", "Short-Term Skill Building", "Job Shadowing", "Volunteer Experiences"];
+      let skills = ["Self-awareness", "Communication", "Basic technology", "Decision-making"];
+
+      if (answerText.includes("help") || answerText.includes("meaningful")) {
+        pathway = "Helper / Impact Path";
+        description = "You seem drawn to work that matters to people. You may want to explore healthcare, education, counseling, nonprofit work, public service, or community-focused roles.";
+        careers = ["Nursing", "Social Work", "Teaching", "Career Coaching", "Occupational Therapy", "Nonprofit Program Support"];
+        skills = ["Empathy", "Communication", "Patience", "Documentation", "Problem-solving"];
+      } else if (answerText.includes("technology") || answerText.includes("solve")) {
+        pathway = "Problem Solver / Tech Path";
+        description = "You may enjoy solving problems, using tools, finding patterns, or improving systems. Tech, data, engineering, analytics, or skilled troubleshooting could fit.";
+        careers = ["Data Analyst", "IT Support", "Software Developer", "Cybersecurity", "Engineering Technician", "Business Analyst"];
+        skills = ["Excel", "Coding basics", "Critical thinking", "Troubleshooting", "Data literacy"];
+      } else if (answerText.includes("build") || answerText.includes("outdoors") || answerText.includes("physical")) {
+        pathway = "Builder / Hands-On Path";
+        description = "You may prefer visible results, movement, and practical work. Skilled trades, construction, manufacturing, logistics, or technical training may be worth exploring.";
+        careers = ["Electrician", "Welder", "HVAC Technician", "Construction Management", "Diesel Mechanic", "CNC Operator"];
+        skills = ["Tool safety", "Measurement", "Mechanical thinking", "Reliability", "Physical stamina"];
+      } else if (answerText.includes("create") || answerText.includes("creativity")) {
+        pathway = "Creative / Design Path";
+        description = "You may be energized by ideas, visuals, storytelling, or making something original. Creative careers can be powerful, but they often require a strong portfolio.";
+        careers = ["Graphic Designer", "Marketing Specialist", "Content Creator", "UX Designer", "Writer", "Event Planner"];
+        skills = ["Canva/design", "Writing", "Portfolio building", "Branding", "Creative problem-solving"];
+      } else if (answerText.includes("leadership") || answerText.includes("lead")) {
+        pathway = "Leader / Organizer Path";
+        description = "You may like influencing decisions, organizing people, or improving how things run. Business, management, operations, entrepreneurship, or project coordination may fit.";
+        careers = ["Project Coordinator", "Operations Manager", "Entrepreneur", "Human Resources", "Sales Manager", "Business Analyst"];
+        skills = ["Leadership", "Planning", "Communication", "Budgeting", "Conflict resolution"];
+      }
+
+      questionBox.innerHTML = `
+        <div class="result-card">
+          <h3>${pathway}</h3>
+          <p>${description}</p>
+
+          <h4>Career areas to explore:</h4>
+          <div class="tag-row">${careers.map(career => `<span>${career}</span>`).join("")}</div>
+
+          <h4>Skills to start building:</h4>
+          <div class="tag-row">${skills.map(skill => `<span>${skill}</span>`).join("")}</div>
+
+          <h4>Reality check:</h4>
+          <p>Do not choose a path just because it sounds impressive. Look at the training time, debt, stress, job availability, schedule, and whether the daily work actually fits you.</p>
+
+          <h4>Your next small step:</h4>
+          <p>Pick one career from this list and spend 10 minutes learning what a normal day in that job really looks like. Tiny step. Big difference.</p>
+
+          <button class="btn primary" onclick="startQuiz()">Retake Quiz</button>
+        </div>
+      `;
     }
   </script>
 </body>
