@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PathFinder | Find Your Future</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #07111f, #102a43, #1f4e79);
+      color: white;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .page {
+      width: 100%;
+      min-height: 100vh;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 8%;
+    }
+
+    .logo {
+      font-size: 1.6rem;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+    }
+
+    .logo span {
+      color: #7dd3fc;
+    }
+
+    nav a {
+      color: #dbeafe;
+      text-decoration: none;
+      margin-left: 24px;
+      font-size: 0.95rem;
+    }
+
+    nav a:hover {
+      color: #7dd3fc;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 48px;
+      align-items: center;
+      padding: 70px 8% 90px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      background: rgba(125, 211, 252, 0.14);
+      border: 1px solid rgba(125, 211, 252, 0.35);
+      color: #bae6fd;
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      margin-bottom: 22px;
+    }
+
+    h1 {
+      font-size: clamp(2.7rem, 6vw, 5.5rem);
+      line-height: 1;
+      margin-bottom: 24px;
+    }
+
+    .highlight {
+      color: #7dd3fc;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      line-height: 1.7;
+      color: #dbeafe;
+      max-width: 680px;
+      margin-bottom: 34px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 32px;
+    }
+
+    .btn {
+      border: none;
+      border-radius: 999px;
+      padding: 15px 24px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.25s ease;
+    }
+
+    .primary {
+      background: #7dd3fc;
+      color: #06121f;
+      box-shadow: 0 12px 30px rgba(125, 211, 252, 0.28);
+    }
+
+    .primary:hover {
+      transform: translateY(-3px);
+      background: #bae6fd;
+    }
+
+    .secondary {
+      background: rgba(255, 255, 255, 0.08);
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.22);
+    }
+
+    .secondary:hover {
+      transform: translateY(-3px);
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    .trust-line {
+      color: #bfdbfe;
+      font-size: 0.95rem;
+    }
+
+    .path-card {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 28px;
+      padding: 28px;
+      backdrop-filter: blur(14px);
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.25);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .path-card::before {
+      content: "";
+      position: absolute;
+      inset: -80px -80px auto auto;
+      width: 190px;
+      height: 190px;
+      border-radius: 50%;
+      background: rgba(125, 211, 252, 0.25);
+      filter: blur(8px);
+    }
+
+    .card-title {
+      font-size: 1.4rem;
+      font-weight: 800;
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .steps {
+      display: grid;
+      gap: 16px;
+      position: relative;
+    }
+
+    .step {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      background: rgba(255, 255, 255, 0.09);
+      padding: 16px;
+      border-radius: 18px;
+    }
+
+    .icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: #7dd3fc;
+      color: #06121f;
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+
+    .step h3 {
+      font-size: 1rem;
+      margin-bottom: 5px;
+    }
+
+    .step p {
+      margin: 0;
+      font-size: 0.9rem;
+      line-height: 1.45;
+      color: #dbeafe;
+    }
+
+    .section {
+      padding: 70px 8%;
+      background: #f8fafc;
+      color: #0f172a;
+    }
+
+    .section h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin-bottom: 16px;
+      text-align: center;
+    }
+
+    .section-intro {
+      text-align: center;
+      max-width: 760px;
+      margin: 0 auto 42px;
+      color: #475569;
+      font-size: 1.08rem;
+      line-height: 1.7;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .feature-card {
+      background: white;
+      border-radius: 22px;
+      padding: 26px;
+      box-shadow: 0 12px 35px rgba(15, 23, 42, 0.08);
+      border: 1px solid #e2e8f0;
+    }
+
+    .feature-card .emoji {
+      font-size: 2rem;
+      margin-bottom: 14px;
+    }
+
+    .feature-card h3 {
+      margin-bottom: 10px;
+      font-size: 1.2rem;
+    }
+
+    .feature-card p {
+      color: #475569;
+      line-height: 1.6;
+    }
+
+    .quiz-preview {
+      background: linear-gradient(135deg, #e0f2fe, #f8fafc);
+      border-radius: 28px;
+      padding: 34px;
+      max-width: 900px;
+      margin: 0 auto;
+      border: 1px solid #bae6fd;
+    }
+
+    .quiz-preview h3 {
+      font-size: 1.7rem;
+      margin-bottom: 16px;
+      text-align: center;
+    }
+
+    .choice-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .choice {
+      background: white;
+      border: 1px solid #cbd5e1;
+      border-radius: 16px;
+      padding: 16px;
+      text-align: center;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    .choice:hover {
+      transform: translateY(-3px);
+      border-color: #0284c7;
+      color: #0369a1;
+      box-shadow: 0 10px 25px rgba(2, 132, 199, 0.16);
+    }
+
+    .cta {
+      text-align: center;
+      background: #07111f;
+      color: white;
+      padding: 80px 8%;
+    }
+
+    .cta h2 {
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      margin-bottom: 18px;
+    }
+
+    .cta p {
+      color: #cbd5e1;
+      max-width: 700px;
+      margin: 0 auto 28px;
+      line-height: 1.7;
+      font-size: 1.08rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 24px;
+      background: #030712;
+      color: #94a3b8;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 900px) {
+      header {
+        flex-direction: column;
+        gap: 18px;
+      }
+
+      nav a {
+        margin: 0 10px;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        padding-top: 45px;
+      }
+
+      .feature-grid,
+      .choice-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <header>
+      <div class="logo">Path<span>Finder</span></div>
+      <nav>
+        <a href="#how">How It Works</a>
+        <a href="#explore">Explore</a>
+        <a href="#start">Start</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-text">
+          <div class="eyebrow">Career discovery that does not feel like homework</div>
+          <h1>Find your future without feeling <span class="highlight">lost.</span></h1>
+          <p>
+            PathFinder helps you explore careers, skills, training options, college paths,
+            and real-life job expectations so you can discover what actually fits your life —
+            not just what sounds good on paper.
+          </p>
+
+          <div class="buttons">
+            <button class="btn primary" onclick="startQuiz()">Start Exploring</button>
+            <button class="btn secondary" onclick="lostMode()">I Have No Idea What I Want</button>
+          </div>
+
+          <div class="trust-line">No pressure. No boring lecture. Just your next possible step.</div>
+        </div>
+
+        <div class="path-card">
+          <div class="card-title">Your PathFinder Journey</div>
+          <div class="steps">
+            <div class="step">
+              <div class="icon">1</div>
+              <div>
+                <h3>Choose your future vibe</h3>
+                <p>Start with what matters to you: freedom, stability, money, creativity, impact, or adventure.</p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="icon">2</div>
+              <div>
+                <h3>Discover possible pathways</h3>
+                <p>Explore careers, college routes, trade options, certifications, and skill-building steps.</p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="icon">3</div>
+              <div>
+                <h3>See the real truth</h3>
+                <p>Learn the stress, difficulty, job market, hidden challenges, and long-term value of each path.</p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="icon">4</div>
+              <div>
+                <h3>Build your next step</h3>
+                <p>Get simple actions you can take this week to start learning, growing, and moving forward.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="how">
+        <h2>Not another career quiz.</h2>
+        <p class="section-intro">
+          Most career tools tell you a job title and call it a day. PathFinder looks at interests,
+          skills, lifestyle, stress tolerance, training options, and the stuff jobs usually do not tell you.
+        </p>
+
+        <div class="feature-grid">
+          <div class="feature-card">
+            <div class="emoji">🧭</div>
+            <h3>Guided Discovery</h3>
+            <p>Start simple, then go deeper as you get more serious about your future.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="emoji">⚡</div>
+            <h3>Real Career Truths</h3>
+            <p>See hidden stress, job difficulty, competition, training time, and work-life reality.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="emoji">🚀</div>
+            <h3>Skill-Building Steps</h3>
+            <p>Learn what skills to build and what small action you can take this week.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="explore">
+        <div class="quiz-preview">
+          <h3>Start with what actually matters to you.</h3>
+          <p class="section-intro">
+            Choose one future vibe. Later, PathFinder will use this to recommend pathways, skills,
+            challenges, and careers that match how you want your life to feel.
+          </p>
+
+          <div class="choice-grid">
+            <div class="choice">Freedom</div>
+            <div class="choice">Stability</div>
+            <div class="choice">High Income</div>
+            <div class="choice">Helping People</div>
+            <div class="choice">Creativity</div>
+            <div class="choice">Adventure</div>
+            <div class="choice">Leadership</div>
+            <div class="choice">Low Stress</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="cta" id="start">
+        <h2>Your future does not have to be figured out today.</h2>
+        <p>
+          You just need a better way to explore it. PathFinder helps you move from confused
+          to curious, from curious to confident, and from confident to action.
+        </p>
+        <button class="btn primary" onclick="startQuiz()">Start My Path</button>
+      </section>
+    </main>
+
+    <footer>
+      © 2026 PathFinder. Built to help people discover their next step.
+    </footer>
+  </div>
+
+  <script>
+    function startQuiz() {
+      alert("Next step: we will build the discovery quiz page.");
+    }
+
+    function lostMode() {
+      alert("No problem. PathFinder will start with easy exploration questions first.");
+    }
+  </script>
+</body>
+</html>
