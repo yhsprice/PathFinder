@@ -366,6 +366,88 @@
       margin-bottom: 12px;
     }
 
+    .career-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin-top: 14px;
+    }
+
+    .career-card {
+      border: 1px solid #cbd5e1;
+      background: #f8fafc;
+      border-radius: 18px;
+      padding: 18px;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    .career-card:hover {
+      transform: translateY(-3px);
+      background: #e0f2fe;
+      border-color: #0284c7;
+      box-shadow: 0 10px 24px rgba(2, 132, 199, 0.14);
+    }
+
+    .career-card h5 {
+      font-size: 1.05rem;
+      margin-bottom: 8px;
+      color: #0f172a;
+    }
+
+    .career-card p {
+      font-size: 0.92rem;
+      margin: 0;
+    }
+
+    .deep-dive {
+      margin-top: 24px;
+      background: #f8fafc;
+      border: 1px solid #cbd5e1;
+      border-radius: 22px;
+      padding: 24px;
+    }
+
+    .deep-dive h3 {
+      color: #0369a1;
+      margin-bottom: 10px;
+    }
+
+    .truth-box {
+      background: #fff7ed;
+      border: 1px solid #fed7aa;
+      color: #7c2d12;
+      border-radius: 16px;
+      padding: 16px;
+      margin: 14px 0;
+      line-height: 1.6;
+    }
+
+    .mini-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin: 16px 0;
+    }
+
+    .mini-stat {
+      background: white;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 14px;
+    }
+
+    .mini-stat strong {
+      display: block;
+      color: #0f172a;
+      margin-bottom: 5px;
+    }
+
+    .mini-stat span {
+      color: #475569;
+      font-size: 0.92rem;
+    }
+
     .tag-row {
       display: flex;
       flex-wrap: wrap;
@@ -415,7 +497,9 @@
 
       .feature-grid,
       .choice-grid,
-      .quiz-options {
+      .quiz-options,
+      .career-grid,
+      .mini-grid {
         grid-template-columns: 1fr;
       }
     }
@@ -559,6 +643,179 @@
   </div>
 
   <script>
+    const careerDetails = {
+      "Nursing": {
+        summary: "Fast-paced, meaningful, emotionally intense work helping people during some of their hardest moments.",
+        truth: "Nobody tells you how much emotional weight nurses carry. You may deal with death, angry families, long shifts, body fluids, and burnout. But the stability and impact can be huge.",
+        training: "LPN, associate RN, bachelor's RN, or advanced nursing paths.",
+        difficulty: "High",
+        jobMarket: "Strong",
+        stress: "High",
+        skills: ["Empathy", "Medical knowledge", "Documentation", "Calm under pressure", "Team communication"],
+        nextStep: "Watch a day-in-the-life nursing video and compare LPN, RN, and BSN routes."
+      },
+      "Social Work": {
+        summary: "Support people, families, and communities through difficult situations and life challenges.",
+        truth: "This work can be deeply meaningful, but it can also be emotionally draining. Pay may start lower than expected compared with the emotional responsibility.",
+        training: "Usually bachelor's or master's degree depending on the role.",
+        difficulty: "Medium to High",
+        jobMarket: "Moderate to Strong",
+        stress: "High",
+        skills: ["Listening", "Boundaries", "Case notes", "Resource knowledge", "Patience"],
+        nextStep: "Research one local nonprofit or agency and read what services they provide."
+      },
+      "Teaching": {
+        summary: "Help students learn, grow, and build confidence through structured instruction and support.",
+        truth: "Teaching is not just teaching. It includes behavior management, paperwork, parent communication, testing pressure, and emotional labor. Summer break is not magic fairy dust.",
+        training: "Education degree, licensure, or alternative certification depending on state and setting.",
+        difficulty: "Medium to High",
+        jobMarket: "Varies by subject and location",
+        stress: "High",
+        skills: ["Communication", "Planning", "Patience", "Classroom management", "Adaptability"],
+        nextStep: "Ask a teacher what their hardest and best parts of the job are."
+      },
+      "Career Coaching": {
+        summary: "Guide people through career decisions, goal-setting, skills, and next steps.",
+        truth: "You need patience because people often want answers but resist action. The win is helping someone see possibility they could not see before.",
+        training: "Coaching experience, workforce knowledge, counseling-related training, or career development certifications.",
+        difficulty: "Medium",
+        jobMarket: "Growing but relationship-based",
+        stress: "Medium",
+        skills: ["Questioning", "Encouragement", "Research", "Writing", "Resource matching"],
+        nextStep: "Practice helping someone compare two career options using pros, cons, and next steps."
+      },
+      "Data Analyst": {
+        summary: "Find patterns in information and turn messy data into useful decisions.",
+        truth: "Data work is not just charts. You clean ugly data, chase missing details, explain numbers to people who may not want to hear them, and triple-check everything because one bad formula can start a small office fire.",
+        training: "Excel, SQL, dashboards, statistics basics, and portfolio projects.",
+        difficulty: "Medium",
+        jobMarket: "Strong but competitive for beginners",
+        stress: "Medium",
+        skills: ["Excel", "SQL", "Critical thinking", "Data cleaning", "Storytelling"],
+        nextStep: "Build one simple Excel dashboard from a small practice dataset."
+      },
+      "IT Support": {
+        summary: "Help people and organizations fix technology problems and keep systems working.",
+        truth: "You will solve problems, but you will also explain the same thing many times. Patience matters as much as technical knowledge.",
+        training: "CompTIA A+, Google IT Support Certificate, help desk practice, troubleshooting experience.",
+        difficulty: "Medium",
+        jobMarket: "Strong entry route into tech",
+        stress: "Medium",
+        skills: ["Troubleshooting", "Customer service", "Networking basics", "Documentation", "Patience"],
+        nextStep: "Look up CompTIA A+ beginner topics and learn what hardware, software, and networking basics mean."
+      },
+      "Software Developer": {
+        summary: "Build websites, apps, tools, automations, and digital systems.",
+        truth: "It sounds glamorous until your code breaks because of one missing bracket. The field is powerful but competitive, and you must keep learning constantly.",
+        training: "Self-study, bootcamp, associate degree, bachelor's degree, or project portfolio.",
+        difficulty: "High",
+        jobMarket: "Strong but very competitive for entry-level",
+        stress: "Medium to High",
+        skills: ["Coding", "Debugging", "Problem-solving", "GitHub", "Persistence"],
+        nextStep: "Build one tiny website and put it on GitHub Pages. Conveniently, you are already doing this."
+      },
+      "Cybersecurity": {
+        summary: "Protect systems, data, and people from digital threats.",
+        truth: "Cybersecurity is not usually an instant beginner job. Many people start in IT support or networking first. It requires discipline, curiosity, and constant learning.",
+        training: "IT basics, networking, Security+, labs, certifications, and hands-on practice.",
+        difficulty: "High",
+        jobMarket: "Strong but not easy-entry",
+        stress: "Medium to High",
+        skills: ["Networking", "Security basics", "Risk thinking", "Documentation", "Attention to detail"],
+        nextStep: "Learn basic networking first: IP addresses, routers, firewalls, and phishing."
+      },
+      "Electrician": {
+        summary: "Install, repair, and maintain electrical systems in homes, buildings, and industrial settings.",
+        truth: "Great income potential, but it is physical, detail-heavy, and safety-critical. Mistakes can be dangerous. This is not casual YouTube-and-hope work.",
+        training: "Apprenticeship, trade school, licensing, and supervised hours.",
+        difficulty: "Medium to High",
+        jobMarket: "Strong",
+        stress: "Medium",
+        skills: ["Math basics", "Safety", "Tools", "Blueprint reading", "Problem-solving"],
+        nextStep: "Research electrician apprenticeship programs near you."
+      },
+      "Welder": {
+        summary: "Join metal parts using specialized tools across construction, manufacturing, repair, and industrial work.",
+        truth: "Welding can pay well, especially with advanced certifications, but it can be hot, physical, repetitive, and hard on the body.",
+        training: "Trade school, certifications, apprenticeships, and hands-on practice.",
+        difficulty: "Medium",
+        jobMarket: "Strong in many regions",
+        stress: "Medium",
+        skills: ["Hand-eye coordination", "Safety", "Blueprint reading", "Precision", "Stamina"],
+        nextStep: "Watch beginner welding process videos: MIG, TIG, and stick welding."
+      },
+      "HVAC Technician": {
+        summary: "Install and repair heating, ventilation, and air conditioning systems.",
+        truth: "Demand is strong because nobody wants to be hot, cold, or sweaty in public. But the work can include crawlspaces, attics, emergency calls, and physical labor.",
+        training: "Technical school, EPA certification, apprenticeship, and field experience.",
+        difficulty: "Medium",
+        jobMarket: "Strong",
+        stress: "Medium",
+        skills: ["Mechanical thinking", "Customer service", "Troubleshooting", "Electrical basics", "Safety"],
+        nextStep: "Look up HVAC programs and EPA certification requirements."
+      },
+      "Graphic Designer": {
+        summary: "Create visuals for brands, marketing, websites, social media, print, and products.",
+        truth: "Creativity matters, but so does feedback. Clients may ask for ugly changes with full confidence. A strong portfolio matters more than just saying you are creative.",
+        training: "Portfolio, design tools, typography, layout, branding, and possibly a degree or certificate.",
+        difficulty: "Medium",
+        jobMarket: "Competitive",
+        stress: "Medium",
+        skills: ["Canva or Adobe", "Layout", "Typography", "Branding", "Feedback handling"],
+        nextStep: "Create three sample flyers for imaginary businesses."
+      },
+      "Marketing Specialist": {
+        summary: "Help businesses attract attention, communicate value, and increase sales or engagement.",
+        truth: "Marketing is creative and analytical. Pretty posts are not enough. You need to understand audience, strategy, results, and what actually makes people act.",
+        training: "Writing, social media, analytics, branding, campaigns, and portfolio work.",
+        difficulty: "Medium",
+        jobMarket: "Competitive but broad",
+        stress: "Medium",
+        skills: ["Writing", "Analytics", "Design sense", "Audience research", "Strategy"],
+        nextStep: "Pick a small business and write three better social media post ideas for it."
+      },
+      "Content Creator": {
+        summary: "Create videos, posts, writing, graphics, or media to inform, entertain, teach, or influence.",
+        truth: "It looks fun, but growth is unpredictable. You need consistency, thick skin, privacy boundaries, and a plan beyond hoping the internet fairy shows up.",
+        training: "Content strategy, editing, writing, design, storytelling, and platform knowledge.",
+        difficulty: "Medium to High",
+        jobMarket: "Self-driven and unstable at first",
+        stress: "Medium",
+        skills: ["Storytelling", "Editing", "Consistency", "Audience understanding", "Branding"],
+        nextStep: "Create one private sample post or video script about a topic you know well."
+      },
+      "Project Coordinator": {
+        summary: "Keep projects, people, deadlines, and details organized so work actually gets done.",
+        truth: "You become the human glue. That sounds nice until everyone forgets something and expects you to magically know it. Organization and calm communication are everything.",
+        training: "Project management basics, spreadsheets, communication, scheduling tools, and documentation.",
+        difficulty: "Medium",
+        jobMarket: "Strong across industries",
+        stress: "Medium",
+        skills: ["Planning", "Excel", "Communication", "Follow-up", "Documentation"],
+        nextStep: "Plan a fake project with tasks, owners, deadlines, and risks."
+      },
+      "Operations Manager": {
+        summary: "Improve systems, people, processes, schedules, and daily business performance.",
+        truth: "Operations is where problems go when no one knows who owns them. It can be powerful, stressful, and very valuable if you like fixing chaos.",
+        training: "Business experience, process improvement, leadership, budgeting, and analytics.",
+        difficulty: "Medium to High",
+        jobMarket: "Strong with experience",
+        stress: "High",
+        skills: ["Leadership", "Problem-solving", "Process mapping", "Budgeting", "Decision-making"],
+        nextStep: "Pick one messy process in real life and write how you would improve it."
+      },
+      "Entrepreneur": {
+        summary: "Build or run a business by solving a problem, selling value, and managing risk.",
+        truth: "Freedom is real, but so are bills, uncertainty, slow starts, rejection, and doing 14 jobs before lunch. It is not for the faint of spreadsheet.",
+        training: "Business planning, sales, marketing, accounting, customer research, and persistence.",
+        difficulty: "High",
+        jobMarket: "You create the market",
+        stress: "High",
+        skills: ["Sales", "Budgeting", "Marketing", "Problem-solving", "Resilience"],
+        nextStep: "Write one problem, one customer, one solution, and one way you would test it cheaply."
+      }
+    };
+
     const quizQuestions = [
       {
         question: "What kind of future sounds best right now?",
@@ -672,7 +929,17 @@
           <p>${description}</p>
 
           <h4>Career areas to explore:</h4>
-          <div class="tag-row">${careers.map(career => `<span>${career}</span>`).join("")}</div>
+          <p>Click a career to see the real-world details.</p>
+          <div class="career-grid">
+            ${careers.map(career => `
+              <div class="career-card" onclick="showCareerDeepDive('${career.replace(/'/g, "\'")}')">
+                <h5>${career}</h5>
+                <p>${careerDetails[career] ? careerDetails[career].summary : "Explore this option, compare the reality, and see what skills are needed."}</p>
+              </div>
+            `).join("")}
+          </div>
+
+          <div id="deepDiveArea"></div>
 
           <h4>Skills to start building:</h4>
           <div class="tag-row">${skills.map(skill => `<span>${skill}</span>`).join("")}</div>
@@ -686,6 +953,47 @@
           <button class="btn primary" onclick="startQuiz()">Retake Quiz</button>
         </div>
       `;
+    }
+    function showCareerDeepDive(career) {
+      const area = document.getElementById("deepDiveArea");
+      const data = careerDetails[career];
+
+      if (!data) {
+        area.innerHTML = `
+          <div class="deep-dive">
+            <h3>${career}</h3>
+            <p>This career needs more research added. For now, start by learning what a normal day looks like, what training is required, and how hard it is to get hired.</p>
+          </div>
+        `;
+        area.scrollIntoView({ behavior: "smooth", block: "center" });
+        return;
+      }
+
+      area.innerHTML = `
+        <div class="deep-dive">
+          <h3>${career}</h3>
+          <p>${data.summary}</p>
+
+          <div class="truth-box"><strong>Nobody tells you:</strong><br>${data.truth}</div>
+
+          <div class="mini-grid">
+            <div class="mini-stat"><strong>Training Path</strong><span>${data.training}</span></div>
+            <div class="mini-stat"><strong>Difficulty</strong><span>${data.difficulty}</span></div>
+            <div class="mini-stat"><strong>Job Market</strong><span>${data.jobMarket}</span></div>
+            <div class="mini-stat"><strong>Stress Level</strong><span>${data.stress}</span></div>
+            <div class="mini-stat"><strong>Worth It?</strong><span>Depends on fit, effort, and expectations.</span></div>
+            <div class="mini-stat"><strong>Best First Move</strong><span>Learn before you commit money.</span></div>
+          </div>
+
+          <h4>Skills to build:</h4>
+          <div class="tag-row">${data.skills.map(skill => `<span>${skill}</span>`).join("")}</div>
+
+          <h4>Try this next:</h4>
+          <p>${data.nextStep}</p>
+        </div>
+      `;
+
+      area.scrollIntoView({ behavior: "smooth", block: "center" });
     }
   </script>
 </body>
