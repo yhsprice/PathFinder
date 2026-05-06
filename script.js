@@ -401,6 +401,8 @@ function showCluster(cluster) {
 
 window.selectAnswer = selectAnswer;
 window.showCluster = showCluster;
-    });
+window.lostMode = lostMode;
+window.startQuiz = startQuiz;
+window.startWithVibe = startWithVibe; });
   });
 }
