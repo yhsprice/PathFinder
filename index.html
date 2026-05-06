@@ -676,6 +676,15 @@
   </div>
 
   <script>
+    const careerPools = {
+      helper: ["Nursing", "Social Work", "Teaching", "Career Coaching", "Occupational Therapy", "Speech Therapy", "Physical Therapy Assistant", "Mental Health Counseling", "Dental Hygiene", "Emergency Medical Technician"],
+      tech: ["Data Analyst", "IT Support", "Software Developer", "Cybersecurity", "UX Designer", "AI Prompt Specialist", "Cloud Support", "Business Analyst", "Game Developer", "Automation Specialist"],
+      handsOn: ["Electrician", "Welder", "HVAC Technician", "Construction Management", "Diesel Mechanic", "Heavy Equipment Operator", "Plumber", "Industrial Maintenance", "Commercial Driver", "Survey Technician"],
+      creative: ["Graphic Designer", "Marketing Specialist", "Content Creator", "Photographer", "Video Editor", "Interior Designer", "Brand Strategist", "Event Planner", "Animator", "Copywriter"],
+      leadership: ["Project Coordinator", "Operations Manager", "Entrepreneur", "Human Resources", "Sales Manager", "Logistics Coordinator", "Business Consultant", "Recruiter", "Store Manager", "Training Specialist"],
+      explorer: ["Park Ranger", "Flight Dispatcher", "Crime Scene Technician", "Travel Advisor", "Wildlife Rehabilitator", "Forensic Accountant", "Museum Curator", "Urban Planner", "Drone Operator", "Environmental Technician"]
+    };
+
     const careerDetails = {
       "Nursing": {
         summary: "Fast-paced, meaningful, emotionally intense work helping people during some of their hardest moments.",
@@ -863,6 +872,90 @@
         skills: ["Sales", "Budgeting", "Marketing", "Problem-solving", "Resilience"],
         nextStep: "Write one problem, one customer, one solution, and one way you would test it cheaply.",
         roadmap: ["Find a real problem", "Define the customer", "Test a simple offer", "Learn sales", "Track money", "Grow carefully"]
+      },
+
+      "Occupational Therapy": {
+        summary: "Help people regain independence and daily living skills after injuries, illness, or disabilities.",
+        truth: "The work can be emotional and documentation-heavy, but many therapists love seeing real improvement in people's lives.",
+        training: "Usually master's degree plus clinical training.",
+        difficulty: "High",
+        jobMarket: "Strong",
+        stress: "Medium",
+        skills: ["Empathy", "Observation", "Patience", "Communication", "Documentation"],
+        nextStep: "Research pediatric, school-based, and hospital OT settings.",
+        roadmap: ["Study health sciences", "Volunteer in care settings", "Apply to OT program", "Complete clinicals", "Pass licensing", "Choose specialty"]
+      },
+
+      "UX Designer": {
+        summary: "Design digital experiences that make apps and websites easier and more enjoyable to use.",
+        truth: "It mixes creativity, psychology, research, and problem-solving. You will revise ideas constantly based on feedback and user behavior.",
+        training: "Portfolio, design tools, research methods, and interface design.",
+        difficulty: "Medium",
+        jobMarket: "Competitive but growing",
+        stress: "Medium",
+        skills: ["Wireframing", "User research", "Visual design", "Communication", "Testing"],
+        nextStep: "Redesign a frustrating app screen and explain your changes.",
+        roadmap: ["Learn design basics", "Study UX principles", "Practice redesigns", "Build portfolio", "Get feedback", "Apply for UX roles"]
+      },
+
+      "AI Prompt Specialist": {
+        summary: "Use AI tools strategically to generate content, workflows, research, and automation.",
+        truth: "This field changes constantly. The people who succeed learn fast, experiment often, and combine AI with real business understanding.",
+        training: "AI tools, writing, logic, workflow building, and experimentation.",
+        difficulty: "Medium",
+        jobMarket: "Emerging",
+        stress: "Medium",
+        skills: ["Prompt writing", "Research", "Workflow thinking", "Creativity", "Adaptability"],
+        nextStep: "Try using AI to solve one real-world problem or simplify a task.",
+        roadmap: ["Learn AI basics", "Practice prompting", "Build useful workflows", "Create examples", "Study business use cases", "Specialize"]
+      },
+
+      "Heavy Equipment Operator": {
+        summary: "Operate large machinery used in construction, roadwork, excavation, and industrial projects.",
+        truth: "The equipment is powerful and the responsibility is serious. Weather, long hours, and safety awareness are major parts of the job.",
+        training: "Trade programs, certifications, and supervised equipment experience.",
+        difficulty: "Medium",
+        jobMarket: "Strong",
+        stress: "Medium",
+        skills: ["Coordination", "Safety", "Mechanical awareness", "Focus", "Patience"],
+        nextStep: "Research union apprenticeships or local heavy equipment training.",
+        roadmap: ["Learn safety basics", "Train on equipment", "Gain certifications", "Practice operation", "Work on crews", "Specialize"]
+      },
+
+      "Photographer": {
+        summary: "Capture visual stories, events, products, people, or moments through photography.",
+        truth: "Talent helps, but consistency, editing, networking, and business skills matter just as much.",
+        training: "Camera skills, editing software, composition, and portfolio building.",
+        difficulty: "Medium",
+        jobMarket: "Competitive and freelance-heavy",
+        stress: "Medium",
+        skills: ["Composition", "Editing", "Storytelling", "Branding", "Client communication"],
+        nextStep: "Take 20 photos around your town using one theme.",
+        roadmap: ["Learn camera basics", "Practice editing", "Build portfolio", "Share work", "Take paid shoots", "Grow niche"]
+      },
+
+      "Logistics Coordinator": {
+        summary: "Manage movement of products, schedules, deliveries, inventory, and operations.",
+        truth: "When things go wrong, everyone notices immediately. Strong organization and calm problem-solving are critical.",
+        training: "Operations knowledge, spreadsheets, scheduling, and communication.",
+        difficulty: "Medium",
+        jobMarket: "Strong",
+        stress: "Medium to High",
+        skills: ["Organization", "Communication", "Tracking", "Excel", "Problem-solving"],
+        nextStep: "Track how products move from store to customer in one company.",
+        roadmap: ["Learn operations basics", "Practice scheduling", "Track workflows", "Learn inventory systems", "Coordinate deliveries", "Advance into operations"]
+      },
+
+      "Drone Operator": {
+        summary: "Use drones for photography, inspections, mapping, agriculture, public safety, or industrial work.",
+        truth: "It sounds futuristic because it is, but regulations, licensing, weather, and technical precision matter a lot.",
+        training: "FAA certification, drone operation practice, mapping or imaging skills.",
+        difficulty: "Medium",
+        jobMarket: "Growing",
+        stress: "Low to Medium",
+        skills: ["Focus", "Technology", "Safety", "Photography", "Spatial awareness"],
+        nextStep: "Research FAA Part 107 certification and drone career uses.",
+        roadmap: ["Learn drone laws", "Practice flying", "Earn certification", "Build sample footage", "Choose specialty", "Work professionally"]
       }
     };
 
@@ -954,7 +1047,7 @@
 
       let pathway = "Explorer Path";
       let description = "You may not know exactly what you want yet, but you are ready to explore options without pressure. That is a perfectly valid starting point.";
-      let careers = ["Career Exploration", "Short-Term Skill Building", "Job Shadowing", "Volunteer Experiences"];
+      let careers = careerPools.explorer;
       let skills = ["Self-awareness", "Communication", "Basic technology", "Decision-making"];
       let vibeNote = "You are still exploring, so the goal is not to pick forever. The goal is to get curious enough to take one useful next step.";
 
@@ -981,27 +1074,27 @@
       if (answerText.includes("help") || answerText.includes("meaningful")) {
         pathway = "Helper / Impact Path";
         description = "You seem drawn to work that matters to people. You may want to explore healthcare, education, counseling, nonprofit work, public service, or community-focused roles.";
-        careers = ["Nursing", "Social Work", "Teaching", "Career Coaching", "Occupational Therapy", "Nonprofit Program Support"];
+        careers = careerPools.helper;
         skills = ["Empathy", "Communication", "Patience", "Documentation", "Problem-solving"];
       } else if (answerText.includes("technology") || answerText.includes("solve")) {
         pathway = "Problem Solver / Tech Path";
         description = "You may enjoy solving problems, using tools, finding patterns, or improving systems. Tech, data, engineering, analytics, or skilled troubleshooting could fit.";
-        careers = ["Data Analyst", "IT Support", "Software Developer", "Cybersecurity", "Engineering Technician", "Business Analyst"];
+        careers = careerPools.tech;
         skills = ["Excel", "Coding basics", "Critical thinking", "Troubleshooting", "Data literacy"];
       } else if (answerText.includes("build") || answerText.includes("outdoors") || answerText.includes("physical")) {
         pathway = "Builder / Hands-On Path";
         description = "You may prefer visible results, movement, and practical work. Skilled trades, construction, manufacturing, logistics, or technical training may be worth exploring.";
-        careers = ["Electrician", "Welder", "HVAC Technician", "Construction Management", "Diesel Mechanic", "CNC Operator"];
+        careers = careerPools.handsOn;
         skills = ["Tool safety", "Measurement", "Mechanical thinking", "Reliability", "Physical stamina"];
       } else if (answerText.includes("create") || answerText.includes("creativity")) {
         pathway = "Creative / Design Path";
         description = "You may be energized by ideas, visuals, storytelling, or making something original. Creative careers can be powerful, but they often require a strong portfolio.";
-        careers = ["Graphic Designer", "Marketing Specialist", "Content Creator", "UX Designer", "Writer", "Event Planner"];
+        careers = careerPools.creative;
         skills = ["Canva/design", "Writing", "Portfolio building", "Branding", "Creative problem-solving"];
       } else if (answerText.includes("leadership") || answerText.includes("lead")) {
         pathway = "Leader / Organizer Path";
         description = "You may like influencing decisions, organizing people, or improving how things run. Business, management, operations, entrepreneurship, or project coordination may fit.";
-        careers = ["Project Coordinator", "Operations Manager", "Entrepreneur", "Human Resources", "Sales Manager", "Business Analyst"];
+        careers = careerPools.leadership;
         skills = ["Leadership", "Planning", "Communication", "Budgeting", "Conflict resolution"];
       }
 
