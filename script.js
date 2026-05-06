@@ -381,34 +381,67 @@ function showQuestion() {
 
   document.querySelectorAll(".answer-btn").forEach(button => {
     button.addEventListener("click", function () {
-      function selectAnswer(answer, points = {}) {
-  Object.keys(points).forEach(key => {
-    if (personalityScores[key] !== undefined) {
-      personalityScores[key] += points[key];
-    }
+      selectAnswer(this.dataset.answer);
+    });
   });
+}
 
-  alert("You picked: " + answer);
+function selectAnswer(answer) {
+  answers.push(answer);
+  currentQuestion++;
+
+  if (currentQuestion < quizQuestions.length) {
+    showQuestion();
+  } else {
+    showResults();
+  }
+}
+
+function showResults() {
+  const questionBox = document.getElementById("questionBox");
+  const progressText = document.getElementById("progressText");
+
+  progressText.textContent = "Your PathFinder Results";
+
+  questionBox.innerHTML = `
+    <div class="result-card">
+      <h3>Good start.</h3>
+      <p>You picked: ${answers.join(", ")}</p>
+      <p>Next step: explore the career clusters below and choose one that feels interesting.</p>
+    </div>
+  `;
 }
 
 function showCluster(cluster) {
   const resultsBox = document.getElementById("career-results");
 
+  if (!resultsBox) {
+    alert("career-results box is missing from index.html");
+    return;
+  }
+
   if (!careerPools[cluster]) {
-    resultsBox.innerHTML = "<p>No careers found.</p>";
+    resultsBox.innerHTML = "<p>No careers found for this cluster.</p>";
     return;
   }
 
   const careers = careerPools[cluster];
 
   resultsBox.innerHTML = `
-    <div class="results-card">
-      <h2>${formatCluster(cluster)} Careers</h2>
-      <ul>
-        ${careers.map(career => `<li>${career}</li>`).join("")}
-      </ul>
+    <div class="cluster-preview-box">
+      <h3>${formatCluster(cluster)} Careers</h3>
+      <div class="career-grid">
+        ${careers.map(career => `
+          <div class="career-card">
+            <h5>${career}</h5>
+            <p>${careerDetails[career]?.summary || "Career details coming soon."}</p>
+          </div>
+        `).join("")}
+      </div>
     </div>
   `;
+
+  resultsBox.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
 function formatCluster(cluster) {
@@ -424,15 +457,10 @@ function formatCluster(cluster) {
   return names[cluster] || cluster;
 }
 
-  if (careerPools[cluster]) {
-    alert("Career ideas: " + careerPools[cluster].join(", "));
-  }
-}
-
+window.startQuiz = startQuiz;
+window.lostMode = lostMode;
+window.startWithVibe = startWithVibe;
 window.selectAnswer = selectAnswer;
 window.showCluster = showCluster;
-window.lostMode = lostMode;
-window.startQuiz = startQuiz;
-window.startWithVibe = startWithVibe; });
   });
 }
