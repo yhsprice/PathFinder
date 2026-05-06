@@ -1,4 +1,4 @@
-<script>
+
     const careerPools = {
       helper: ["Nursing", "Social Work", "Teaching", "Career Coaching", "Occupational Therapy", "Speech Therapy", "Physical Therapy Assistant", "Mental Health Counseling", "Dental Hygiene", "Emergency Medical Technician"],
       tech: ["Data Analyst", "IT Support", "Software Developer", "Cybersecurity", "UX Designer", "AI Prompt Specialist", "Cloud Support", "Business Analyst", "Game Developer", "Automation Specialist"],
@@ -566,4 +566,3 @@
 
       area.scrollIntoView({ behavior: "smooth", block: "center" });
     }
-  <script src="script.js"></script>
