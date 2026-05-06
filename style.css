@@ -37,7 +37,7 @@
     }
 
     nav a {
-      color: #dbeafe;
+      color: #334155;
       text-decoration: none;
       margin-left: 24px;
       font-size: 0.95rem;
@@ -53,14 +53,17 @@
       gap: 48px;
       align-items: center;
       padding: 70px 8% 90px;
+      color: white;
     }
 
     .eyebrow {
       display: inline-block;
       background: rgba(125, 211, 252, 0.14);
       border: 1px solid rgba(125, 211, 252, 0.35);
-      color: #bae6fd;
-      padding: 8px 14px;
+      color: .eyebrow {
+  color: #0369a1;
+}
+       padding: 8px 14px;
       border-radius: 999px;
       font-size: 0.9rem;
       margin-bottom: 22px;
@@ -79,9 +82,10 @@
     .hero p {
       font-size: 1.2rem;
       line-height: 1.7;
-      color: #dbeafe;
+      color: #334155;
       max-width: 680px;
       margin-bottom: 34px;
+      color: white;
     }
 
     .buttons {
@@ -124,7 +128,7 @@
     }
 
     .trust-line {
-      color: #bfdbfe;
+      color: #64748b;
       font-size: 0.95rem;
     }
 
@@ -193,7 +197,7 @@
       margin: 0;
       font-size: 0.9rem;
       line-height: 1.45;
-      color: #dbeafe;
+      color: #475569;
     }
 
     .section {
@@ -576,6 +580,7 @@
       .hero {
         grid-template-columns: 1fr;
         padding-top: 45px;
+        color: white;
       }
 
       .feature-grid,
