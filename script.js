@@ -6,6 +6,9 @@
       creative: ["Graphic Designer", "Marketing Specialist", "Content Creator", "Photographer", "Video Editor", "Interior Designer", "Brand Strategist", "Event Planner", "Animator", "Copywriter"],
       leadership: ["Project Coordinator", "Operations Manager", "Entrepreneur", "Human Resources", "Sales Manager", "Logistics Coordinator", "Business Consultant", "Recruiter", "Store Manager", "Training Specialist"],
       explorer: ["Park Ranger", "Flight Dispatcher", "Crime Scene Technician", "Travel Advisor", "Wildlife Rehabilitator", "Forensic Accountant", "Museum Curator", "Urban Planner", "Drone Operator", "Environmental Technician"]
+};
+
+const personalityScores = {
         const personalityScores = {
           helper: 0,
           tech: 0,
@@ -26,8 +29,7 @@
           education: 0,
           stability: 0,
           risk: 0
-            };
-    };
+};
 
     const careerDetails = {
       "Nursing": {
