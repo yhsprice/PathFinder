@@ -462,5 +462,3 @@ window.lostMode = lostMode;
 window.startWithVibe = startWithVibe;
 window.selectAnswer = selectAnswer;
 window.showCluster = showCluster;
-  });
-
