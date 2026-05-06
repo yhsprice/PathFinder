@@ -997,6 +997,30 @@
       answers = [];
     }
 
+    function getCareerPositives(career) {
+      const positives = {
+        "Nursing": "Many nurses feel deeply fulfilled because they directly help people during important moments. There is strong job stability, multiple specialties, and room to grow.",
+        "Social Work": "You can genuinely change lives and help people through difficult situations. Many social workers say the work gives them purpose and perspective.",
+        "Teaching": "Great teachers often become life-changing influences. Watching students grow and succeed can be incredibly rewarding.",
+        "Career Coaching": "Helping someone finally feel hopeful or confident again can be powerful. Every person and pathway is different, which keeps the work interesting.",
+        "Data Analyst": "You get to solve problems, find patterns others miss, and help organizations make smarter decisions. It can also offer strong flexibility and remote opportunities.",
+        "IT Support": "People are genuinely relieved when you solve problems for them. It is also one of the best entry points into higher-paying tech careers.",
+        "Software Developer": "You can build real things from ideas, automate work, create apps, and potentially work remotely with strong income growth.",
+        "Cybersecurity": "You help protect people and systems from real threats. The field stays interesting because technology constantly changes.",
+        "Electrician": "Excellent long-term income potential, strong independence, and a skill that is always needed. Many electricians eventually run their own business.",
+        "Welder": "There are opportunities to specialize, travel, and earn strong pay in advanced industries. Many welders enjoy seeing physical results from their work.",
+        "HVAC Technician": "High demand and practical work that solves immediate problems. Skilled HVAC technicians can build stable careers quickly.",
+        "Graphic Designer": "You get to create things people actually see and use. Creative work can be flexible and highly satisfying when your ideas come to life.",
+        "Marketing Specialist": "You combine creativity and strategy to influence real-world decisions. No two projects are exactly the same.",
+        "Content Creator": "You can build your own audience, brand, and opportunities while creating content around topics you enjoy.",
+        "Project Coordinator": "You become the person who keeps things moving and organized. Strong coordinators are valuable in almost every industry.",
+        "Operations Manager": "You improve systems, solve chaos, and make organizations work better. It can be highly respected and impactful work.",
+        "Entrepreneur": "You get freedom to build something meaningful, solve problems your own way, and potentially create major opportunities for yourself and others."
+      };
+
+      return positives[career] || "Every career has tradeoffs. The goal is finding work where the positives outweigh the negatives for YOU.";
+    }
+
     function showCareerDeepDive(career) {
       const area = document.getElementById("deepDiveArea");
       const data = careerDetails[career];
@@ -1018,6 +1042,11 @@
           <p>${data.summary}</p>
 
           <div class="truth-box"><strong>Nobody tells you:</strong><br>${data.truth}</div>
+
+          <div class="truth-box" style="background:#ecfeff;border-color:#a5f3fc;color:#164e63;">
+            <strong>What people DO love about it:</strong><br>
+            ${getCareerPositives(career)}
+          </div>
 
           <div class="mini-grid">
             <div class="mini-stat"><strong>Training Path</strong><span>${data.training}</span></div>
