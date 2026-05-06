@@ -541,3 +541,36 @@ footer {
     grid-template-columns: 1fr;
   }
 }
+body {
+  background: linear-gradient(135deg, #07111f, #102a43, #1f4e79) !important;
+  color: white !important;
+  font-family: Arial, sans-serif !important;
+}
+
+.hero {
+  background: linear-gradient(135deg, #07111f, #102a43, #1f4e79) !important;
+  color: white !important;
+}
+
+.hero h1,
+.hero-text h1 {
+  color: white !important;
+}
+
+.hero p,
+.trust-line,
+.step p,
+nav a {
+  color: #dbeafe !important;
+}
+
+.logo,
+.card-title,
+.step h3 {
+  color: white !important;
+}
+
+.path-card {
+  background: rgba(255, 255, 255, 0.1) !important;
+  color: white !important;
+}
