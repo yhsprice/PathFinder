@@ -381,7 +381,26 @@ function showQuestion() {
 
   document.querySelectorAll(".answer-btn").forEach(button => {
     button.addEventListener("click", function () {
-      selectAnswer(this.dataset.answer);
+      function selectAnswer(answer, points = {}) {
+  Object.keys(points).forEach(key => {
+    if (personalityScores[key] !== undefined) {
+      personalityScores[key] += points[key];
+    }
+  });
+
+  alert("You picked: " + answer);
+}
+
+function showCluster(cluster) {
+  alert("Cluster picked: " + cluster);
+
+  if (careerPools[cluster]) {
+    alert("Career ideas: " + careerPools[cluster].join(", "));
+  }
+}
+
+window.selectAnswer = selectAnswer;
+window.showCluster = showCluster;
     });
   });
 }
