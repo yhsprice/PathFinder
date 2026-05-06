@@ -1,36 +1,35 @@
 
     const careerPools = {
-      helper: ["Nursing", "Social Work", "Teaching", "Career Coaching", "Occupational Therapy", "Speech Therapy", "Physical Therapy Assistant", "Mental Health Counseling", "Dental Hygiene", "Emergency Medical Technician"],
-      tech: ["Data Analyst", "IT Support", "Software Developer", "Cybersecurity", "UX Designer", "AI Prompt Specialist", "Cloud Support", "Business Analyst", "Game Developer", "Automation Specialist"],
-      handsOn: ["Electrician", "Welder", "HVAC Technician", "Construction Management", "Diesel Mechanic", "Heavy Equipment Operator", "Plumber", "Industrial Maintenance", "Commercial Driver", "Survey Technician"],
-      creative: ["Graphic Designer", "Marketing Specialist", "Content Creator", "Photographer", "Video Editor", "Interior Designer", "Brand Strategist", "Event Planner", "Animator", "Copywriter"],
-      leadership: ["Project Coordinator", "Operations Manager", "Entrepreneur", "Human Resources", "Sales Manager", "Logistics Coordinator", "Business Consultant", "Recruiter", "Store Manager", "Training Specialist"],
-      explorer: ["Park Ranger", "Flight Dispatcher", "Crime Scene Technician", "Travel Advisor", "Wildlife Rehabilitator", "Forensic Accountant", "Museum Curator", "Urban Planner", "Drone Operator", "Environmental Technician"]
+      const careerPools = {
+  helper: ["Nursing", "Social Work", "Teaching", "Career Coaching", "Occupational Therapy", "Speech Therapy", "Physical Therapy Assistant", "Mental Health Counseling", "Dental Hygiene", "Emergency Medical Technician"],
+  tech: ["Data Analyst", "IT Support", "Software Developer", "Cybersecurity", "UX Designer", "AI Prompt Specialist", "Cloud Support", "Business Analyst", "Game Developer", "Automation Specialist"],
+  handsOn: ["Electrician", "Welder", "HVAC Technician", "Construction Management", "Diesel Mechanic", "Heavy Equipment Operator", "Plumber", "Industrial Maintenance", "Commercial Driver", "Survey Technician"],
+  creative: ["Graphic Designer", "Marketing Specialist", "Content Creator", "Photographer", "Video Editor", "Interior Designer", "Brand Strategist", "Event Planner", "Animator", "Copywriter"],
+  leadership: ["Project Coordinator", "Operations Manager", "Entrepreneur", "Human Resources", "Sales Manager", "Logistics Coordinator", "Business Consultant", "Recruiter", "Store Manager", "Training Specialist"],
+  explorer: ["Park Ranger", "Flight Dispatcher", "Crime Scene Technician", "Travel Advisor", "Wildlife Rehabilitator", "Forensic Accountant", "Museum Curator", "Urban Planner", "Drone Operator", "Environmental Technician"]
 };
 
 const personalityScores = {
-        const personalityScores = {
-          helper: 0,
-          tech: 0,
-          handsOn: 0,
-          creative: 0,
-          leadership: 0,
-          explorer: 0,
+  helper: 0,
+  tech: 0,
+  handsOn: 0,
+  creative: 0,
+  leadership: 0,
+  explorer: 0,
 
-          freedom: 0,
-          structure: 0,
-          social: 0,
-          independent: 0,
-          stressSafe: 0,
-          challenge: 0,
-          indoor: 0,
-          outdoor: 0,
-          fastPath: 0,
-          education: 0,
-          stability: 0,
-          risk: 0
+  freedom: 0,
+  structure: 0,
+  social: 0,
+  independent: 0,
+  stressSafe: 0,
+  challenge: 0,
+  indoor: 0,
+  outdoor: 0,
+  fastPath: 0,
+  education: 0,
+  stability: 0,
+  risk: 0
 };
-
     const careerDetails = {
       "Nursing": {
         summary: "Fast-paced, meaningful, emotionally intense work helping people during some of their hardest moments.",
