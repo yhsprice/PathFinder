@@ -608,14 +608,14 @@
           </p>
 
           <div class="choice-grid">
-            <div class="choice" onclick="startQuiz()">Freedom</div>
-            <div class="choice" onclick="startQuiz()">Stability</div>
-            <div class="choice" onclick="startQuiz()">High Income</div>
-            <div class="choice" onclick="startQuiz()">Helping People</div>
-            <div class="choice" onclick="startQuiz()">Creativity</div>
-            <div class="choice" onclick="startQuiz()">Adventure</div>
-            <div class="choice" onclick="startQuiz()">Leadership</div>
-            <div class="choice" onclick="startQuiz()">Low Stress</div>
+            <div class="choice" onclick="startWithVibe('Freedom')">Freedom</div>
+            <div class="choice" onclick="startWithVibe('Stability')">Stability</div>
+            <div class="choice" onclick="startWithVibe('High income')">High Income</div>
+            <div class="choice" onclick="startWithVibe('Helping people')">Helping People</div>
+            <div class="choice" onclick="startWithVibe('Creativity')">Creativity</div>
+            <div class="choice" onclick="startWithVibe('Adventure')">Adventure</div>
+            <div class="choice" onclick="startWithVibe('Leadership')">Leadership</div>
+            <div class="choice" onclick="startWithVibe('Low stress')">Low Stress</div>
           </div>
         </div>
       </section>
@@ -858,6 +858,14 @@
       showQuestion();
     }
 
+    function startWithVibe(vibe) {
+      document.getElementById("quizArea").classList.remove("hidden");
+      document.getElementById("quizArea").scrollIntoView({ behavior: "smooth" });
+      currentQuestion = 1;
+      answers = [vibe];
+      showQuestion();
+    }
+
     function showQuestion() {
       const questionBox = document.getElementById("questionBox");
       const progressText = document.getElementById("progressText");
@@ -895,6 +903,27 @@
       let description = "You may not know exactly what you want yet, but you are ready to explore options without pressure. That is a perfectly valid starting point.";
       let careers = ["Career Exploration", "Short-Term Skill Building", "Job Shadowing", "Volunteer Experiences"];
       let skills = ["Self-awareness", "Communication", "Basic technology", "Decision-making"];
+      let vibeNote = "You are still exploring, so the goal is not to pick forever. The goal is to get curious enough to take one useful next step.";
+
+      if (answerText.includes("stability") || answerText.includes("job security")) {
+        vibeNote = "Stability matters to you. Focus on paths with steady demand, clear training routes, benefits, and lower risk of job-market chaos.";
+      }
+
+      if (answerText.includes("high income") || answerText.includes("good pay")) {
+        vibeNote = "Income matters to you. That is not shallow — it is practical. Compare pay with training cost, debt, stress, and how long it takes to move up.";
+      }
+
+      if (answerText.includes("freedom") || answerText.includes("flexible")) {
+        vibeNote = "Freedom matters to you. Look for paths with remote work, flexible schedules, self-employment potential, or control over your day.";
+      }
+
+      if (answerText.includes("low stress")) {
+        vibeNote = "Low stress matters to you. Be careful: some careers look calm from the outside but are chaos wearing khakis. Check daily pressure, deadlines, people demands, and schedule.";
+      }
+
+      if (answerText.includes("adventure")) {
+        vibeNote = "Adventure matters to you. You may want variety, movement, travel, field work, or changing environments instead of the same desk every day.";
+      }
 
       if (answerText.includes("help") || answerText.includes("meaningful")) {
         pathway = "Helper / Impact Path";
@@ -927,6 +956,9 @@
         <div class="result-card">
           <h3>${pathway}</h3>
           <p>${description}</p>
+
+          <h4>Your future vibe:</h4>
+          <p>${vibeNote}</p>
 
           <h4>Career areas to explore:</h4>
           <p>Click a career to see the real-world details.</p>
