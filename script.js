@@ -392,7 +392,37 @@ function showQuestion() {
 }
 
 function showCluster(cluster) {
-  alert("Cluster picked: " + cluster);
+  const resultsBox = document.getElementById("career-results");
+
+  if (!careerPools[cluster]) {
+    resultsBox.innerHTML = "<p>No careers found.</p>";
+    return;
+  }
+
+  const careers = careerPools[cluster];
+
+  resultsBox.innerHTML = `
+    <div class="results-card">
+      <h2>${formatCluster(cluster)} Careers</h2>
+      <ul>
+        ${careers.map(career => `<li>${career}</li>`).join("")}
+      </ul>
+    </div>
+  `;
+}
+
+function formatCluster(cluster) {
+  const names = {
+    helper: "Healthcare & Wellness",
+    tech: "Technology & Innovation",
+    handsOn: "Skilled Trades & Construction",
+    creative: "Creative & Media",
+    leadership: "Business & Leadership",
+    explorer: "Animals & Nature"
+  };
+
+  return names[cluster] || cluster;
+}
 
   if (careerPools[cluster]) {
     alert("Career ideas: " + careerPools[cluster].join(", "));
