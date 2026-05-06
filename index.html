@@ -858,13 +858,16 @@
       showQuestion();
     }
 
-    function startWithVibe(vibe) {
-      document.getElementById("quizArea").classList.remove("hidden");
-      document.getElementById("quizArea").scrollIntoView({ behavior: "smooth" });
-      currentQuestion = 1;
-      answers = [vibe];
-      showQuestion();
-    }
+ function startWithVibe(vibe) {
+  document.getElementById("quizArea").classList.remove("hidden");
+  document.getElementById("quizArea").scrollIntoView({ behavior: "smooth" });
+
+  answers = [vibe];
+
+  currentQuestion = 1;
+
+  showQuestion();
+}
 
     function showQuestion() {
       const questionBox = document.getElementById("questionBox");
