@@ -599,7 +599,7 @@
         </div>
       </section>
 
-      <section class="section" id="explore">
+      <section class="section" id="exploreSection">
         <div class="quiz-preview">
           <h3>Start with what actually matters to you.</h3>
           <p class="section-intro">
@@ -843,6 +843,7 @@
     let answers = [];
 
     function startQuiz() {
+      document.getElementById("exploreSection").classList.add("hidden");
       document.getElementById("quizArea").classList.remove("hidden");
       document.getElementById("quizArea").scrollIntoView({ behavior: "smooth" });
       currentQuestion = 0;
@@ -851,6 +852,7 @@
     }
 
     function lostMode() {
+      document.getElementById("exploreSection").classList.add("hidden");
       document.getElementById("quizArea").classList.remove("hidden");
       document.getElementById("quizArea").scrollIntoView({ behavior: "smooth" });
       currentQuestion = 0;
@@ -858,16 +860,14 @@
       showQuestion();
     }
 
- function startWithVibe(vibe) {
-  document.getElementById("quizArea").classList.remove("hidden");
-  document.getElementById("quizArea").scrollIntoView({ behavior: "smooth" });
-
-  answers = [vibe];
-
-  currentQuestion = 1;
-
-  showQuestion();
-}
+    function startWithVibe(vibe) {
+      document.getElementById("exploreSection").classList.add("hidden");
+      document.getElementById("quizArea").classList.remove("hidden");
+      document.getElementById("quizArea").scrollIntoView({ behavior: "smooth" });
+      currentQuestion = 1;
+      answers = [vibe];
+      showQuestion();
+    }
 
     function showQuestion() {
       const questionBox = document.getElementById("questionBox");
@@ -985,10 +985,18 @@
           <h4>Your next small step:</h4>
           <p>Pick one career from this list and spend 10 minutes learning what a normal day in that job really looks like. Tiny step. Big difference.</p>
 
-          <button class="btn primary" onclick="startQuiz()">Retake Quiz</button>
+          <button class="btn primary" onclick="restartFullQuiz()">Retake Quiz</button>
         </div>
       `;
     }
+    function restartFullQuiz() {
+      document.getElementById("exploreSection").classList.remove("hidden");
+      document.getElementById("quizArea").classList.add("hidden");
+      document.getElementById("exploreSection").scrollIntoView({ behavior: "smooth" });
+      currentQuestion = 0;
+      answers = [];
+    }
+
     function showCareerDeepDive(career) {
       const area = document.getElementById("deepDiveArea");
       const data = careerDetails[career];
