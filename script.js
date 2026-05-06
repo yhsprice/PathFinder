@@ -357,19 +357,29 @@
     }
 
     function showQuestion() {
-      const questionBox = document.getElementById("questionBox");
-      const progressText = document.getElementById("progressText");
-      const q = quizQuestions[currentQuestion];
+  const questionBox = document.getElementById("questionBox");
+  const progressText = document.getElementById("progressText");
+  const q = quizQuestions[currentQuestion];
 
-      progressText.textContent = `Question ${currentQuestion + 1} of ${quizQuestions.length}`;
+  progressText.textContent = `Question ${currentQuestion + 1} of ${quizQuestions.length}`;
 
-      questionBox.innerHTML = `
-        <h3>${q.question}</h3>
-        <div class="quiz-options">
-          ${q.options.map(option => `<button onclick="selectAnswer('${option.replace(/'/g, "\'")}')">${option}</button>`).join("")}
-        </div>
-      `;
-    }
+  questionBox.innerHTML = `
+    <h3>${q.question}</h3>
+    <div class="quiz-options">
+      ${q.options.map(option => `
+        <button type="button" class="answer-btn" data-answer="${option}">
+          ${option}
+        </button>
+      `).join("")}
+    </div>
+  `;
+
+  document.querySelectorAll(".answer-btn").forEach(button => {
+    button.addEventListener("click", function () {
+      selectAnswer(this.dataset.answer);
+    });
+  });
+}
 
     function selectAnswer(answer) {
       answers.push(answer);
