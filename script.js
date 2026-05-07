@@ -668,6 +668,8 @@ function exploreCareer(career) {
     "Next step: " + details.nextStep
   );
 
+}
+
 function showCareerDetails(career) {
   const details = careerDetails[career];
 
