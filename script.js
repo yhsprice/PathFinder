@@ -881,3 +881,4 @@ window.selectAnswer = selectAnswer;
 window.showCluster = showCluster;
 window.exploreCareer = exploreCareer;
 window.closeCareerDetails = closeCareerDetails;
+window.saveCareer = saveCareer;
