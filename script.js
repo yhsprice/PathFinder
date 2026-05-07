@@ -655,6 +655,10 @@ function showResults() {
             <p><strong>Try this next:</strong> ${careerDetails[match.career]?.nextStep || "Research this career and write down what interests you about it."}</p>
 
             <p><strong>Real talk:</strong> ${careerDetails[match.career]?.truth || "Every career has trade-offs, so research the good and the hard parts before deciding."}</p>
+
+            <p><strong>Training:</strong> ${careerDetails[match.career]?.training || "Training varies by role and location."}</p>
+
+            <p><strong>Difficulty:</strong> ${careerDetails[match.career]?.difficulty || "Varies"}</p>
           
         `).join("")}
 
