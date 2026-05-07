@@ -608,6 +608,67 @@ function selectAnswer(answer) {
   }
 }
 
+const careerMatches = [
+  {
+    career: "Data Analyst",
+    traits: { analytical: 3, structure: 2, independence: 1 }
+  },
+  {
+    career: "UX Designer",
+    traits: { creativity: 3, analytical: 2, independence: 1 }
+  },
+  {
+    career: "Electrician",
+    traits: { physical: 3, analytical: 2, structure: 1 }
+  },
+  {
+    career: "Career Coaching",
+    traits: { social: 3, creativity: 1, leadership: 1 }
+  },
+  {
+    career: "Project Coordinator",
+    traits: { structure: 3, leadership: 2, social: 1 }
+  },
+  {
+    career: "Entrepreneur",
+    traits: { independence: 3, riskTolerance: 3, leadership: 2 }
+  },
+  {
+    career: "Graphic Designer",
+    traits: { creativity: 3, independence: 1, analytical: 1 }
+  },
+  {
+    career: "Heavy Equipment Operator",
+    traits: { physical: 3, independence: 1, stressTolerance: 1 }
+  },
+  {
+    career: "Marketing Specialist",
+    traits: { creativity: 2, analytical: 2, social: 1 }
+  },
+  {
+    career: "Drone Operator",
+    traits: { independence: 2, analytical: 2, physical: 1 }
+  }
+];
+
+function calculateCareerMatches() {
+  return careerMatches
+    .map(item => {
+      let score = 0;
+
+      for (let trait in item.traits) {
+        score += (userTraits[trait] || 0) * item.traits[trait];
+      }
+
+      return {
+        career: item.career,
+        score: score
+      };
+    })
+    .sort((a, b) => b.score - a.score)
+    .slice(0, 5);
+}
+
 function showResults() {
 
   const questionBox =
@@ -624,13 +685,15 @@ function showResults() {
     .slice(0, 3)
     .map(trait => trait[0]);
 
+  const matchedCareers = calculateCareerMatches();
+
   progressText.textContent =
     "Your PathFinder Results";
 
   questionBox.innerHTML = `
     <div class="result-card">
 
-      <h3>Good start.</h3>
+      <h3>Your possible career matches</h3>
 
       <p>
         You picked:
@@ -642,53 +705,25 @@ function showResults() {
         ${topTraits.length ? topTraits.join(", ") : "Still developing"}
       </p>
 
-    </div>
-  `;
-
-  console.log("FINAL TRAITS:", userTraits);
-}
-
-function showCluster(cluster) {
-
-  const resultsBox =
-    document.getElementById("career-results");
-
-  if (!careerPools[cluster]) {
-
-    resultsBox.innerHTML =
-      "<p>No careers found.</p>";
-
-    return;
-  }
-
-  const careers = careerPools[cluster];
-
-  resultsBox.innerHTML = `
-    <div class="cluster-preview-box">
-
-      <h3>${formatCluster(cluster)} Careers</h3>
+      <h4>Careers to explore first:</h4>
 
       <div class="career-grid">
-
-        ${careers.map(career => `
-
+        ${matchedCareers.map(match => `
           <div class="career-card">
-
-            <h5>${career}</h5>
-
+            <h5>${match.career}</h5>
             <p>
-              ${careerDetails[career]?.summary
-                || "Career details coming soon."}
+              ${careerDetails[match.career]?.summary || "Career details coming soon."}
             </p>
-
+            <p><strong>Match score:</strong> ${match.score}</p>
           </div>
-
         `).join("")}
-
       </div>
 
     </div>
   `;
+
+  console.log("FINAL TRAITS:", userTraits);
+  console.log("CAREER MATCHES:", matchedCareers);
 }
 
 function formatCluster(cluster) {
