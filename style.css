@@ -654,3 +654,16 @@ nav a {
   font-weight: bold;
   background: rgba(255, 255, 255, 0.12);
 }
+
+.start-over-btn {
+  margin-top: 25px;
+  padding: 12px 18px;
+  border: none;
+  border-radius: 999px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.start-over-btn:hover {
+  transform: translateY(-1px);
+}
