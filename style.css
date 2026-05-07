@@ -628,3 +628,14 @@ nav a {
   font-weight: bold;
   cursor: pointer;
 }
+
+.career-detail-box ul {
+  margin-left: 25px;
+  margin-top: 10px;
+  margin-bottom: 25px;
+  line-height: 1.8;
+}
+
+.career-detail-box li {
+  margin-bottom: 6px;
+}
