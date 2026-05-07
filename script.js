@@ -719,8 +719,12 @@ function showResults() {
 
             <p><strong>Roadmap:</strong></p>
 
-            <button type="button" class="explore-career-btn">
-              Explore this career
+           <button 
+            type="button" 
+            class="explore-career-btn"
+            onclick="exploreCareer('${match.career}')"
+            >
+            Explore this career
             </button>
             
             <p><strong>Best fit if:</strong> ${getBestFitLine(match.career)}</p>
