@@ -616,6 +616,23 @@ function getMatchStrength(score) {
   return "🧭 Possible Match";
 }
 
+function getBestFitLine(career) {
+  const lines = {
+    "Data Analyst": "You like patterns, details, and solving problems with information.",
+    "UX Designer": "You like creativity, problem-solving, and improving how people use things.",
+    "Electrician": "You like hands-on work, problem-solving, and practical skills.",
+    "Career Coaching": "You like helping people figure things out and move forward.",
+    "Project Coordinator": "You like organizing people, plans, deadlines, and details.",
+    "Entrepreneur": "You like freedom, risk, leadership, and building your own path.",
+    "Graphic Designer": "You like visual creativity, ideas, and making things look better.",
+    "Heavy Equipment Operator": "You like physical work, focus, machinery, and outdoor environments.",
+    "Marketing Specialist": "You like creativity, strategy, communication, and understanding people.",
+    "Drone Operator": "You like technology, independence, visuals, and hands-on exploration."
+  };
+
+  return lines[career] || "This career connects with several of your answer patterns.";
+}
+
 function showResults() {
 
   const questionBox =
@@ -684,6 +701,8 @@ function showResults() {
             <p><strong>Stress Level:</strong> ${careerDetails[match.career]?.stress || "Varies"}</p>
 
             <p><strong>Roadmap:</strong></p>
+            
+            <p><strong>Best fit if:</strong> ${getBestFitLine(match.career)}</p>
 
 <ol>
   ${(careerDetails[match.career]?.roadmap || ["Research this career", "Talk to someone in the field", "Choose one small next step"]).map(step => `
