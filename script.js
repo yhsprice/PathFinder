@@ -663,6 +663,14 @@ function showResults() {
             <p><strong>Job Market:</strong> ${careerDetails[match.career]?.jobMarket || "Varies by area"}</p>
 
             <p><strong>Stress Level:</strong> ${careerDetails[match.career]?.stress || "Varies"}</p>
+
+            <p><strong>Roadmap:</strong></p>
+
+<ol>
+  ${(careerDetails[match.career]?.roadmap || ["Research this career", "Talk to someone in the field", "Choose one small next step"]).map(step => `
+    <li>${step}</li>
+  `).join("")}
+</ol>
           
         `).join("")}
 
