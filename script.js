@@ -633,6 +633,23 @@ function getBestFitLine(career) {
   return lines[career] || "This career connects with several of your answer patterns.";
 }
 
+function getMismatchWarning(career) {
+  const warnings = {
+    "Data Analyst": "You hate details, spreadsheets, patterns, or checking work carefully.",
+    "UX Designer": "You dislike feedback, revisions, or figuring out what users need.",
+    "Electrician": "You do not want physical work, safety rules, tools, or jobsite conditions.",
+    "Career Coaching": "You get drained by listening, encouraging others, or helping people make decisions.",
+    "Project Coordinator": "You dislike schedules, follow-up, deadlines, and keeping people organized.",
+    "Entrepreneur": "You need guaranteed stability, predictable income, and low risk right away.",
+    "Graphic Designer": "You dislike revisions, client opinions, or creating under deadlines.",
+    "Heavy Equipment Operator": "You do not want outdoor conditions, safety pressure, or machinery responsibility.",
+    "Marketing Specialist": "You dislike writing, testing ideas, analyzing results, or audience strategy.",
+    "Drone Operator": "You dislike regulations, technical details, weather limits, or precision work."
+  };
+
+  return warnings[career] || "You dislike the daily tasks, training path, or work environment connected to this career.";
+}
+
 function showResults() {
 
   const questionBox =
@@ -703,6 +720,8 @@ function showResults() {
             <p><strong>Roadmap:</strong></p>
             
             <p><strong>Best fit if:</strong> ${getBestFitLine(match.career)}</p>
+
+            <p><strong>May not fit if:</strong> ${getMismatchWarning(match.career)}</p>
 
 <ol>
   ${(careerDetails[match.career]?.roadmap || ["Research this career", "Talk to someone in the field", "Choose one small next step"]).map(step => `
