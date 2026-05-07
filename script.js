@@ -650,6 +650,21 @@ function getMismatchWarning(career) {
   return warnings[career] || "You dislike the daily tasks, training path, or work environment connected to this career.";
 }
 
+function exploreCareer(career) {
+  const details = careerDetails[career];
+
+  if (!details) {
+    alert("More details coming soon for " + career);
+    return;
+  }
+
+  alert(
+    career + "\n\n" +
+    details.summary + "\n\n" +
+    "Next step: " + details.nextStep
+  );
+}
+
 function showResults() {
 
   const questionBox =
@@ -765,3 +780,4 @@ window.lostMode = lostMode;
 window.startWithVibe = startWithVibe;
 window.selectAnswer = selectAnswer;
 window.showCluster = showCluster;
+window.exploreCareer = exploreCareer;
