@@ -799,6 +799,10 @@ function showResults() {
         `).join("")}
     </div>
 
+<button type="button" class="start-over-btn" onclick="startQuiz()">
+  Start Over
+</button>
+
     <div id="careerDetailArea"></div>
     
     </div>
