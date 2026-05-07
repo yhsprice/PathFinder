@@ -639,3 +639,18 @@ nav a {
 .career-detail-box li {
   margin-bottom: 6px;
 }
+
+.career-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 10px 0 15px;
+}
+
+.career-tags span {
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  background: rgba(255, 255, 255, 0.12);
+}
