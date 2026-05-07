@@ -646,10 +646,15 @@ function showResults() {
           <div class="career-card">
             <h5>${match.career}</h5>
             <p>
+            
               ${careerDetails[match.career]?.summary || "Career details coming soon."}
             </p>
+            
             <p><strong>Why it matched:</strong> ${explainCareerMatch(match.career)}</p>
+            
+            <p><strong>Try this next:</strong> ${careerDetails[match.career]?.nextStep || "Research this career and write down what interests you about it."}</p>
           </div>
+          
         `).join("")}
 
     </div>
