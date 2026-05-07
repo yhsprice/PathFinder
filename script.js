@@ -408,7 +408,6 @@ const quizQuestions = [
     ]
   },
 
-  {
    {
   question: "What kind of work would you rather do?",
   options: [
