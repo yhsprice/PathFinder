@@ -700,6 +700,46 @@ function closeCareerDetails() {
   }
 }
 
+let savedCareers = [];
+
+function saveCareer(career) {
+
+  if (!savedCareers.includes(career)) {
+    savedCareers.push(career);
+  }
+
+  updateSavedCareers();
+}
+
+function updateSavedCareers() {
+
+  const savedArea =
+    document.getElementById("savedCareersArea");
+
+  if (!savedArea) return;
+
+  if (savedCareers.length === 0) {
+
+    savedArea.innerHTML = `
+      <p>No saved careers yet.</p>
+    `;
+
+    return;
+  }
+
+  savedArea.innerHTML = `
+    <h3>Saved Careers</h3>
+
+    <div class="saved-career-list">
+      ${savedCareers.map(career => `
+        <div class="saved-career-item">
+          ${career}
+        </div>
+      `).join("")}
+    </div>
+  `;
+}
+
 function showResults() {
 
   const questionBox =
@@ -782,7 +822,13 @@ function showResults() {
             onclick="exploreCareer('${match.career}')"
             >
             Explore this career
-            </button>
+           <button
+            type="button"
+            class="save-career-btn"
+            onclick="saveCareer('${match.career}')"
+            >
+            ⭐ Save Career
+          </button>
             
             <p><strong>Best fit if:</strong> ${getBestFitLine(match.career)}</p>
 
@@ -802,6 +848,8 @@ function showResults() {
 <button type="button" class="start-over-btn" onclick="startQuiz()">
   🗺️ Start a New Path
 </button>
+
+    <div id="savedCareersArea"></div>
 
     <div id="careerDetailArea"></div>
     
