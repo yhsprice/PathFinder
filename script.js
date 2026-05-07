@@ -616,6 +616,14 @@ function showResults() {
   const progressText =
     document.getElementById("progressText");
 
+  const sortedTraits = Object.entries(userTraits)
+    .sort((a, b) => b[1] - a[1]);
+
+  const topTraits = sortedTraits
+    .filter(trait => trait[1] > 0)
+    .slice(0, 3)
+    .map(trait => trait[0]);
+
   progressText.textContent =
     "Your PathFinder Results";
 
@@ -629,21 +637,15 @@ function showResults() {
         ${answers.join(", ")}
       </p>
 
-     <p>
-  Your strongest traits:
-  ${topTraits.join(", ")}
-</p>
+      <p>
+        Your strongest traits:
+        ${topTraits.length ? topTraits.join(", ") : "Still developing"}
+      </p>
 
     </div>
   `;
 
   console.log("FINAL TRAITS:", userTraits);
-  const sortedTraits = Object.entries(userTraits)
-  .sort((a, b) => b[1] - a[1]);
-
-const topTraits = sortedTraits
-  .slice(0, 3)
-  .map(trait => trait[0]);
 }
 
 function showCluster(cluster) {
