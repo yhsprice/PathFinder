@@ -829,19 +829,21 @@ function showResults() {
             <p><strong>Roadmap:</strong></p>
 
            <button 
-            type="button" 
-            class="explore-career-btn"
-            onclick="exploreCareer('${match.career}')"
-            >
-            Explore this career
-           <button
-            type="button"
-            class="save-career-btn"
-            onclick="saveCareer('${match.career}')"
-            >
-            ⭐ Save Career
-          </button>
-            
+  type="button" 
+  class="explore-career-btn"
+  onclick="exploreCareer('${match.career}')"
+>
+  Explore this career
+</button>
+
+<button
+  type="button"
+  class="save-career-btn"
+  onclick="saveCareer('${match.career}')"
+>
+  ⭐ Save Career
+</button>
+
             <p><strong>Best fit if:</strong> ${getBestFitLine(match.career)}</p>
 
             <p><strong>May not fit if:</strong> ${getMismatchWarning(match.career)}</p>
