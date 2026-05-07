@@ -651,18 +651,39 @@ function getMismatchWarning(career) {
 }
 
 function exploreCareer(career) {
-  const details = careerDetails[career];
+  const detailArea = document.getElementById("careerDetailArea");
 
-  if (!details) {
-    alert("More details coming soon for " + career);
+  if (!detailArea) {
+    alert("careerDetailArea is missing from the results section.");
     return;
   }
+
+  detailArea.innerHTML = showCareerDetails(career);
+  detailArea.scrollIntoView({ behavior: "smooth", block: "start" });
+}
 
   alert(
     career + "\n\n" +
     details.summary + "\n\n" +
     "Next step: " + details.nextStep
   );
+}
+
+function showCareerDetails(career) {
+  const details = careerDetails[career];
+
+  if (!details) {
+    return `<p>More details coming soon for ${career}.</p>`;
+  }
+
+  return `
+    <div class="career-detail-box">
+      <h4>${career}</h4>
+      <p>${details.summary}</p>
+      <p><strong>Next step:</strong> ${details.nextStep}</p>
+      <p><strong>Real talk:</strong> ${details.truth}</p>
+    </div>
+  `;
 }
 
 function showResults() {
@@ -753,7 +774,10 @@ function showResults() {
 </ol>
           
         `).join("")}
+    </div>
 
+    <div id="careerDetailArea"></div>
+    
     </div>
   `;
 
