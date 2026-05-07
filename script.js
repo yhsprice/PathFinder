@@ -749,9 +749,16 @@ function showResults() {
 <p class="match-strength">
   ${getMatchStrength(match.score)}
 </p>
+
+<div class="career-tags">
+  <span>${careerDetails[match.career]?.difficulty || "Varies"}</span>
+  <span>${careerDetails[match.career]?.stress || "Stress varies"}</span>
+  <span>${careerDetails[match.career]?.jobMarket || "Market varies"}</span>
+</div>
                        
-              ${careerDetails[match.career]?.summary || "Career details coming soon."}
-            </p>
+             <p>
+  ${careerDetails[match.career]?.summary || "Career details coming soon."}
+</p>
             
             <p><strong>Why it matched:</strong> ${explainCareerMatch(match.career)}</p>
             
