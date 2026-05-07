@@ -526,10 +526,15 @@ function startWithVibe(vibe) {
 }
 
 function showQuestion() {
-  const questionBox = document.getElementById("questionBox");
-  const progressText = document.getElementById("progressText");
 
-  const q = quizQuestions[currentQuestion];
+  const questionBox =
+    document.getElementById("questionBox");
+
+  const progressText =
+    document.getElementById("progressText");
+
+  const q =
+    quizQuestions[currentQuestion];
 
   progressText.textContent =
     `Question ${currentQuestion + 1} of ${quizQuestions.length}`;
@@ -538,7 +543,9 @@ function showQuestion() {
     <h3>${q.question}</h3>
 
     <div class="quiz-options">
+
       ${q.options.map((option, index) => {
+
         const optionText =
           typeof option === "string"
             ? option
@@ -553,16 +560,26 @@ function showQuestion() {
             ${optionText}
           </button>
         `;
+
       }).join("")}
+
     </div>
   `;
 
-  document.querySelectorAll(".answer-btn").forEach(button => {
-    button.addEventListener("click", function () {
-      const selectedOption = q.options[this.dataset.index];
-      selectAnswer(selectedOption);
+  document.querySelectorAll(".answer-btn")
+    .forEach(button => {
+
+      button.addEventListener("click", function () {
+
+        const selectedOption =
+          q.options[this.dataset.index];
+
+        selectAnswer(selectedOption);
+
+      });
+
     });
-  });
+
 }
 
 function selectAnswer(answer) {
