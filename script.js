@@ -730,14 +730,24 @@ function updateSavedCareers() {
   savedArea.innerHTML = `
     <h3>Saved Careers</h3>
 
-    <div class="saved-career-list">
-      ${savedCareers.map(career => `
-        <div class="saved-career-item">
-          ${career}
-        </div>
+    <div class="saved-career-item">
+  ${career}
+
+  <button
+    type="button"
+    onclick="removeSavedCareer('${career}')"
+  >
+    ×
+  </button>
+</div>
       `).join("")}
     </div>
   `;
+}
+
+function removeSavedCareer(career) {
+  savedCareers = savedCareers.filter(item => item !== career);
+  updateSavedCareers();
 }
 
 function showResults() {
