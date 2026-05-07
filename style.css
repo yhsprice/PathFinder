@@ -613,3 +613,18 @@ nav a {
   border-radius: 18px;
   background: rgba(255, 255, 255, 0.08);
 }
+
+.career-detail-box {
+  position: relative;
+}
+
+.close-detail-btn {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  border: none;
+  background: transparent;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+}
