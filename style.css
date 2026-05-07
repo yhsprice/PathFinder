@@ -606,3 +606,10 @@ nav a {
 .explore-career-btn:hover {
   transform: translateY(-1px);
 }
+
+.career-detail-box {
+  margin-top: 25px;
+  padding: 20px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.08);
+}
