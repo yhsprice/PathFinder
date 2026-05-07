@@ -446,44 +446,45 @@ const quizQuestions = [
   ]
 },
 
-  {
-    question: "What drains you the fastest?",
-    options: [
-      "Too much talking",
-      "Sitting all day",
-      "Repetitive work",
-      "High pressure",
-      "Physical labor",
-      "Strict routines",
-      "Unclear directions",
-      "Being micromanaged"
-    ]
-  },
+ {
+  question: "What drains you the fastest?",
+  options: [
+    { text: "Too much talking", traits: { social: -2, independence: 1 } },
+    { text: "Sitting all day", traits: { physical: 2 } },
+    { text: "Repetitive work", traits: { creativity: 2, independence: 1 } },
+    { text: "High pressure", traits: { stressTolerance: -2, structure: 1 } },
+    { text: "Physical labor", traits: { physical: -2, analytical: 1 } },
+    { text: "Strict routines", traits: { independence: 2, structure: -2 } },
+    { text: "Unclear directions", traits: { structure: 2 } },
+    { text: "Being micromanaged", traits: { independence: 2 } }
+  ]
+},
+
+ {
+  question: "What matters most in a career path?",
+  options: [
+    { text: "Good pay", traits: { stressTolerance: 1, leadership: 1 } },
+    { text: "Job security", traits: { structure: 2, riskTolerance: -1 } },
+    { text: "Flexible schedule", traits: { independence: 2 } },
+    { text: "Helping others", traits: { social: 2 } },
+    { text: "Room to grow", traits: { leadership: 1, educationTolerance: 1 } },
+    { text: "Low debt", traits: { educationTolerance: -1, structure: 1 } },
+    { text: "Fast training", traits: { educationTolerance: -2, physical: 1 } },
+    { text: "Meaningful work", traits: { social: 1, creativity: 1 } }
+  ]
+},
 
   {
-    question: "What matters most in a career path?",
-    options: [
-      "Good pay",
-      "Job security",
-      "Flexible schedule",
-      "Helping others",
-      "Room to grow",
-      "Low debt",
-      "Fast training",
-      "Meaningful work"
-    ]
+   {
+  question: "How serious are you about figuring this out today?",
+  options: [
+    { text: "Just curious", traits: { independence: 1 } },
+    { text: "A little serious", traits: { structure: 1 } },
+    { text: "Pretty serious", traits: { structure: 1, analytical: 1 } },
+    { text: "I need direction now", traits: { structure: 2, stressTolerance: -1 } }
+  ]
+}
   },
-
-  {
-    question: "How serious are you about figuring this out today?",
-    options: [
-      "Just curious",
-      "A little serious",
-      "Pretty serious",
-      "I need direction now"
-    ]
-  }
-];
 
 let currentQuestion = 0;
 let answers = [];
