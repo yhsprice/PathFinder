@@ -653,7 +653,8 @@ function showResults() {
             <p><strong>Why it matched:</strong> ${explainCareerMatch(match.career)}</p>
             
             <p><strong>Try this next:</strong> ${careerDetails[match.career]?.nextStep || "Research this career and write down what interests you about it."}</p>
-          </div>
+
+            <p><strong>Real talk:</strong> ${careerDetails[match.career]?.truth || "Every career has trade-offs, so research the good and the hard parts before deciding."}</p>
           
         `).join("")}
 
