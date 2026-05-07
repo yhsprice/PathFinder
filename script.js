@@ -603,6 +603,19 @@ function explainCareerMatch(career) {
   return `This may fit because it connects with skills like ${details.skills.slice(0, 3).join(", ")}.`;
 }
 
+function getMatchStrength(score) {
+
+  if (score >= 18) {
+    return "🔥 Strong Match";
+  }
+
+  if (score >= 10) {
+    return "✅ Good Match";
+  }
+
+  return "🧭 Possible Match";
+}
+
 function showResults() {
 
   const questionBox =
@@ -644,9 +657,15 @@ function showResults() {
       <div class="career-grid">
         ${matchedCareers.map(match => `
           <div class="career-card">
-            <h5>${match.career}</h5>
-            <p>
-            
+          
+          <h5>
+  ${match.career}
+</h5>
+
+<p class="match-strength">
+  ${getMatchStrength(match.score)}
+</p>
+                       
               ${careerDetails[match.career]?.summary || "Career details coming soon."}
             </p>
             
