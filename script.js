@@ -672,8 +672,20 @@ function showCareerDetails(career) {
   return `
     <div class="career-detail-box">
       <h4>${career}</h4>
+
       <p>${details.summary}</p>
-      <p><strong>Next step:</strong> ${details.nextStep}</p>
+
+      <p><strong>Training:</strong> ${details.training}</p>
+      <p><strong>Job Market:</strong> ${details.jobMarket}</p>
+      <p><strong>Stress Level:</strong> ${details.stress}</p>
+
+      <p><strong>Skills to build:</strong></p>
+      <ul>
+        ${details.skills.map(skill => `<li>${skill}</li>`).join("")}
+      </ul>
+
+      <p><strong>First small step:</strong> ${details.nextStep}</p>
+
       <p><strong>Real talk:</strong> ${details.truth}</p>
     </div>
   `;
