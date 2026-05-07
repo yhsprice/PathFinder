@@ -344,7 +344,40 @@ const careerDetails = {
 const quizQuestions = [
   {
     question: "What kind of future sounds best right now?",
-    options: ["Freedom", "Stability", "High income", "Helping people", "Creativity", "Adventure", "Leadership", "Low stress"]
+    options: [
+      {
+        text: "Freedom",
+        traits: { independence: 2, structure: -1 }
+      },
+      {
+        text: "Stability",
+        traits: { structure: 2, riskTolerance: -1 }
+      },
+      {
+        text: "High income",
+        traits: { leadership: 1, stressTolerance: 1 }
+      },
+      {
+        text: "Helping people",
+        traits: { social: 2 }
+      },
+      {
+        text: "Creativity",
+        traits: { creativity: 2 }
+      },
+      {
+        text: "Adventure",
+        traits: { independence: 1, riskTolerance: 2 }
+      },
+      {
+        text: "Leadership",
+        traits: { leadership: 2 }
+      },
+      {
+        text: "Low stress",
+        traits: { stressTolerance: -1, structure: 1 }
+      }
+    ]
   },
   {
     question: "What kind of work would you rather do?",
@@ -404,17 +437,22 @@ function showQuestion() {
   questionBox.innerHTML = `
     <h3>${q.question}</h3>
     <div class="quiz-options">
-      ${q.options.map(option => `
-        <button type="button" class="answer-btn" data-answer="${option}">
-          ${option}
-        </button>
-      `).join("")}
+      ${q.options.map((option, index) => {
+        const optionText = typeof option === "string" ? option : option.text;
+
+        return `
+          <button type="button" class="answer-btn" data-index="${index}">
+            ${optionText}
+          </button>
+        `;
+      }).join("")}
     </div>
   `;
 
   document.querySelectorAll(".answer-btn").forEach(button => {
     button.addEventListener("click", function () {
-      selectAnswer(this.dataset.answer);
+      const selectedOption = q.options[this.dataset.index];
+      selectAnswer(selectedOption);
     });
   });
 }
