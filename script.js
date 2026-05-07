@@ -593,6 +593,16 @@ function calculateCareerMatches() {
     .slice(0, 5);
 }
 
+function explainCareerMatch(career) {
+  const details = careerDetails[career];
+
+  if (!details) {
+    return "This career matched your answers based on your strongest traits.";
+  }
+
+  return `This may fit because it connects with skills like ${details.skills.slice(0, 3).join(", ")}.`;
+}
+
 function showResults() {
 
   const questionBox =
@@ -638,10 +648,9 @@ function showResults() {
             <p>
               ${careerDetails[match.career]?.summary || "Career details coming soon."}
             </p>
-            <p><strong>Match score:</strong> ${match.score}</p>
+            <p><strong>Why it matched:</strong> ${explainCareerMatch(match.career)}</p>
           </div>
         `).join("")}
-      </div>
 
     </div>
   `;
