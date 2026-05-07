@@ -662,14 +662,6 @@ function exploreCareer(career) {
   detailArea.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
-  alert(
-    career + "\n\n" +
-    details.summary + "\n\n" +
-    "Next step: " + details.nextStep
-  );
-
-}
-
 function showCareerDetails(career) {
   const details = careerDetails[career];
 
@@ -773,7 +765,9 @@ function showResults() {
     <li>${step}</li>
   `).join("")}
 </ol>
-          
+        
+        </div>
+         
         `).join("")}
     </div>
 
