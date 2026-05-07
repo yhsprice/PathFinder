@@ -593,3 +593,16 @@ nav a {
   margin-bottom: 10px;
   color: #4ea1ff;
 }
+
+.explore-career-btn {
+  margin-top: 15px;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 999px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.explore-career-btn:hover {
+  transform: translateY(-1px);
+}
