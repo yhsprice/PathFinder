@@ -667,7 +667,6 @@ function exploreCareer(career) {
     details.summary + "\n\n" +
     "Next step: " + details.nextStep
   );
-}
 
 function showCareerDetails(career) {
   const details = careerDetails[career];
