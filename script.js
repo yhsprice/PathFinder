@@ -539,7 +539,6 @@ function showQuestion() {
 
     <div class="quiz-options">
       ${q.options.map((option, index) => {
-
         const optionText =
           typeof option === "string"
             ? option
@@ -547,28 +546,22 @@ function showQuestion() {
 
         return `
           <button
+            type="button"
             class="answer-btn"
             data-index="${index}"
           >
             ${optionText}
           </button>
         `;
-
       }).join("")}
     </div>
   `;
 
   document.querySelectorAll(".answer-btn").forEach(button => {
-
     button.addEventListener("click", function () {
-
-      const selectedOption =
-        q.options[this.dataset.index];
-
+      const selectedOption = q.options[this.dataset.index];
       selectAnswer(selectedOption);
-
     });
-
   });
 }
 
