@@ -718,6 +718,10 @@ function showResults() {
             <p><strong>Stress Level:</strong> ${careerDetails[match.career]?.stress || "Varies"}</p>
 
             <p><strong>Roadmap:</strong></p>
+
+            <button type="button" class="explore-career-btn">
+              Explore this career
+            </button>
             
             <p><strong>Best fit if:</strong> ${getBestFitLine(match.career)}</p>
 
