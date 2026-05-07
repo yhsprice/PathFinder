@@ -629,14 +629,21 @@ function showResults() {
         ${answers.join(", ")}
       </p>
 
-      <p>
-        Trait engine is now active.
-      </p>
+     <p>
+  Your strongest traits:
+  ${topTraits.join(", ")}
+</p>
 
     </div>
   `;
 
   console.log("FINAL TRAITS:", userTraits);
+  const sortedTraits = Object.entries(userTraits)
+  .sort((a, b) => b[1] - a[1]);
+
+const topTraits = sortedTraits
+  .slice(0, 3)
+  .map(trait => trait[0]);
 }
 
 function showCluster(cluster) {
