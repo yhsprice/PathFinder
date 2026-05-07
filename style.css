@@ -673,3 +673,27 @@ nav a {
 .start-over-btn:hover {
   transform: rotate(0deg) translateY(-2px);
 }
+
+.save-career-btn {
+  margin-top: 10px;
+  margin-right: 10px;
+  padding: 10px 14px;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.saved-career-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 15px 0 25px;
+}
+
+.saved-career-item {
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.1);
+  font-weight: bold;
+}
