@@ -671,6 +671,7 @@ function showCareerDetails(career) {
 
   return `
     <div class="career-detail-box">
+    <button type="button" class="close-detail-btn" onclick="closeCareerDetails()">×</button>
       <h4>${career}</h4>
 
       <p>${details.summary}</p>
@@ -689,6 +690,14 @@ function showCareerDetails(career) {
       <p><strong>Real talk:</strong> ${details.truth}</p>
     </div>
   `;
+}
+
+function closeCareerDetails() {
+  const detailArea = document.getElementById("careerDetailArea");
+
+  if (detailArea) {
+    detailArea.innerHTML = "";
+  }
 }
 
 function showResults() {
@@ -812,3 +821,4 @@ window.startWithVibe = startWithVibe;
 window.selectAnswer = selectAnswer;
 window.showCluster = showCluster;
 window.exploreCareer = exploreCareer;
+window.closeCareerDetails = closeCareerDetails;
