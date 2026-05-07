@@ -347,53 +347,117 @@ const quizQuestions = [
     options: [
       {
         text: "Freedom",
-        traits: { independence: 2, structure: -1 }
+        traits: {
+          independence: 2,
+          structure: -1
+        }
       },
+
       {
         text: "Stability",
-        traits: { structure: 2, riskTolerance: -1 }
+        traits: {
+          structure: 2,
+          riskTolerance: -1
+        }
       },
+
       {
         text: "High income",
-        traits: { leadership: 1, stressTolerance: 1 }
+        traits: {
+          leadership: 1,
+          stressTolerance: 1
+        }
       },
+
       {
         text: "Helping people",
-        traits: { social: 2 }
+        traits: {
+          social: 2
+        }
       },
+
       {
         text: "Creativity",
-        traits: { creativity: 2 }
+        traits: {
+          creativity: 2
+        }
       },
+
       {
         text: "Adventure",
-        traits: { independence: 1, riskTolerance: 2 }
+        traits: {
+          independence: 1,
+          riskTolerance: 2
+        }
       },
+
       {
         text: "Leadership",
-        traits: { leadership: 2 }
+        traits: {
+          leadership: 2
+        }
       },
+
       {
         text: "Low stress",
-        traits: { stressTolerance: -1, structure: 1 }
+        traits: {
+          stressTolerance: -1,
+          structure: 1
+        }
       }
     ]
   },
+
   {
     question: "What kind of work would you rather do?",
-    options: ["Solve problems", "Build things", "Help people", "Create something", "Organize details", "Lead a team", "Work with technology", "Work outdoors"]
+    options: [
+      "Solve problems",
+      "Build things",
+      "Help people",
+      "Create something",
+      "Organize details",
+      "Lead a team",
+      "Work with technology",
+      "Work outdoors"
+    ]
   },
+
   {
     question: "What drains you the fastest?",
-    options: ["Too much talking", "Sitting all day", "Repetitive work", "High pressure", "Physical labor", "Strict routines", "Unclear directions", "Being micromanaged"]
+    options: [
+      "Too much talking",
+      "Sitting all day",
+      "Repetitive work",
+      "High pressure",
+      "Physical labor",
+      "Strict routines",
+      "Unclear directions",
+      "Being micromanaged"
+    ]
   },
+
   {
     question: "What matters most in a career path?",
-    options: ["Good pay", "Job security", "Flexible schedule", "Helping others", "Room to grow", "Low debt", "Fast training", "Meaningful work"]
+    options: [
+      "Good pay",
+      "Job security",
+      "Flexible schedule",
+      "Helping others",
+      "Room to grow",
+      "Low debt",
+      "Fast training",
+      "Meaningful work"
+    ]
   },
+
   {
     question: "How serious are you about figuring this out today?",
-    options: ["Just curious", "A little serious", "Pretty serious", "I need direction now"]
+    options: [
+      "Just curious",
+      "A little serious",
+      "Pretty serious",
+      "I need direction now"
+    ]
   }
 ];
 
@@ -403,96 +467,154 @@ let answers = [];
 function startQuiz() {
   document.getElementById("exploreSection").classList.add("hidden");
   document.getElementById("quizArea").classList.remove("hidden");
-  document.getElementById("quizArea").scrollIntoView({ behavior: "smooth" });
+
   currentQuestion = 0;
   answers = [];
+
+  resetTraits();
+
   showQuestion();
 }
 
 function lostMode() {
   document.getElementById("exploreSection").classList.add("hidden");
   document.getElementById("quizArea").classList.remove("hidden");
-  document.getElementById("quizArea").scrollIntoView({ behavior: "smooth" });
+
   currentQuestion = 0;
-  answers = ["I have no idea what I want"];
+  answers = ["Overwhelmed"];
+
+  resetTraits();
+
   showQuestion();
 }
 
 function startWithVibe(vibe) {
   document.getElementById("exploreSection").classList.add("hidden");
   document.getElementById("quizArea").classList.remove("hidden");
-  document.getElementById("quizArea").scrollIntoView({ behavior: "smooth" });
+
   currentQuestion = 1;
   answers = [vibe];
+
+  resetTraits();
+
   showQuestion();
 }
 
 function showQuestion() {
   const questionBox = document.getElementById("questionBox");
   const progressText = document.getElementById("progressText");
+
   const q = quizQuestions[currentQuestion];
 
-  progressText.textContent = `Question ${currentQuestion + 1} of ${quizQuestions.length}`;
+  progressText.textContent =
+    `Question ${currentQuestion + 1} of ${quizQuestions.length}`;
 
   questionBox.innerHTML = `
     <h3>${q.question}</h3>
+
     <div class="quiz-options">
       ${q.options.map((option, index) => {
-        const optionText = typeof option === "string" ? option : option.text;
+
+        const optionText =
+          typeof option === "string"
+            ? option
+            : option.text;
 
         return `
-          <button type="button" class="answer-btn" data-index="${index}">
+          <button
+            class="answer-btn"
+            data-index="${index}"
+          >
             ${optionText}
           </button>
         `;
+
       }).join("")}
     </div>
   `;
 
   document.querySelectorAll(".answer-btn").forEach(button => {
+
     button.addEventListener("click", function () {
-      const selectedOption = q.options[this.dataset.index];
+
+      const selectedOption =
+        q.options[this.dataset.index];
+
       selectAnswer(selectedOption);
+
     });
+
   });
 }
 
 function selectAnswer(answer) {
-  answers.push(answer);
+
+  if (typeof answer === "string") {
+
+    answers.push(answer);
+
+  } else {
+
+    answers.push(answer.text);
+
+    applyTraits(answer.traits);
+
+  }
+
   currentQuestion++;
 
   if (currentQuestion < quizQuestions.length) {
+
     showQuestion();
+
   } else {
+
     showResults();
+
   }
 }
 
 function showResults() {
-  const questionBox = document.getElementById("questionBox");
-  const progressText = document.getElementById("progressText");
 
-  progressText.textContent = "Your PathFinder Results";
+  const questionBox =
+    document.getElementById("questionBox");
+
+  const progressText =
+    document.getElementById("progressText");
+
+  progressText.textContent =
+    "Your PathFinder Results";
 
   questionBox.innerHTML = `
     <div class="result-card">
+
       <h3>Good start.</h3>
-      <p>You picked: ${answers.join(", ")}</p>
-      <p>Next step: explore the career clusters below and choose one that feels interesting.</p>
+
+      <p>
+        You picked:
+        ${answers.join(", ")}
+      </p>
+
+      <p>
+        Trait engine is now active.
+      </p>
+
     </div>
   `;
+
+  console.log("FINAL TRAITS:", userTraits);
 }
 
 function showCluster(cluster) {
-  const resultsBox = document.getElementById("career-results");
 
-  if (!resultsBox) {
-    alert("career-results box is missing from index.html");
-    return;
-  }
+  const resultsBox =
+    document.getElementById("career-results");
 
   if (!careerPools[cluster]) {
-    resultsBox.innerHTML = "<p>No careers found for this cluster.</p>";
+
+    resultsBox.innerHTML =
+      "<p>No careers found.</p>";
+
     return;
   }
 
@@ -500,22 +622,34 @@ function showCluster(cluster) {
 
   resultsBox.innerHTML = `
     <div class="cluster-preview-box">
+
       <h3>${formatCluster(cluster)} Careers</h3>
+
       <div class="career-grid">
+
         ${careers.map(career => `
+
           <div class="career-card">
+
             <h5>${career}</h5>
-            <p>${careerDetails[career]?.summary || "Career details coming soon."}</p>
+
+            <p>
+              ${careerDetails[career]?.summary
+                || "Career details coming soon."}
+            </p>
+
           </div>
+
         `).join("")}
+
       </div>
+
     </div>
   `;
-
-  resultsBox.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
 function formatCluster(cluster) {
+
   const names = {
     helper: "Healthcare & Wellness",
     tech: "Technology & Innovation",
