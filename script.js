@@ -659,6 +659,10 @@ function showResults() {
             <p><strong>Training:</strong> ${careerDetails[match.career]?.training || "Training varies by role and location."}</p>
 
             <p><strong>Difficulty:</strong> ${careerDetails[match.career]?.difficulty || "Varies"}</p>
+            
+            <p><strong>Job Market:</strong> ${careerDetails[match.career]?.jobMarket || "Varies by area"}</p>
+
+            <p><strong>Stress Level:</strong> ${careerDetails[match.career]?.stress || "Varies"}</p>
           
         `).join("")}
 
