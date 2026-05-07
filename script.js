@@ -34,6 +34,39 @@ const personalityScores = {
   risk: 0
 };
 
+// ===============================
+// PATHFINDER TRAIT ENGINE
+// ===============================
+
+const userTraits = {
+  structure: 0,
+  creativity: 0,
+  social: 0,
+  independence: 0,
+  physical: 0,
+  analytical: 0,
+  leadership: 0,
+  stressTolerance: 0,
+  educationTolerance: 0,
+  riskTolerance: 0
+};
+
+function resetTraits() {
+  for (let trait in userTraits) {
+    userTraits[trait] = 0;
+  }
+}
+
+function applyTraits(traits) {
+  for (let trait in traits) {
+    if (userTraits.hasOwnProperty(trait)) {
+      userTraits[trait] += traits[trait];
+    }
+  }
+
+  console.log("Current Trait Scores:", userTraits);
+}
+
 const careerDetails = {
   "Nursing": {
     summary: "Fast-paced, meaningful, emotionally intense work helping people during some of their hardest moments.",
