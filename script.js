@@ -345,146 +345,69 @@ const quizQuestions = [
   {
     question: "What kind of future sounds best right now?",
     options: [
-      {
-        text: "Freedom",
-        traits: {
-          independence: 2,
-          structure: -1
-        }
-      },
-
-      {
-        text: "Stability",
-        traits: {
-          structure: 2,
-          riskTolerance: -1
-        }
-      },
-
-      {
-        text: "High income",
-        traits: {
-          leadership: 1,
-          stressTolerance: 1
-        }
-      },
-
-      {
-        text: "Helping people",
-        traits: {
-          social: 2
-        }
-      },
-
-      {
-        text: "Creativity",
-        traits: {
-          creativity: 2
-        }
-      },
-
-      {
-        text: "Adventure",
-        traits: {
-          independence: 1,
-          riskTolerance: 2
-        }
-      },
-
-      {
-        text: "Leadership",
-        traits: {
-          leadership: 2
-        }
-      },
-
-      {
-        text: "Low stress",
-        traits: {
-          stressTolerance: -1,
-          structure: 1
-        }
-      }
+      { text: "Freedom", traits: { independence: 2, structure: -1 } },
+      { text: "Stability", traits: { structure: 2, riskTolerance: -1 } },
+      { text: "High income", traits: { leadership: 1, stressTolerance: 1 } },
+      { text: "Helping people", traits: { social: 2 } },
+      { text: "Creativity", traits: { creativity: 2 } },
+      { text: "Adventure", traits: { independence: 1, riskTolerance: 2 } },
+      { text: "Leadership", traits: { leadership: 2 } },
+      { text: "Low stress", traits: { stressTolerance: -1, structure: 1 } }
     ]
   },
 
-   {
-  question: "What kind of work would you rather do?",
-  options: [
-    {
-      text: "Solve problems",
-      traits: { analytical: 2, independence: 1 }
-    },
-    {
-      text: "Build things",
-      traits: { physical: 2, analytical: 1 }
-    },
-    {
-      text: "Help people",
-      traits: { social: 2, stressTolerance: 1 }
-    },
-    {
-      text: "Create something",
-      traits: { creativity: 2, independence: 1 }
-    },
-    {
-      text: "Organize details",
-      traits: { structure: 2, analytical: 1 }
-    },
-    {
-      text: "Lead a team",
-      traits: { leadership: 2, social: 1 }
-    },
-    {
-      text: "Work with technology",
-      traits: { analytical: 2, educationTolerance: 1 }
-    },
-    {
-      text: "Work outdoors",
-      traits: { physical: 2, independence: 1 }
-    }
-  ]
-},
-
- {
-  question: "What drains you the fastest?",
-  options: [
-    { text: "Too much talking", traits: { social: -2, independence: 1 } },
-    { text: "Sitting all day", traits: { physical: 2 } },
-    { text: "Repetitive work", traits: { creativity: 2, independence: 1 } },
-    { text: "High pressure", traits: { stressTolerance: -2, structure: 1 } },
-    { text: "Physical labor", traits: { physical: -2, analytical: 1 } },
-    { text: "Strict routines", traits: { independence: 2, structure: -2 } },
-    { text: "Unclear directions", traits: { structure: 2 } },
-    { text: "Being micromanaged", traits: { independence: 2 } }
-  ]
-},
-
- {
-  question: "What matters most in a career path?",
-  options: [
-    { text: "Good pay", traits: { stressTolerance: 1, leadership: 1 } },
-    { text: "Job security", traits: { structure: 2, riskTolerance: -1 } },
-    { text: "Flexible schedule", traits: { independence: 2 } },
-    { text: "Helping others", traits: { social: 2 } },
-    { text: "Room to grow", traits: { leadership: 1, educationTolerance: 1 } },
-    { text: "Low debt", traits: { educationTolerance: -1, structure: 1 } },
-    { text: "Fast training", traits: { educationTolerance: -2, physical: 1 } },
-    { text: "Meaningful work", traits: { social: 1, creativity: 1 } }
-  ]
-},
+  {
+    question: "What kind of work would you rather do?",
+    options: [
+      { text: "Solve problems", traits: { analytical: 2, independence: 1 } },
+      { text: "Build things", traits: { physical: 2, analytical: 1 } },
+      { text: "Help people", traits: { social: 2, stressTolerance: 1 } },
+      { text: "Create something", traits: { creativity: 2, independence: 1 } },
+      { text: "Organize details", traits: { structure: 2, analytical: 1 } },
+      { text: "Lead a team", traits: { leadership: 2, social: 1 } },
+      { text: "Work with technology", traits: { analytical: 2, educationTolerance: 1 } },
+      { text: "Work outdoors", traits: { physical: 2, independence: 1 } }
+    ]
+  },
 
   {
-   {
-  question: "How serious are you about figuring this out today?",
-  options: [
-    { text: "Just curious", traits: { independence: 1 } },
-    { text: "A little serious", traits: { structure: 1 } },
-    { text: "Pretty serious", traits: { structure: 1, analytical: 1 } },
-    { text: "I need direction now", traits: { structure: 2, stressTolerance: -1 } }
-  ]
-}
+    question: "What drains you the fastest?",
+    options: [
+      { text: "Too much talking", traits: { social: -2, independence: 1 } },
+      { text: "Sitting all day", traits: { physical: 2 } },
+      { text: "Repetitive work", traits: { creativity: 2, independence: 1 } },
+      { text: "High pressure", traits: { stressTolerance: -2, structure: 1 } },
+      { text: "Physical labor", traits: { physical: -2, analytical: 1 } },
+      { text: "Strict routines", traits: { independence: 2, structure: -2 } },
+      { text: "Unclear directions", traits: { structure: 2 } },
+      { text: "Being micromanaged", traits: { independence: 2 } }
+    ]
   },
+
+  {
+    question: "What matters most in a career path?",
+    options: [
+      { text: "Good pay", traits: { stressTolerance: 1, leadership: 1 } },
+      { text: "Job security", traits: { structure: 2, riskTolerance: -1 } },
+      { text: "Flexible schedule", traits: { independence: 2 } },
+      { text: "Helping others", traits: { social: 2 } },
+      { text: "Room to grow", traits: { leadership: 1, educationTolerance: 1 } },
+      { text: "Low debt", traits: { educationTolerance: -1, structure: 1 } },
+      { text: "Fast training", traits: { educationTolerance: -2, physical: 1 } },
+      { text: "Meaningful work", traits: { social: 1, creativity: 1 } }
+    ]
+  },
+
+  {
+    question: "How serious are you about figuring this out today?",
+    options: [
+      { text: "Just curious", traits: { independence: 1 } },
+      { text: "A little serious", traits: { structure: 1 } },
+      { text: "Pretty serious", traits: { structure: 1, analytical: 1 } },
+      { text: "I need direction now", traits: { structure: 2, stressTolerance: -1 } }
+    ]
+  }
+];
 
 let currentQuestion = 0;
 let answers = [];
