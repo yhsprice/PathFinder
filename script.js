@@ -409,18 +409,43 @@ const quizQuestions = [
   },
 
   {
-    question: "What kind of work would you rather do?",
-    options: [
-      "Solve problems",
-      "Build things",
-      "Help people",
-      "Create something",
-      "Organize details",
-      "Lead a team",
-      "Work with technology",
-      "Work outdoors"
-    ]
-  },
+   {
+  question: "What kind of work would you rather do?",
+  options: [
+    {
+      text: "Solve problems",
+      traits: { analytical: 2, independence: 1 }
+    },
+    {
+      text: "Build things",
+      traits: { physical: 2, analytical: 1 }
+    },
+    {
+      text: "Help people",
+      traits: { social: 2, stressTolerance: 1 }
+    },
+    {
+      text: "Create something",
+      traits: { creativity: 2, independence: 1 }
+    },
+    {
+      text: "Organize details",
+      traits: { structure: 2, analytical: 1 }
+    },
+    {
+      text: "Lead a team",
+      traits: { leadership: 2, social: 1 }
+    },
+    {
+      text: "Work with technology",
+      traits: { analytical: 2, educationTolerance: 1 }
+    },
+    {
+      text: "Work outdoors",
+      traits: { physical: 2, independence: 1 }
+    }
+  ]
+},
 
   {
     question: "What drains you the fastest?",
