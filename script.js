@@ -800,7 +800,7 @@ function showResults() {
     </div>
 
 <button type="button" class="start-over-btn" onclick="startQuiz()">
-  Start Over
+  🗺️ Start a New Path
 </button>
 
     <div id="careerDetailArea"></div>
