@@ -581,7 +581,6 @@ function selectAnswer(answer) {
   } else {
 
     answers.push(answer.text);
-
     applyTraits(answer.traits);
 
   }
