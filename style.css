@@ -361,6 +361,12 @@ h1 {
   cursor: pointer;
   transition: 0.2s ease;
   color: #0f172a;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+}
+
+.career-grid {
+  gap: 25px;
 }
 
 .quiz-options button:hover,
