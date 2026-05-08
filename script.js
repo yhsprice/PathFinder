@@ -913,6 +913,68 @@ function showCompareMessage(message) {
   }, 3000);
 }
 
+function updateCompareArea() {
+
+  const compareArea =
+    document.getElementById("compareArea");
+
+  if (!compareArea) return;
+
+  if (compareCareers.length === 0) {
+
+    compareArea.innerHTML = `
+      <p>No careers selected for comparison.</p>
+    `;
+
+    return;
+  }
+
+  compareArea.innerHTML = `
+    <h3>Career Comparison</h3>
+
+    <button
+      type="button"
+      class="clear-compare-btn"
+      onclick="clearCompareCareers()"
+    >
+      Clear Comparison
+    </button>
+
+    <div class="compare-grid">
+      ${compareCareers.map(career => {
+
+        const info = getCareerInfo(career);
+
+        return `
+          <div class="compare-card">
+
+            <h4>${career}</h4>
+
+            <button
+              type="button"
+              class="remove-compare-btn"
+              onclick="removeFromCompare('${career}')"
+            >
+              Remove
+            </button>
+
+            <p><strong>Training:</strong> ${info.training}</p>
+
+            <p><strong>Difficulty:</strong> ${info.difficulty}</p>
+
+            <p><strong>Job Market:</strong> ${info.jobMarket}</p>
+
+            <p><strong>Stress:</strong> ${info.stress}</p>
+
+            <p><strong>First Step:</strong> ${info.nextStep}</p>
+
+          </div>
+        `;
+      }).join("")}
+    </div>
+  `;
+}
+
 function showResults() {
 
   const questionBox =
