@@ -867,3 +867,45 @@ nav a {
   font-weight: bold;
   cursor: pointer;
 }
+
+@media print {
+  body {
+    background: white;
+    color: black;
+  }
+
+  header,
+  nav,
+  .hero,
+  .cta,
+  .quiz-options,
+  .explore-career-btn,
+  .save-career-btn,
+  .compare-career-btn,
+  .start-over-btn,
+  .print-results-btn,
+  .close-detail-btn {
+    display: none !important;
+  }
+
+  .result-card,
+  .career-card,
+  .career-detail-box,
+  .compare-card {
+    background: white !important;
+    color: black !important;
+    box-shadow: none !important;
+    border: 1px solid #ccc;
+  }
+
+  .career-grid,
+  .compare-grid {
+    display: block;
+  }
+
+  .career-card,
+  .compare-card {
+    page-break-inside: avoid;
+    margin-bottom: 20px;
+  }
+}
