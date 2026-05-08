@@ -802,6 +802,20 @@ function loadSavedCareers() {
   }
 }
 
+function getCareerInfo(career) {
+  return careerDetails[career] || {
+    summary: "This career matched your answers, but full details are still being built.",
+    truth: "Research the daily work, training path, pay range, and stress level before deciding.",
+    training: "Training varies by role.",
+    difficulty: "Varies",
+    jobMarket: "Varies by location",
+    stress: "Varies",
+    skills: ["Research", "Communication", "Problem-solving"],
+    nextStep: "Look up this career and write down what sounds interesting and what sounds difficult.",
+    roadmap: ["Research the career", "Watch a day-in-the-life video", "Find training requirements", "Talk to someone in the field", "Choose one small next step"]
+  };
+}
+
 function showResults() {
 
   const questionBox =
