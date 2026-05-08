@@ -869,7 +869,10 @@ function showResults() {
       <h4>Careers to explore first:</h4>
 
       <div class="career-grid">
-        ${matchedCareers.map(match => `
+       ${matchedCareers.map(match => {
+          const info = getCareerInfo(match.career);
+
+  return `
           <div class="career-card">
           
           <h5>
@@ -881,30 +884,26 @@ function showResults() {
 </p>
 
 <div class="career-tags">
-  <span>${careerDetails[match.career]?.difficulty || "Varies"}</span>
-  <span>${careerDetails[match.career]?.stress || "Stress varies"}</span>
-  <span>${careerDetails[match.career]?.jobMarket || "Market varies"}</span>
+  <span>${info.difficulty}</span>
+  <span>${info.stress}</span>
+  <span>${info.jobMarket}</span>
 </div>
-                       
-             <p>
-  ${careerDetails[match.career]?.summary || "Career details coming soon."}
+
+<p>
+  ${info.summary}
 </p>
             
-            <p><strong>Why it matched:</strong> ${explainCareerMatch(match.career)}</p>
-            
-            <p><strong>Try this next:</strong> ${careerDetails[match.career]?.nextStep || "Research this career and write down what interests you about it."}</p>
+           <p><strong>Try this next:</strong> ${info.nextStep}</p>
 
-            <p><strong>Real talk:</strong> ${careerDetails[match.career]?.truth || "Every career has trade-offs, so research the good and the hard parts before deciding."}</p>
+            <p><strong>Real talk:</strong> ${info.truth}</p>
 
-            <p><strong>Training:</strong> ${careerDetails[match.career]?.training || "Training varies by role and location."}</p>
+          <p><strong>Training:</strong> ${info.training}</p>
 
-            <p><strong>Difficulty:</strong> ${careerDetails[match.career]?.difficulty || "Varies"}</p>
-            
-            <p><strong>Job Market:</strong> ${careerDetails[match.career]?.jobMarket || "Varies by area"}</p>
+          <p><strong>Difficulty:</strong> ${info.difficulty}</p>
 
-            <p><strong>Stress Level:</strong> ${careerDetails[match.career]?.stress || "Varies"}</p>
+          <p><strong>Job Market:</strong> ${info.jobMarket}</p>
 
-            <p><strong>Roadmap:</strong></p>
+          <p><strong>Stress Level:</strong> ${info.stress}</p>
 
            <button 
   type="button" 
@@ -927,14 +926,15 @@ function showResults() {
             <p><strong>May not fit if:</strong> ${getMismatchWarning(match.career)}</p>
 
 <ol>
-  ${(careerDetails[match.career]?.roadmap || ["Research this career", "Talk to someone in the field", "Choose one small next step"]).map(step => `
+  ${info.roadmap.map(step => `
     <li>${step}</li>
   `).join("")}
 </ol>
-        
-        </div>
+
+</div>
          
-        `).join("")}
+        `;
+}).join("")}
     </div>
 
 <button type="button" class="start-over-btn" onclick="startQuiz()">
