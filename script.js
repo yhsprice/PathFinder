@@ -533,88 +533,106 @@ function selectAnswer(answer) {
 }
 
 const careerMatches = [
-  {
-    career: "Data Analyst",
-    traits: { analytical: 3, structure: 2, independence: 1 }
-  },
-  {
-    career: "UX Designer",
-    traits: { creativity: 3, analytical: 2, independence: 1 }
-  },
-  {
-    career: "Electrician",
-    traits: { physical: 3, analytical: 2, structure: 1 }
-  },
-  {
-    career: "Career Coaching",
-    traits: { social: 3, creativity: 1, leadership: 1 }
-  },
-  {
-    career: "Project Coordinator",
-    traits: { structure: 3, leadership: 2, social: 1 }
-  },
-  {
-    career: "Entrepreneur",
-    traits: { independence: 3, riskTolerance: 3, leadership: 2 }
-  },
-  {
-    career: "Graphic Designer",
-    traits: { creativity: 3, independence: 1, analytical: 1 }
-  },
-  {
-    career: "Heavy Equipment Operator",
-    traits: { physical: 3, independence: 1, stressTolerance: 1 }
-  },
-  {
-    career: "Marketing Specialist",
-    traits: { creativity: 2, analytical: 2, social: 1 }
-  },
-  {
-    career: "Drone Operator",
-    traits: { independence: 2, analytical: 2, physical: 1 }
-  }
+  // TECH / DATA
+  { career: "Data Analyst", traits: { analytical: 3, structure: 2, independence: 1 } },
+  { career: "Business Analyst", traits: { analytical: 3, social: 1, structure: 2 } },
+  { career: "Cybersecurity", traits: { analytical: 3, structure: 2, stressTolerance: 1 } },
+  { career: "IT Support", traits: { analytical: 2, social: 2, structure: 1 } },
+  { career: "Software Developer", traits: { analytical: 3, creativity: 2, independence: 2 } },
+  { career: "UX Designer", traits: { creativity: 3, analytical: 2, social: 1 } },
+  { career: "AI Prompt Specialist", traits: { creativity: 2, analytical: 2, independence: 2 } },
+  { career: "Automation Specialist", traits: { analytical: 3, creativity: 1, structure: 2 } },
+  { career: "GIS Technician", traits: { analytical: 3, structure: 2, independence: 1 } },
+  { career: "Drone Operator", traits: { independence: 2, analytical: 2, physical: 1 } },
+
+  // HEALTHCARE
+  { career: "Nursing", traits: { social: 3, stressTolerance: 3, structure: 2 } },
+  { career: "Dental Hygiene", traits: { social: 2, structure: 2, physical: 1 } },
+  { career: "Occupational Therapy", traits: { social: 3, creativity: 1, structure: 2 } },
+  { career: "Physical Therapy Assistant", traits: { social: 2, physical: 2, structure: 1 } },
+  { career: "Speech Therapy", traits: { social: 3, analytical: 2, structure: 2 } },
+  { career: "Mental Health Counseling", traits: { social: 3, stressTolerance: 2, educationTolerance: 2 } },
+  { career: "Medical Coding", traits: { structure: 3, analytical: 2, independence: 1 } },
+  { career: "Sonographer", traits: { analytical: 2, social: 2, structure: 2 } },
+  { career: "Radiologic Technologist", traits: { analytical: 2, structure: 2, social: 1 } },
+  { career: "EMT", traits: { stressTolerance: 3, physical: 2, social: 2 } },
+
+  // TRADES / HANDS-ON
+  { career: "Electrician", traits: { physical: 3, analytical: 2, structure: 1 } },
+  { career: "Welder", traits: { physical: 3, structure: 2, independence: 1 } },
+  { career: "HVAC Technician", traits: { physical: 2, analytical: 2, structure: 2 } },
+  { career: "Plumber", traits: { physical: 3, analytical: 2, independence: 1 } },
+  { career: "Diesel Mechanic", traits: { physical: 3, analytical: 2, independence: 1 } },
+  { career: "Industrial Maintenance", traits: { physical: 2, analytical: 3, structure: 2 } },
+  { career: "Construction Management", traits: { leadership: 3, structure: 2, stressTolerance: 2 } },
+  { career: "Heavy Equipment Operator", traits: { physical: 3, independence: 1, stressTolerance: 1 } },
+  { career: "Survey Technician", traits: { analytical: 2, physical: 2, structure: 2 } },
+  { career: "Carpenter", traits: { physical: 3, creativity: 1, analytical: 1 } },
+
+  // BUSINESS / LEADERSHIP / ENTREPRENEURSHIP
+  { career: "Entrepreneur", traits: { independence: 3, riskTolerance: 3, leadership: 2 } },
+  { career: "Small Business Owner", traits: { independence: 3, leadership: 3, riskTolerance: 2 } },
+  { career: "Business Consultant", traits: { analytical: 3, leadership: 2, social: 2 } },
+  { career: "Project Coordinator", traits: { structure: 3, leadership: 2, social: 1 } },
+  { career: "Operations Manager", traits: { leadership: 3, analytical: 2, stressTolerance: 2 } },
+  { career: "Human Resources", traits: { social: 3, structure: 2, leadership: 1 } },
+  { career: "Recruiter", traits: { social: 3, leadership: 1, structure: 1 } },
+  { career: "Sales Manager", traits: { social: 3, leadership: 2, stressTolerance: 2 } },
+  { career: "Marketing Specialist", traits: { creativity: 2, analytical: 2, social: 1 } },
+  { career: "Event Planner", traits: { creativity: 2, structure: 3, stressTolerance: 2 } },
+
+  // CREATIVE
+  { career: "Graphic Designer", traits: { creativity: 3, independence: 1, analytical: 1 } },
+  { career: "Photographer", traits: { creativity: 3, independence: 2, social: 1 } },
+  { career: "Video Editor", traits: { creativity: 3, independence: 2, analytical: 1 } },
+  { career: "Content Creator", traits: { creativity: 3, independence: 3, riskTolerance: 2 } },
+  { career: "Copywriter", traits: { creativity: 3, analytical: 1, independence: 2 } },
+  { career: "Interior Designer", traits: { creativity: 3, social: 2, structure: 1 } },
+  { career: "Animator", traits: { creativity: 3, analytical: 1, independence: 2 } },
+  { career: "Brand Strategist", traits: { creativity: 2, analytical: 2, social: 2 } },
+
+  // EDUCATION / HELPING
+  { career: "Teaching", traits: { social: 3, structure: 2, stressTolerance: 2 } },
+  { career: "Career Coaching", traits: { social: 3, creativity: 1, leadership: 1 } },
+  { career: "Training Specialist", traits: { social: 3, leadership: 2, structure: 2 } },
+  { career: "School Counselor", traits: { social: 3, stressTolerance: 2, educationTolerance: 2 } },
+  { career: "Academic Advisor", traits: { social: 3, structure: 2, analytical: 1 } },
+  { career: "Instructional Designer", traits: { creativity: 2, structure: 2, analytical: 2 } },
+
+  // PUBLIC SAFETY / LAW / INVESTIGATION
+  { career: "Crime Scene Technician", traits: { analytical: 3, structure: 3, stressTolerance: 2 } },
+  { career: "Forensic Accountant", traits: { analytical: 3, structure: 3, independence: 1 } },
+  { career: "Emergency Dispatcher", traits: { stressTolerance: 3, structure: 2, social: 2 } },
+  { career: "Firefighter", traits: { physical: 3, stressTolerance: 3, social: 2 } },
+  { career: "Paralegal", traits: { analytical: 2, structure: 3, social: 1 } },
+  { career: "Court Reporter", traits: { structure: 3, independence: 2, analytical: 1 } },
+
+  // ANIMALS / NATURE / HORSES
+  { career: "Equine Therapist", traits: { social: 3, physical: 2, creativity: 1 } },
+  { career: "Horse Trainer", traits: { physical: 3, independence: 2, stressTolerance: 1 } },
+  { career: "Farrier", traits: { physical: 3, independence: 2, analytical: 1 } },
+  { career: "Stable Manager", traits: { leadership: 2, physical: 3, structure: 2 } },
+  { career: "Veterinary Technician", traits: { social: 2, physical: 2, stressTolerance: 2 } },
+  { career: "Wildlife Rehabilitator", traits: { social: 2, physical: 2, independence: 2 } },
+  { career: "Park Ranger", traits: { physical: 2, social: 2, independence: 1 } },
+  { career: "Environmental Technician", traits: { analytical: 2, physical: 2, structure: 1 } },
+  { career: "Agricultural Business Owner", traits: { independence: 3, physical: 2, leadership: 2 } },
+  { career: "Animal Shelter Manager", traits: { social: 3, leadership: 2, stressTolerance: 2 } },
+
+  // TRANSPORTATION / LOGISTICS
+  { career: "Commercial Driver", traits: { independence: 2, structure: 2, stressTolerance: 1 } },
+  { career: "Flight Dispatcher", traits: { stressTolerance: 3, structure: 3, analytical: 2 } },
+  { career: "Logistics Coordinator", traits: { structure: 3, analytical: 2, stressTolerance: 1 } },
+  { career: "Supply Chain Analyst", traits: { analytical: 3, structure: 2, independence: 1 } },
+  { career: "Warehouse Operations Supervisor", traits: { leadership: 2, physical: 2, structure: 2 } },
+
+  // HIDDEN / LESSER-KNOWN
+  { career: "Prosthetics Technician", traits: { physical: 2, analytical: 2, creativity: 1 } },
+  { career: "Industrial Hygienist", traits: { analytical: 3, structure: 2, social: 1 } },
+  { career: "Search Analyst", traits: { analytical: 3, independence: 2, structure: 1 } },
+  { career: "Museum Curator", traits: { creativity: 2, structure: 2, educationTolerance: 2 } },
+  { career: "Urban Planner", traits: { analytical: 2, creativity: 2, social: 2 } }
 ];
-
-function calculateCareerMatches() {
-  return careerMatches
-    .map(item => {
-      let score = 0;
-
-      for (let trait in item.traits) {
-        score += (userTraits[trait] || 0) * item.traits[trait];
-      }
-
-      return {
-        career: item.career,
-        score: score
-      };
-    })
-    .sort((a, b) => b.score - a.score)
-    .slice(0, 5);
-}
-
-function explainCareerMatch(career) {
-  const details = careerDetails[career];
-
-  if (!details) {
-    return "This career matched your answers based on your strongest traits.";
-  }
-
-  return `This may fit because it connects with skills like ${details.skills.slice(0, 3).join(", ")}.`;
-}
-
-function getMatchStrength(score) {
-
-  if (score >= 18) {
-    return "🔥 Strong Match";
-  }
-
-  if (score >= 10) {
-    return "✅ Good Match";
-  }
-
-  return "🧭 Possible Match";
-}
 
 function getBestFitLine(career) {
   const lines = {
