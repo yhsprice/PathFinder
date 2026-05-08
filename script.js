@@ -873,6 +873,13 @@ function showResults() {
   progressText.textContent =
     "Your PathFinder Results";
 
+  const bottomCtaSection =
+  document.getElementById("bottomCtaSection");
+
+if (bottomCtaSection) {
+  bottomCtaSection.classList.add("hidden");
+}
+
   const exploreSection =
   document.getElementById("exploreSection");
 
