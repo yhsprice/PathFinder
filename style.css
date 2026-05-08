@@ -909,3 +909,9 @@ nav a {
     margin-bottom: 20px;
   }
 }
+
+.career-count-note {
+  margin: 8px 0 18px;
+  font-weight: bold;
+  opacity: 0.9;
+}
