@@ -1012,7 +1012,14 @@ function showResults() {
       score: score
     };
   })
-  .sort((a, b) => b.score - a.score)
+  .sort((a, b) => {
+
+  if (b.score === a.score) {
+    return Math.random() - 0.5;
+  }
+
+  return b.score - a.score;
+})
   .slice(0, 10);
 
   progressText.textContent =
