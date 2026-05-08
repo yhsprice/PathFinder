@@ -697,3 +697,10 @@ nav a {
   background: rgba(255,255,255,0.1);
   font-weight: bold;
 }
+
+.personality-summary {
+  margin: 18px 0 28px;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  opacity: 0.92;
+}
