@@ -632,7 +632,25 @@ const careerMatches = [
   { career: "Search Analyst", traits: { analytical: 3, independence: 2, structure: 1 } },
   { career: "Museum Curator", traits: { creativity: 2, structure: 2, educationTolerance: 2 } },
   { career: "Urban Planner", traits: { analytical: 2, creativity: 2, social: 2 } }
-];
+  ];
+
+  function calculateCareerMatches() {
+  return careerMatches
+    .map(item => {
+      let score = 0;
+
+      for (let trait in item.traits) {
+        score += (userTraits[trait] || 0) * item.traits[trait];
+      }
+
+      return {
+        career: item.career,
+        score: score
+      };
+    })
+    .sort((a, b) => b.score - a.score)
+    .slice(0, 5);
+}
 
 function getBestFitLine(career) {
   const lines = {
@@ -923,7 +941,6 @@ window.startQuiz = startQuiz;
 window.lostMode = lostMode;
 window.startWithVibe = startWithVibe;
 window.selectAnswer = selectAnswer;
-window.showCluster = showCluster;
 window.exploreCareer = exploreCareer;
 window.closeCareerDetails = closeCareerDetails;
 window.saveCareer = saveCareer;
