@@ -1012,13 +1012,29 @@ if (exploreSection) {
     These may not be your top matches, but they are interesting paths many people never hear about.
   </p>
 
-  <div class="hidden-career-list">
-    <span>GIS Technician</span>
-    <span>Sonographer</span>
-    <span>Farrier</span>
-    <span>Industrial Hygienist</span>
-    <span>Court Reporter</span>
-  </div>
+ <div class="hidden-career-list">
+
+  <span onclick="exploreCareer('GIS Technician')">
+    GIS Technician
+  </span>
+
+  <span onclick="exploreCareer('Sonographer')">
+    Sonographer
+  </span>
+
+  <span onclick="exploreCareer('Farrier')">
+    Farrier
+  </span>
+
+  <span onclick="exploreCareer('Industrial Hygienist')">
+    Industrial Hygienist
+  </span>
+
+  <span onclick="exploreCareer('Court Reporter')">
+    Court Reporter
+  </span>
+
+</div>
 </div>
 
 <button type="button" class="start-over-btn" onclick="startQuiz()">
