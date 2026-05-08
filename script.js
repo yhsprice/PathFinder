@@ -867,20 +867,13 @@ let compareCareers = [];
 
 function addToCompare(career) {
 
-  const compareArea = document.getElementById("compareArea");
-
-  if (!compareArea) return;
-
   if (compareCareers.includes(career)) {
-    showCompareMessage(`${career} is already in your comparison.`);
+    showCompareMessage(`${career} is already selected.`);
     return;
   }
 
   if (compareCareers.length >= 2) {
-    compareCareers = [];
-    showCompareMessage("Comparison reset. Click a career again to start a new comparison.");
-    updateCompareArea();
-    return;
+    compareCareers.shift();
   }
 
   compareCareers.push(career);
@@ -1172,6 +1165,7 @@ if (exploreSection) {
 
   loadSavedCareers();
   updateSavedCareers();
+  updateCompareArea();
 
   questionBox.scrollIntoView({
   behavior: "smooth",
