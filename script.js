@@ -879,30 +879,36 @@ function addToCompare(career) {
 }
 
 function updateCompareArea() {
-
   const compareArea =
     document.getElementById("compareArea");
 
   if (!compareArea) return;
 
   if (compareCareers.length === 0) {
-
     compareArea.innerHTML = `
       <p>No careers selected for comparison.</p>
     `;
-
     return;
   }
 
   compareArea.innerHTML = `
     <h3>Career Comparison</h3>
 
-    <div class="compare-career-list">
-      ${compareCareers.map(career => `
-        <div class="compare-career-item">
-          ${career}
-        </div>
-      `).join("")}
+    <div class="compare-grid">
+      ${compareCareers.map(career => {
+        const info = getCareerInfo(career);
+
+        return `
+          <div class="compare-card">
+            <h4>${career}</h4>
+            <p><strong>Training:</strong> ${info.training}</p>
+            <p><strong>Difficulty:</strong> ${info.difficulty}</p>
+            <p><strong>Job Market:</strong> ${info.jobMarket}</p>
+            <p><strong>Stress:</strong> ${info.stress}</p>
+            <p><strong>First Step:</strong> ${info.nextStep}</p>
+          </div>
+        `;
+      }).join("")}
     </div>
   `;
 }
