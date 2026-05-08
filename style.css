@@ -731,3 +731,25 @@ nav a {
   font-weight: bold;
   background: rgba(255, 255, 255, 0.12);
 }
+
+.hidden-careers-box {
+  margin-top: 30px;
+  padding: 20px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.hidden-career-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.hidden-career-list span {
+  display: inline-block;
+  padding: 10px 14px;
+  border-radius: 999px;
+  font-weight: bold;
+  background: rgba(255, 255, 255, 0.12);
+}
