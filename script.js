@@ -894,6 +894,14 @@ function updateCompareArea() {
   compareArea.innerHTML = `
     <h3>Career Comparison</h3>
 
+    <button
+  type="button"
+  class="clear-compare-btn"
+  onclick="clearCompareCareers()"
+>
+  Clear Comparison
+</button>
+
     <div class="compare-grid">
       ${compareCareers.map(career => {
         const info = getCareerInfo(career);
@@ -925,6 +933,11 @@ function updateCompareArea() {
 
 function removeFromCompare(career) {
   compareCareers = compareCareers.filter(item => item !== career);
+  updateCompareArea();
+}
+
+function clearCompareCareers() {
+  compareCareers = [];
   updateCompareArea();
 }
 
@@ -1159,3 +1172,4 @@ window.saveCareer = saveCareer;
 window.removeSavedCareer = removeSavedCareer;
 window.addToCompare = addToCompare;
 window.removeFromCompare = removeFromCompare;
+window.clearCompareCareers = clearCompareCareers;
