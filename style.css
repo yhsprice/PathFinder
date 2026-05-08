@@ -849,3 +849,11 @@ nav a {
   font-weight: bold;
   background: rgba(255, 211, 77, 0.25);
 }
+
+.saved-career-item span {
+  cursor: pointer;
+}
+
+.saved-career-item span:hover {
+  text-decoration: underline;
+}
