@@ -867,13 +867,19 @@ let compareCareers = [];
 
 function addToCompare(career) {
 
+  const compareArea = document.getElementById("compareArea");
+
+  if (!compareArea) return;
+
   if (compareCareers.includes(career)) {
-    updateCompareArea();
+    showCompareMessage(`${career} is already in your comparison.`);
     return;
   }
 
   if (compareCareers.length >= 2) {
-    showCompareMessage("You can compare 2 careers at a time. Remove one or clear the comparison first.");
+    compareCareers = [];
+    showCompareMessage("Comparison reset. Click a career again to start a new comparison.");
+    updateCompareArea();
     return;
   }
 
