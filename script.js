@@ -699,35 +699,50 @@ function exploreCareer(career) {
   }
 
   detailArea.innerHTML = showCareerDetails(career);
-  detailArea.scrollIntoView({ behavior: "smooth", block: "start" });
+  detailArea.scrollIntoView({
+  behavior: "smooth",
+  block: "nearest"
+});
+  
 }
 
 function showCareerDetails(career) {
-  const details = careerDetails[career];
 
-  if (!details) {
-    return `<p>More details coming soon for ${career}.</p>`;
-  }
+  const info = getCareerInfo(career);
 
   return `
     <div class="career-detail-box">
-    <button type="button" class="close-detail-btn" onclick="closeCareerDetails()">×</button>
+
+      <button
+        type="button"
+        class="close-detail-btn"
+        onclick="closeCareerDetails()"
+      >
+        ×
+      </button>
+
       <h4>${career}</h4>
 
-      <p>${details.summary}</p>
+      <p>${info.summary}</p>
 
-      <p><strong>Training:</strong> ${details.training}</p>
-      <p><strong>Job Market:</strong> ${details.jobMarket}</p>
-      <p><strong>Stress Level:</strong> ${details.stress}</p>
+      <p><strong>Training:</strong> ${info.training}</p>
+
+      <p><strong>Job Market:</strong> ${info.jobMarket}</p>
+
+      <p><strong>Stress Level:</strong> ${info.stress}</p>
 
       <p><strong>Skills to build:</strong></p>
+
       <ul>
-        ${details.skills.map(skill => `<li>${skill}</li>`).join("")}
+        ${info.skills.map(skill => `
+          <li>${skill}</li>
+        `).join("")}
       </ul>
 
-      <p><strong>First small step:</strong> ${details.nextStep}</p>
+      <p><strong>First small step:</strong> ${info.nextStep}</p>
 
-      <p><strong>Real talk:</strong> ${details.truth}</p>
+      <p><strong>Real talk:</strong> ${info.truth}</p>
+
     </div>
   `;
 }
@@ -817,6 +832,11 @@ function getCareerInfo(career) {
 }
 
 function showResults() {
+
+  window.scrollTo({
+  top: 0,
+  behavior: "smooth"
+});
 
   const questionBox =
     document.getElementById("questionBox");
