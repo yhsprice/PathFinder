@@ -704,3 +704,9 @@ nav a {
   line-height: 1.7;
   opacity: 0.92;
 }
+
+.results-note {
+  margin-bottom: 20px;
+  line-height: 1.6;
+  opacity: 0.9;
+}
