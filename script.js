@@ -1052,6 +1052,9 @@ if (exploreSection) {
       </p>
 
       <h4>Careers to explore first:</h4>
+      <p class="career-count-note">
+  PathFinder compared your answers against ${careerMatches.length} career paths and pulled your strongest starting matches.
+</p>
 
       <p class="results-note">
         These are not final answers. They are starting points. Save anything that feels interesting, even if you are not sure yet.
