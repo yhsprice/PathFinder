@@ -933,6 +933,10 @@ if (exploreSection) {
 
       <h4>Careers to explore first:</h4>
 
+      <p class="results-note">
+        These are not final answers. They are starting points. Save anything that feels interesting, even if you are not sure yet.
+      </p>
+
       <div class="career-grid">
        ${matchedCareers.map(match => {
           const info = getCareerInfo(match.career);
