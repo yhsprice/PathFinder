@@ -791,6 +791,13 @@ function updateSavedCareers() {
 
   savedArea.innerHTML = `
     <h3>Saved Careers</h3>
+    <button
+  type="button"
+  class="clear-saved-btn"
+  onclick="clearSavedCareers()"
+>
+  Clear Saved Careers
+</button>
 
     <div class="saved-career-list">
       ${savedCareers.map(career => `
@@ -968,6 +975,12 @@ function updateCompareArea() {
       }).join("")}
     </div>
   `;
+}
+
+function clearSavedCareers() {
+  savedCareers = [];
+  localStorage.removeItem("savedCareers");
+  updateSavedCareers();
 }
 
 function showResults() {
@@ -1203,3 +1216,4 @@ window.removeSavedCareer = removeSavedCareer;
 window.addToCompare = addToCompare;
 window.removeFromCompare = removeFromCompare;
 window.clearCompareCareers = clearCompareCareers;
+window.clearSavedCareers = clearSavedCareers;
