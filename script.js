@@ -818,7 +818,21 @@ function showResults() {
     .slice(0, 3)
     .map(trait => trait[0]);
 
-  const matchedCareers = calculateCareerMatches();
+  const matchedCareers = careerMatches
+  .map(item => {
+    let score = 0;
+
+    for (let trait in item.traits) {
+      score += (userTraits[trait] || 0) * item.traits[trait];
+    }
+
+    return {
+      career: item.career,
+      score: score
+    };
+  })
+  .sort((a, b) => b.score - a.score)
+  .slice(0, 5);
 
   progressText.textContent =
     "Your PathFinder Results";
