@@ -873,7 +873,7 @@ function addToCompare(career) {
   }
 
   if (compareCareers.length >= 2) {
-    alert("You can compare 2 careers at a time. Remove one or clear the comparison first.");
+    showCompareMessage("You can compare 2 careers at a time. Remove one or clear the comparison first.");
     return;
   }
 
@@ -889,6 +889,22 @@ function removeFromCompare(career) {
 function clearCompareCareers() {
   compareCareers = [];
   updateCompareArea();
+}
+
+function showCompareMessage(message) {
+  const compareArea = document.getElementById("compareArea");
+
+  if (!compareArea) return;
+
+  const messageBox = document.createElement("div");
+  messageBox.className = "compare-message";
+  messageBox.textContent = message;
+
+  compareArea.prepend(messageBox);
+
+  setTimeout(() => {
+    messageBox.remove();
+  }, 3000);
 }
 
 function showResults() {
