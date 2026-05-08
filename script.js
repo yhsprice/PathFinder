@@ -703,11 +703,11 @@ function closeCareerDetails() {
 let savedCareers = [];
 
 function saveCareer(career) {
-
   if (!savedCareers.includes(career)) {
     savedCareers.push(career);
   }
 
+  localStorage.setItem("savedCareers", JSON.stringify(savedCareers));
   updateSavedCareers();
 }
 
@@ -749,7 +749,17 @@ function updateSavedCareers() {
 
 function removeSavedCareer(career) {
   savedCareers = savedCareers.filter(item => item !== career);
+
+  localStorage.setItem("savedCareers", JSON.stringify(savedCareers));
   updateSavedCareers();
+}
+
+function loadSavedCareers() {
+  const saved = localStorage.getItem("savedCareers");
+
+  if (saved) {
+    savedCareers = JSON.parse(saved);
+  }
 }
 
 function showResults() {
@@ -870,6 +880,9 @@ function showResults() {
     </div>
   `;
 
+  loadSavedCareers();
+  updateSavedCareers();
+
   console.log("FINAL TRAITS:", userTraits);
   console.log("CAREER MATCHES:", matchedCareers);
 }
@@ -896,3 +909,4 @@ window.showCluster = showCluster;
 window.exploreCareer = exploreCareer;
 window.closeCareerDetails = closeCareerDetails;
 window.saveCareer = saveCareer;
+window.removeSavedCareer = removeSavedCareer;
