@@ -833,11 +833,6 @@ function getCareerInfo(career) {
 
 function showResults() {
 
-  window.scrollTo({
-  top: 0,
-  behavior: "smooth"
-});
-
   const questionBox =
     document.getElementById("questionBox");
 
@@ -970,6 +965,11 @@ function showResults() {
 
   loadSavedCareers();
   updateSavedCareers();
+
+  questionBox.scrollIntoView({
+  behavior: "smooth",
+  block: "start"
+});
 
   console.log("FINAL TRAITS:", userTraits);
   console.log("CAREER MATCHES:", matchedCareers);
