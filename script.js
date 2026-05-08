@@ -1136,3 +1136,4 @@ window.exploreCareer = exploreCareer;
 window.closeCareerDetails = closeCareerDetails;
 window.saveCareer = saveCareer;
 window.removeSavedCareer = removeSavedCareer;
+window.addToCompare = addToCompare;
