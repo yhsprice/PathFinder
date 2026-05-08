@@ -857,3 +857,13 @@ nav a {
 .saved-career-item span:hover {
   text-decoration: underline;
 }
+
+.print-results-btn {
+  display: block;
+  margin: 15px auto 25px;
+  padding: 14px 24px;
+  border: none;
+  border-radius: 999px;
+  font-weight: bold;
+  cursor: pointer;
+}
