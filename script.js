@@ -1013,7 +1013,7 @@ function showResults() {
     };
   })
   .sort((a, b) => b.score - a.score)
-  .slice(0, 5);
+  .slice(0, 10);
 
   progressText.textContent =
     "Your PathFinder Results";
@@ -1051,7 +1051,7 @@ if (exploreSection) {
         ${getPersonalitySummary(topTraits)}
       </p>
 
-      <h4>Careers to explore first:</h4>
+      <h4>Your top career matches:</h4>
       <p class="career-count-note">
   PathFinder compared your answers against ${careerMatches.length} career paths and pulled your strongest starting matches.
 </p>
