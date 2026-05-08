@@ -1169,6 +1169,10 @@ if (exploreSection) {
   🗺️ Start a New Path
 </button>
 
+<button type="button" class="print-results-btn" onclick="window.print()">
+  🖨️ Print or Save Results
+</button>
+
     <div id="compareArea"></div>
 
     <div id="savedCareersArea"></div>
