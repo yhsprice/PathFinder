@@ -416,6 +416,13 @@ function startQuiz() {
   document.getElementById("exploreSection").classList.add("hidden");
   document.getElementById("quizArea").classList.remove("hidden");
 
+  const exploreSection =
+  document.getElementById("exploreSection");
+
+if (exploreSection) {
+  exploreSection.classList.add("hidden");
+}
+
   currentQuestion = 0;
   answers = [];
 
@@ -865,6 +872,13 @@ function showResults() {
 
   progressText.textContent =
     "Your PathFinder Results";
+
+  const exploreSection =
+  document.getElementById("exploreSection");
+
+if (exploreSection) {
+  exploreSection.classList.add("hidden");
+}
 
   questionBox.innerHTML = `
     <div class="result-card">
