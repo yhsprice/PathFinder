@@ -832,3 +832,12 @@ nav a {
   font-weight: bold;
   cursor: pointer;
 }
+
+.clear-compare-btn {
+  margin: 5px 0 15px;
+  padding: 9px 14px;
+  border: none;
+  border-radius: 999px;
+  font-weight: bold;
+  cursor: pointer;
+}
