@@ -795,7 +795,9 @@ function updateSavedCareers() {
     <div class="saved-career-list">
       ${savedCareers.map(career => `
         <div class="saved-career-item">
-          ${career}
+         <span onclick="exploreCareer('${career}')">
+  ${career}
+</span>
 
           <button
             type="button"
