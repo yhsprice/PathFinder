@@ -863,6 +863,50 @@ function getPersonalitySummary(topTraits) {
   return "Your interests are still developing, which is completely normal.";
 }
 
+let compareCareers = [];
+
+function addToCompare(career) {
+
+  if (!compareCareers.includes(career)) {
+
+    if (compareCareers.length < 2) {
+      compareCareers.push(career);
+    }
+
+  }
+
+  updateCompareArea();
+}
+
+function updateCompareArea() {
+
+  const compareArea =
+    document.getElementById("compareArea");
+
+  if (!compareArea) return;
+
+  if (compareCareers.length === 0) {
+
+    compareArea.innerHTML = `
+      <p>No careers selected for comparison.</p>
+    `;
+
+    return;
+  }
+
+  compareArea.innerHTML = `
+    <h3>Career Comparison</h3>
+
+    <div class="compare-career-list">
+      ${compareCareers.map(career => `
+        <div class="compare-career-item">
+          ${career}
+        </div>
+      `).join("")}
+    </div>
+  `;
+}
+
 function showResults() {
 
   const questionBox =
@@ -990,6 +1034,14 @@ if (exploreSection) {
   ⭐ Save Career
 </button>
 
+<button
+  type="button"
+  class="compare-career-btn"
+  onclick="addToCompare('${match.career}')"
+>
+  ⚖️ Compare
+</button>
+
             <p><strong>Best fit if:</strong> ${getBestFitLine(match.career)}</p>
 
             <p><strong>May not fit if:</strong> ${getMismatchWarning(match.career)}</p>
@@ -1040,6 +1092,8 @@ if (exploreSection) {
 <button type="button" class="start-over-btn" onclick="startQuiz()">
   🗺️ Start a New Path
 </button>
+
+    <div id="compareArea"></div>
 
     <div id="savedCareersArea"></div>
 
