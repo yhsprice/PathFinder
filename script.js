@@ -634,22 +634,26 @@ const careerMatches = [
   { career: "Urban Planner", traits: { analytical: 2, creativity: 2, social: 2 } }
   ];
 
-  function calculateCareerMatches() {
-  return careerMatches
-    .map(item => {
-      let score = 0;
+  function explainCareerMatch(career) {
+  const details = careerDetails[career];
 
-      for (let trait in item.traits) {
-        score += (userTraits[trait] || 0) * item.traits[trait];
-      }
+  if (!details || !details.skills) {
+    return "This career matched your answers based on your strongest traits.";
+  }
 
-      return {
-        career: item.career,
-        score: score
-      };
-    })
-    .sort((a, b) => b.score - a.score)
-    .slice(0, 5);
+  return `This may fit because it connects with skills like ${details.skills.slice(0, 3).join(", ")}.`;
+}
+
+function getMatchStrength(score) {
+  if (score >= 18) {
+    return "🔥 Strong Match";
+  }
+
+  if (score >= 10) {
+    return "✅ Good Match";
+  }
+
+  return "🧭 Possible Match";
 }
 
 function getBestFitLine(career) {
