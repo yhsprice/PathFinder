@@ -838,6 +838,31 @@ function getCareerInfo(career) {
   };
 }
 
+function getPersonalitySummary(topTraits) {
+
+  if (topTraits.includes("analytical")) {
+    return "You tend to think deeply, solve problems, and look for patterns or systems.";
+  }
+
+  if (topTraits.includes("creativity")) {
+    return "You seem drawn toward ideas, expression, innovation, and building things differently.";
+  }
+
+  if (topTraits.includes("social")) {
+    return "You appear people-oriented and may enjoy helping, guiding, teaching, or supporting others.";
+  }
+
+  if (topTraits.includes("physical")) {
+    return "You may prefer hands-on work, movement, practical tasks, and real-world environments.";
+  }
+
+  if (topTraits.includes("leadership")) {
+    return "You seem naturally drawn toward responsibility, influence, organization, or decision-making.";
+  }
+
+  return "Your interests are still developing, which is completely normal.";
+}
+
 function showResults() {
 
   const questionBox =
@@ -900,6 +925,10 @@ if (exploreSection) {
       <p>
         Your strongest traits:
         ${topTraits.length ? topTraits.join(", ") : "Still developing"}
+      </p>
+
+      <p class="personality-summary">
+        ${getPersonalitySummary(topTraits)}
       </p>
 
       <h4>Careers to explore first:</h4>
