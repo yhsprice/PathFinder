@@ -1006,6 +1006,21 @@ if (exploreSection) {
 }).join("")}
     </div>
 
+    <div class="hidden-careers-box">
+  <h3>Hidden careers worth exploring</h3>
+  <p>
+    These may not be your top matches, but they are interesting paths many people never hear about.
+  </p>
+
+  <div class="hidden-career-list">
+    <span>GIS Technician</span>
+    <span>Sonographer</span>
+    <span>Farrier</span>
+    <span>Industrial Hygienist</span>
+    <span>Court Reporter</span>
+  </div>
+</div>
+
 <button type="button" class="start-over-btn" onclick="startQuiz()">
   🗺️ Start a New Path
 </button>
