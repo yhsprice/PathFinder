@@ -803,3 +803,23 @@ nav a {
   background: rgba(255,255,255,0.08);
   font-weight: bold;
 }
+
+.compare-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(260px, 1fr));
+  gap: 20px;
+  margin: 20px 0 30px;
+}
+
+.compare-card {
+  padding: 18px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+@media (max-width: 700px) {
+  .compare-grid {
+    grid-template-columns: 1fr;
+  }
+}
