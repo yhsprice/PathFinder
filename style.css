@@ -768,3 +768,25 @@ nav a {
   transform: translateY(-2px);
   background: rgba(255, 255, 255, 0.2);
 }
+
+.compare-career-btn {
+  margin-top: 10px;
+  padding: 10px 14px;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.compare-career-list {
+  display: flex;
+  gap: 12px;
+  margin: 15px 0 25px;
+}
+
+.compare-career-item {
+  padding: 12px 16px;
+  border-radius: 16px;
+  background: rgba(255,255,255,0.08);
+  font-weight: bold;
+}
