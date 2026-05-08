@@ -901,6 +901,16 @@ function updateCompareArea() {
         return `
           <div class="compare-card">
             <h4>${career}</h4>
+            
+            <button
+            type="button"
+            class="remove-compare-btn"
+            onclick="removeFromCompare('${career}')"
+            >
+          
+            Remove
+            </button>
+            
             <p><strong>Training:</strong> ${info.training}</p>
             <p><strong>Difficulty:</strong> ${info.difficulty}</p>
             <p><strong>Job Market:</strong> ${info.jobMarket}</p>
@@ -911,6 +921,11 @@ function updateCompareArea() {
       }).join("")}
     </div>
   `;
+}
+
+function removeFromCompare(career) {
+  compareCareers = compareCareers.filter(item => item !== career);
+  updateCompareArea();
 }
 
 function showResults() {
@@ -1143,3 +1158,4 @@ window.closeCareerDetails = closeCareerDetails;
 window.saveCareer = saveCareer;
 window.removeSavedCareer = removeSavedCareer;
 window.addToCompare = addToCompare;
+window.removeFromCompare = removeFromCompare;
