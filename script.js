@@ -1174,6 +1174,15 @@ if (exploreSection) {
     <div class="result-card">
 
       <h3>Your possible career matches</h3>
+      ${answers.includes("Overwhelmed") ? `
+  <div class="overwhelmed-results-note">
+    <h4>No pressure.</h4>
+    <p>
+      These are not life decisions. They are just starting points to help you notice what feels interesting.
+      Pick one career to explore, save it, or simply start again.
+    </p>
+  </div>
+` : ""}
 
       <p>
         You picked:
