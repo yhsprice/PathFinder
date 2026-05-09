@@ -1152,9 +1152,20 @@ if (exploreSection) {
 
   <div class="more-career-list">
     ${matchedCareers.slice(5, 10).map(match => `
-      <span onclick="exploreCareer('${match.career}')">
-        ${match.career}
-      </span>
+     <div class="more-career-pill">
+     
+  <span onclick="exploreCareer('${match.career}')">
+    ${match.career}
+  </span>
+
+  <button type="button" onclick="saveCareer('${match.career}')">
+    ⭐
+  </button>
+
+  <button type="button" onclick="addToCompare('${match.career}')">
+    ⚖️
+  </button>
+</div>
     `).join("")}
   </div>
 </div>
