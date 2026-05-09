@@ -1169,21 +1169,7 @@ if (exploreSection) {
   More Details
 </button>
 
-            <div class="career-extra hidden">
-            
-           <p><strong>Try this next:</strong> ${info.nextStep}</p>
-
-            <p><strong>Real talk:</strong> ${info.truth}</p>
-
-          <p><strong>Training:</strong> ${info.training}</p>
-
-          <p><strong>Difficulty:</strong> ${info.difficulty}</p>
-
-          <p><strong>Job Market:</strong> ${info.jobMarket}</p>
-
-          <p><strong>Stress Level:</strong> ${info.stress}</p>
-
-           <button 
+     <button 
   type="button" 
   class="explore-career-btn"
   onclick="exploreCareer('${match.career}')"
@@ -1206,6 +1192,20 @@ if (exploreSection) {
 >
   ⚖️ Compare
 </button>
+
+            <div class="career-extra hidden">
+            
+           <p><strong>Try this next:</strong> ${info.nextStep}</p>
+
+            <p><strong>Real talk:</strong> ${info.truth}</p>
+
+          <p><strong>Training:</strong> ${info.training}</p>
+
+          <p><strong>Difficulty:</strong> ${info.difficulty}</p>
+
+          <p><strong>Job Market:</strong> ${info.jobMarket}</p>
+
+          <p><strong>Stress Level:</strong> ${info.stress}</p>
 
             <p><strong>Best fit if:</strong> ${getBestFitLine(match.career)}</p>
 
