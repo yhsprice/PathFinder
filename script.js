@@ -451,6 +451,8 @@ function lostMode() {
 
   resetTraits();
 
+  quizQuestions.length = 3;
+
   showQuestion();
 }
 
@@ -462,6 +464,8 @@ function startWithVibe(vibe) {
   answers = [vibe];
 
   resetTraits();
+
+  quizQuestions.length = 5;
 
   showQuestion();
 }
