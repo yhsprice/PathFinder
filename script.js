@@ -1034,6 +1034,19 @@ function filterCareerCards(category) {
   }
 }
 
+function toggleCareerExtra(button) {
+  const card = button.closest(".career-card");
+  const extra = card.querySelector(".career-extra");
+
+  if (!extra) return;
+
+  extra.classList.toggle("hidden");
+
+  button.textContent = extra.classList.contains("hidden")
+    ? "More Details"
+    : "Hide Details";
+}
+
 function showResults() {
 
   const questionBox =
