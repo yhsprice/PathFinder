@@ -986,3 +986,8 @@ nav a {
   font-weight: bold;
   cursor: pointer;
 }
+
+.category-filter button.active-filter {
+  background: #4ea1ff;
+  color: #06192b;
+}
