@@ -1120,6 +1120,10 @@ if (exploreSection) {
   <button type="button" onclick="filterCareerCards('Animals, Nature & Agriculture')">Animals/Nature</button>
 </div>
 
+<p id="noFilterResults" class="no-filter-results hidden">
+  No careers in this filter showed up in your top matches. Try All or check More Careers below.
+</p>
+
       <p class="career-count-note">
   PathFinder compared your answers against ${careerMatches.length} career paths and pulled your strongest starting matches.
 </p>
