@@ -983,6 +983,36 @@ function clearSavedCareers() {
   updateSavedCareers();
 }
 
+function getCareerCategory(career) {
+  const found = careerMatches.find(item => item.career === career);
+
+  if (!found) {
+    return "Career Path";
+  }
+
+  if (["Data Analyst", "Business Analyst", "Cybersecurity", "IT Support", "Software Developer", "UX Designer", "AI Prompt Specialist", "Automation Specialist", "GIS Technician", "Drone Operator"].includes(career)) {
+    return "Tech & Data";
+  }
+
+  if (["Nursing", "Dental Hygiene", "Occupational Therapy", "Physical Therapy Assistant", "Speech Therapy", "Mental Health Counseling", "Medical Coding", "Sonographer", "Radiologic Technologist", "EMT"].includes(career)) {
+    return "Healthcare";
+  }
+
+  if (["Electrician", "Welder", "HVAC Technician", "Plumber", "Diesel Mechanic", "Industrial Maintenance", "Construction Management", "Heavy Equipment Operator", "Survey Technician", "Carpenter"].includes(career)) {
+    return "Trades & Hands-On";
+  }
+
+  if (["Entrepreneur", "Small Business Owner", "Business Consultant", "Project Coordinator", "Operations Manager", "Human Resources", "Recruiter", "Sales Manager", "Marketing Specialist", "Event Planner"].includes(career)) {
+    return "Business & Leadership";
+  }
+
+  if (["Equine Therapist", "Horse Trainer", "Farrier", "Stable Manager", "Veterinary Technician", "Wildlife Rehabilitator", "Park Ranger", "Environmental Technician", "Agricultural Business Owner", "Animal Shelter Manager"].includes(career)) {
+    return "Animals, Nature & Agriculture";
+  }
+
+  return "Creative / Education / Specialized";
+}
+
 function showResults() {
 
   const questionBox =
@@ -1077,6 +1107,10 @@ if (exploreSection) {
           <h5>
   ${match.career}
 </h5>
+
+<p class="career-category">
+  ${getCareerCategory(match.career)}
+</p>
 
 <p class="match-strength">
   ${getMatchStrength(match.score)}
