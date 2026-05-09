@@ -1021,6 +1021,17 @@ function filterCareerCards(category) {
       card.style.display = "none";
     }
   });
+
+  document.querySelectorAll(".category-filter button").forEach(button => {
+    button.classList.remove("active-filter");
+  });
+
+  const clickedButton = [...document.querySelectorAll(".category-filter button")]
+    .find(button => button.textContent.includes(category === "all" ? "All" : category.split(" ")[0]));
+
+  if (clickedButton) {
+    clickedButton.classList.add("active-filter");
+  }
 }
 
 function showResults() {
