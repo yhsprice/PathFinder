@@ -991,3 +991,10 @@ nav a {
   background: #4ea1ff;
   color: #06192b;
 }
+
+.overwhelmed-results-note {
+  margin: 15px 0 25px;
+  padding: 18px;
+  border-radius: 18px;
+  background: rgba(110, 214, 255, 0.15);
+}
