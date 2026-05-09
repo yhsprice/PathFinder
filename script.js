@@ -1055,6 +1055,39 @@ function toggleCareerExtra(button) {
     : "Hide Details";
 }
 
+  function buildTraitExplanation(career) {
+
+  const match =
+    careerMatches.find(item => item.career === career);
+
+  if (!match) {
+    return "This career matched several of your answers.";
+  }
+
+  const strongestTraits = Object.entries(match.traits)
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, 3)
+    .map(item => item[0]);
+
+  const readableTraits = {
+    analytical: "problem-solving",
+    creativity: "creativity",
+    social: "people skills",
+    leadership: "leadership",
+    physical: "hands-on work",
+    structure: "organization",
+    independence: "independence",
+    stressTolerance: "handling pressure",
+    educationTolerance: "learning/training",
+    riskTolerance: "risk-taking"
+  };
+
+  return `
+    This career connected strongly with your interests in
+    ${strongestTraits.map(t => readableTraits[t] || t).join(", ")}.
+  `;
+}
+
 function showResults() {
 
   const questionBox =
@@ -1228,7 +1261,11 @@ if (exploreSection) {
 
           <p><strong>Stress Level:</strong> ${info.stress}</p>
 
-            <p><strong>Best fit if:</strong> ${getBestFitLine(match.career)}</p>
+            <p><strong>Why this matched you:</strong></p>
+
+<p>
+  ${buildTraitExplanation(match.career)}
+</p>
 
             <p><strong>May not fit if:</strong> ${getMismatchWarning(match.career)}</p>
 
