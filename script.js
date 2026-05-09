@@ -1042,19 +1042,10 @@ function toggleCareerExtra(button) {
 
   extra.classList.toggle("hidden");
 
-  function toggleCareerExtra(button) {
-  const card = button.closest(".career-card");
-  const extra = card.querySelector(".career-extra");
-
-  if (!extra) return;
-
-  extra.classList.toggle("hidden");
-
   button.textContent = extra.classList.contains("hidden")
     ? "More Details"
     : "Hide Details";
 }
-
 function buildTraitExplanation(career) {
 
   const match =
