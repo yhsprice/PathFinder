@@ -1090,6 +1090,30 @@ function buildTraitExplanation(career) {
   `;
 }
 
+function goHome() {
+  document.getElementById("quizArea").classList.add("hidden");
+
+  const exploreSection = document.getElementById("exploreSection");
+  if (exploreSection) {
+    exploreSection.classList.remove("hidden");
+  }
+
+  const bottomCtaSection = document.getElementById("bottomCtaSection");
+  if (bottomCtaSection) {
+    bottomCtaSection.classList.remove("hidden");
+  }
+
+  currentQuestion = 0;
+  answers = [];
+  compareCareers = [];
+  resetTraits();
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+}
+
 function showResults() {
 
   const questionBox =
@@ -1344,7 +1368,7 @@ if (exploreSection) {
 </div>
 </div>
 
-<button type="button" class="start-over-btn" onclick="startQuiz()">
+<button type="button" class="start-over-btn" onclick="goHome()">
   🗺️ Start a New Path
 </button>
 
