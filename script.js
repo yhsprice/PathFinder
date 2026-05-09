@@ -426,6 +426,17 @@ if (exploreSection) {
   currentQuestion = 0;
   answers = [];
 
+  compareCareers = [];
+
+const detailArea = document.getElementById("careerDetailArea");
+if (detailArea) detailArea.innerHTML = "";
+
+const compareArea = document.getElementById("compareArea");
+if (compareArea) compareArea.innerHTML = "";
+
+const savedArea = document.getElementById("savedCareersArea");
+if (savedArea) savedArea.innerHTML = "";
+
   resetTraits();
 
   showQuestion();
