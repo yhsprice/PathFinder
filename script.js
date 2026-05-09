@@ -1427,3 +1427,4 @@ window.clearSavedCareers = clearSavedCareers;
 window.filterCareerCards = filterCareerCards;
 window.toggleCareerExtra = toggleCareerExtra;
 window.addToCompare = addToCompare;
+window.goHome = goHome;
