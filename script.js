@@ -1068,7 +1068,7 @@ if (exploreSection) {
       </p>
 
       <div class="career-grid">
-       ${matchedCareers.map(match => {
+       ${matchedCareers.slice(0, 5).map(match => {
           const info = getCareerInfo(match.career);
 
   return `
@@ -1143,6 +1143,21 @@ if (exploreSection) {
         `;
 }).join("")}
     </div>
+
+<div class="more-careers-box">
+  <h3>More careers to explore</h3>
+  <p>
+    These were also close matches and may be worth checking out.
+  </p>
+
+  <div class="more-career-list">
+    ${matchedCareers.slice(5, 10).map(match => `
+      <span onclick="exploreCareer('${match.career}')">
+        ${match.career}
+      </span>
+    `).join("")}
+  </div>
+</div>
 
     <div class="hidden-careers-box">
   <h3>Hidden careers worth exploring</h3>
