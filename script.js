@@ -1160,6 +1160,16 @@ if (exploreSection) {
 <p>
   ${info.summary}
 </p>
+
+<button
+  type="button"
+  class="expand-career-btn"
+  onclick="toggleCareerExtra(this)"
+>
+  More Details
+</button>
+
+            <div class="career-extra hidden">
             
            <p><strong>Try this next:</strong> ${info.nextStep}</p>
 
@@ -1201,11 +1211,15 @@ if (exploreSection) {
 
             <p><strong>May not fit if:</strong> ${getMismatchWarning(match.career)}</p>
 
+<p><strong>Roadmap:</strong></p>
+
 <ol>
   ${info.roadmap.map(step => `
     <li>${step}</li>
   `).join("")}
 </ol>
+
+</div>
 
 </div>
          
@@ -1327,3 +1341,4 @@ window.removeFromCompare = removeFromCompare;
 window.clearCompareCareers = clearCompareCareers;
 window.clearSavedCareers = clearSavedCareers;
 window.filterCareerCards = filterCareerCards;
+window.toggleCareerExtra = toggleCareerExtra;
