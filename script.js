@@ -1042,6 +1042,14 @@ function toggleCareerExtra(button) {
 
   extra.classList.toggle("hidden");
 
+  function toggleCareerExtra(button) {
+  const card = button.closest(".career-card");
+  const extra = card.querySelector(".career-extra");
+
+  if (!extra) return;
+
+  extra.classList.toggle("hidden");
+
   button.textContent = extra.classList.contains("hidden")
     ? "More Details"
     : "Hide Details";
@@ -1355,3 +1363,4 @@ window.clearCompareCareers = clearCompareCareers;
 window.clearSavedCareers = clearSavedCareers;
 window.filterCareerCards = filterCareerCards;
 window.toggleCareerExtra = toggleCareerExtra;
+window.addToCompare = addToCompare;
