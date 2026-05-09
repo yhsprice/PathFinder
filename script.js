@@ -411,6 +411,7 @@ const quizQuestions = [
 
 let currentQuestion = 0;
 let answers = [];
+let activeQuestions = quizQuestions;
 
 function startQuiz() {
   document.getElementById("exploreSection").classList.add("hidden");
@@ -439,6 +440,8 @@ if (savedArea) savedArea.innerHTML = "";
 
   resetTraits();
 
+  activeQuestions = quizQuestions;
+  
   showQuestion();
 }
 
@@ -451,12 +454,21 @@ function lostMode() {
 
   resetTraits();
 
-  quizQuestions.length = 3;
+  function lostMode() {
+  document.getElementById("exploreSection").classList.add("hidden");
+  document.getElementById("quizArea").classList.remove("hidden");
+
+  currentQuestion = 0;
+  answers = ["Overwhelmed"];
+
+  resetTraits();
+
+  activeQuestions = quizQuestions.slice(0, 3);
 
   showQuestion();
 }
 
-function startWithVibe(vibe) {
+  function startWithVibe(vibe) {
   document.getElementById("exploreSection").classList.add("hidden");
   document.getElementById("quizArea").classList.remove("hidden");
 
@@ -478,11 +490,9 @@ function showQuestion() {
   const progressText =
     document.getElementById("progressText");
 
-  const q =
-    quizQuestions[currentQuestion];
-
+  const q = activeQuestions[currentQuestion];
   progressText.textContent =
-    `Question ${currentQuestion + 1} of ${quizQuestions.length}`;
+    `Question ${currentQuestion + 1} of ${activeQuestions.length}`;
 
   questionBox.innerHTML = `
     <h3>${q.question}</h3>
@@ -543,7 +553,7 @@ function selectAnswer(answer) {
 
   currentQuestion++;
 
-  if (currentQuestion < quizQuestions.length) {
+  if (currentQuestion < activeQuestions.length) {
 
     showQuestion();
 
