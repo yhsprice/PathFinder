@@ -998,3 +998,31 @@ nav a {
   border-radius: 18px;
   background: rgba(110, 214, 255, 0.15);
 }
+
+.pathfinder-extra-starts {
+  margin-top: 25px;
+  text-align: center;
+}
+
+.secondary-start-btn {
+  margin-bottom: 20px;
+  padding: 12px 18px;
+  border: none;
+  border-radius: 999px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.vibe-starts {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.vibe-starts button {
+  padding: 10px 14px;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+}
