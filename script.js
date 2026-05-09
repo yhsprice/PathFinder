@@ -1055,7 +1055,7 @@ function toggleCareerExtra(button) {
     : "Hide Details";
 }
 
-  function buildTraitExplanation(career) {
+function buildTraitExplanation(career) {
 
   const match =
     careerMatches.find(item => item.career === career);
