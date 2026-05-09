@@ -1013,6 +1013,16 @@ function getCareerCategory(career) {
   return "Creative / Education / Specialized";
 }
 
+function filterCareerCards(category) {
+  document.querySelectorAll(".career-card").forEach(card => {
+    if (category === "all" || card.dataset.category === category) {
+      card.style.display = "";
+    } else {
+      card.style.display = "none";
+    }
+  });
+}
+
 function showResults() {
 
   const questionBox =
@@ -1089,6 +1099,16 @@ if (exploreSection) {
       </p>
 
       <h4>Your top career matches:</h4>
+
+      <div class="category-filter">
+  <button type="button" onclick="filterCareerCards('all')">All</button>
+  <button type="button" onclick="filterCareerCards('Tech & Data')">Tech & Data</button>
+  <button type="button" onclick="filterCareerCards('Healthcare')">Healthcare</button>
+  <button type="button" onclick="filterCareerCards('Trades & Hands-On')">Trades</button>
+  <button type="button" onclick="filterCareerCards('Business & Leadership')">Business</button>
+  <button type="button" onclick="filterCareerCards('Animals, Nature & Agriculture')">Animals/Nature</button>
+</div>
+
       <p class="career-count-note">
   PathFinder compared your answers against ${careerMatches.length} career paths and pulled your strongest starting matches.
 </p>
@@ -1102,7 +1122,7 @@ if (exploreSection) {
           const info = getCareerInfo(match.career);
 
   return `
-          <div class="career-card">
+          <div class="career-card" data-category="${getCareerCategory(match.career)}">
           
           <h5>
   ${match.career}
@@ -1291,3 +1311,4 @@ window.addToCompare = addToCompare;
 window.removeFromCompare = removeFromCompare;
 window.clearCompareCareers = clearCompareCareers;
 window.clearSavedCareers = clearSavedCareers;
+window.filterCareerCards = filterCareerCards;
