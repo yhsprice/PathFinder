@@ -1062,3 +1062,12 @@ nav a {
   font-weight: bold;
   color: #334155;
 }
+
+.next-action-label {
+  margin: 12px 0 24px;
+  padding: 14px 16px;
+  border-radius: 16px;
+  background: #f0f9ff;
+  color: #0f172a;
+  line-height: 1.6;
+}
