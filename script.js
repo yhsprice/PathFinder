@@ -1139,6 +1139,26 @@ function getConfidenceLevel(topTraits) {
   return "Still exploring";
 }
 
+function getNextBestAction(topTraits) {
+  if (topTraits.includes("analytical")) {
+    return "Explore one problem-solving career and compare it with one hands-on or people-focused option.";
+  }
+
+  if (topTraits.includes("social")) {
+    return "Save one helping career and read the real-talk section before deciding if it fits.";
+  }
+
+  if (topTraits.includes("creativity")) {
+    return "Pick one creative career and look at the roadmap to see what skill you could build first.";
+  }
+
+  if (topTraits.includes("physical")) {
+    return "Explore one hands-on career and check the training path before ruling it in or out.";
+  }
+
+  return "Save one career that seems interesting and take one small research step.";
+}
+
 function showResults() {
 
   const questionBox =
@@ -1198,20 +1218,32 @@ if (exploreSection) {
   questionBox.innerHTML = `
     <div class="result-card">
 
-      <h3>Your possible career matches</h3>
-      <p class="mode-label">
-      <p class="confidence-label">
+<h3>Your possible career matches</h3>
+
+<p class="mode-label">
+  ${answers.includes("Overwhelmed")
+    ? "🌱 Starting Point Mode"
+    : "🧭 Full PathFinder Mode"}
+</p>
+
+<p class="confidence-label">
   Confidence level: ${getConfidenceLevel(topTraits)}
 </p>
-  ${answers.includes("Overwhelmed") ? "🌱 Starting Point Mode" : "🧭 Full PathFinder Mode"}
+
+<p class="next-action-label">
+  <strong>Next best action:</strong>
+  ${getNextBestAction(topTraits)}
 </p>
-      ${answers.includes("Overwhelmed") ? `
+
+${answers.includes("Overwhelmed") ? `
   <div class="overwhelmed-results-note">
     <h4>No pressure.</h4>
+
     <p>
       These are not life decisions. They are just starting points to help you notice what feels interesting.
       Pick one career to explore, save it, or simply start again.
     </p>
+
   </div>
 ` : ""}
 
