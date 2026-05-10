@@ -1178,3 +1178,26 @@ nav a {
 .pathfinder-extra-starts {
   margin-top: 30px;
 }
+
+.adaptive-status {
+  background: #e0f2fe;
+  color: #075985;
+  border: 1px solid #7dd3fc;
+  border-radius: 16px;
+  padding: 13px 16px;
+  margin-bottom: 18px;
+  font-weight: 800;
+  line-height: 1.5;
+}
+
+.support-status {
+  background: #ecfdf5;
+  color: #065f46;
+  border-color: #86efac;
+}
+
+.confidence-status {
+  background: #fefce8;
+  color: #854d0e;
+  border-color: #fde68a;
+}
