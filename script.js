@@ -1235,6 +1235,11 @@ if (exploreSection) {
   ${getNextBestAction(topTraits)}
 </p>
 
+<p class="not-destiny-note">
+  This does not mean these are your only options.
+  It means these are useful starting points based on how you answered today.
+</p>
+
 ${answers.includes("Overwhelmed") ? `
   <div class="overwhelmed-results-note">
     <h4>No pressure.</h4>
