@@ -1240,6 +1240,18 @@ if (exploreSection) {
   It means these are useful starting points based on how you answered today.
 </p>
 
+<div class="how-to-use-results">
+  <h4>How to use these results</h4>
+
+  <ol>
+    <li>Read the summary first.</li>
+    <li>Click More Details for anything interesting.</li>
+    <li>Save careers you want to revisit.</li>
+    <li>Compare two careers if you feel stuck.</li>
+    <li>Pick one small next step.</li>
+  </ol>
+</div>
+
 ${answers.includes("Overwhelmed") ? `
   <div class="overwhelmed-results-note">
     <h4>No pressure.</h4>
