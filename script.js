@@ -1172,6 +1172,19 @@ function toggleGuide(button) {
     : "Hide Guide";
 }
 
+function toggleMoreCareers(button) {
+  const box = button.closest(".more-careers-box");
+  const list = box.querySelector(".more-career-list");
+
+  if (!list) return;
+
+  list.classList.toggle("hidden");
+
+  button.textContent = list.classList.contains("hidden")
+    ? "Show More Careers"
+    : "Hide More Careers";
+}
+
 function showResults() {
 
   const questionBox =
@@ -1420,6 +1433,14 @@ ${answers.includes("Overwhelmed") ? `
     </div>
 
 <div class="more-careers-box">
+  <button
+    type="button"
+    class="more-careers-toggle-btn"
+    onclick="toggleMoreCareers(this)"
+  >
+    Hide More Careers
+  </button>
+
   <h3>More careers to explore</h3>
   <p>
     These were also close matches and may be worth checking out.
@@ -1537,3 +1558,4 @@ window.toggleCareerExtra = toggleCareerExtra;
 window.addToCompare = addToCompare;
 window.goHome = goHome;
 window.toggleGuide = toggleGuide;
+window.toggleMoreCareers = toggleMoreCareers;
