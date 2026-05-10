@@ -1185,6 +1185,19 @@ function toggleMoreCareers(button) {
     : "Hide More Careers";
 }
 
+function toggleHiddenCareers(button) {
+  const box = button.closest(".hidden-careers-box");
+  const list = box.querySelector(".hidden-career-list");
+
+  if (!list) return;
+
+  list.classList.toggle("hidden");
+
+  button.textContent = list.classList.contains("hidden")
+    ? "Show Hidden Careers"
+    : "Hide Hidden Careers";
+}
+
 function showResults() {
 
   const questionBox =
@@ -1467,7 +1480,16 @@ ${answers.includes("Overwhelmed") ? `
 </div>
 
     <div class="hidden-careers-box">
+  <button
+    type="button"
+    class="hidden-careers-toggle-btn"
+    onclick="toggleHiddenCareers(this)"
+  >
+    Hide Hidden Careers
+  </button>
+
   <h3>Hidden careers worth exploring</h3>
+  
   <p>
     These may not be your top matches, but they are interesting paths many people never hear about.
   </p>
@@ -1559,3 +1581,4 @@ window.addToCompare = addToCompare;
 window.goHome = goHome;
 window.toggleGuide = toggleGuide;
 window.toggleMoreCareers = toggleMoreCareers;
+window.toggleHiddenCareers = toggleHiddenCareers;
