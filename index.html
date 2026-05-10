@@ -103,45 +103,64 @@
       </section>
 
       <section class="section" id="exploreSection">
-        <div class="quiz-preview">
+  <div class="quiz-preview">
+    <h3>Start with what actually matters to you.</h3>
 
-  <button
-    type="button"
-    class="secondary-start-btn"
-    onclick="lostMode()"
-  >
-    🌱 I Just Need a Starting Point
-  <button
-  type="button"
-  class="secondary-start-btn overwhelmed-btn"
-  onclick="lostMode()"
->
+    <p class="section-intro">
+      Choose how you want to begin. Pathfinder will adapt based on your answers,
+      your confidence, and where you may need a simpler starting point.
+    </p>
+
+    <div class="buttons center-buttons">
+      <button type="button" class="btn primary" onclick="startQuiz()">
+        🧭 Start Pathfinder
+      </button>
+
+      <button type="button" class="btn secondary" onclick="lostMode()">
+        🌱 I’m Completely Lost
+      </button>
+    </div>
 
     <p class="overwhelmed-caption">
-  Shorter questions. Less pressure. Just explore.
-</p>
+      Shorter questions. Less pressure. Just explore.
+    </p>
 
-  <div class="vibe-starts">
+    <div class="vibe-starts">
+      <p>Or start with a vibe:</p>
 
-    <p>Or start with a vibe:</p>
+      <button type="button" onclick="startWithVibe('Creative')">
+        🎨 Creative
+      </button>
 
-    <button type="button" onclick="startWithVibe('Creative')">
-      🎨 Creative
-    </button>
+      <button type="button" onclick="startWithVibe('Helping People')">
+        🤝 Helping People
+      </button>
 
-    <button type="button" onclick="startWithVibe('Helping People')">
-      🤝 Helping People
-    </button>
+      <button type="button" onclick="startWithVibe('Technology')">
+        💻 Technology
+      </button>
 
-    <button type="button" onclick="startWithVibe('Technology')">
-      💻 Technology
-    </button>
+      <button type="button" onclick="startWithVibe('Hands-On Work')">
+        🔧 Hands-On
+      </button>
+    </div>
 
-    <button type="button" onclick="startWithVibe('Hands-On Work')">
-      🔧 Hands-On
-    </button>
+    <div class="pathfinder-extra-starts">
+      <h3>Or choose a future feeling:</h3>
 
+      <div class="choice-grid">
+        <div class="choice" onclick="startWithVibe('Freedom')">Freedom</div>
+        <div class="choice" onclick="startWithVibe('Stability')">Stability</div>
+        <div class="choice" onclick="startWithVibe('High income')">High Income</div>
+        <div class="choice" onclick="startWithVibe('Helping people')">Helping People</div>
+        <div class="choice" onclick="startWithVibe('Creativity')">Creativity</div>
+        <div class="choice" onclick="startWithVibe('Adventure')">Adventure</div>
+        <div class="choice" onclick="startWithVibe('Leadership')">Leadership</div>
+        <div class="choice" onclick="startWithVibe('Low stress')">Low Stress</div>
+      </div>
+    </div>
   </div>
+</section>
 
           <div class="pathfinder-extra-starts">
           <h3>Start with what actually matters to you.</h3>
