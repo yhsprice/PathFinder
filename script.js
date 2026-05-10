@@ -446,6 +446,118 @@ const quizQuestions = [
   }
 ];
 
+const adaptiveQuestionPools = {
+
+  analytical: [
+    {
+      id: "analytical_followup",
+      category: "adaptive",
+      difficulty: "medium",
+      question: "Which sounds more satisfying?",
+      options: [
+        {
+          text: "Finding patterns in messy information",
+          traits: { analytical: 3 }
+        },
+        {
+          text: "Fixing a complicated problem",
+          traits: { analytical: 2, physical: 1 }
+        },
+        {
+          text: "Researching the best solution",
+          traits: { analytical: 2, structure: 1 }
+        },
+        {
+          text: "Improving how a system works",
+          traits: { analytical: 2, leadership: 1 }
+        }
+      ]
+    }
+  ],
+
+  creativity: [
+    {
+      id: "creative_followup",
+      category: "adaptive",
+      difficulty: "medium",
+      question: "What kind of creativity sounds most interesting?",
+      options: [
+        {
+          text: "Designing visuals or graphics",
+          traits: { creativity: 3 }
+        },
+        {
+          text: "Creating ideas or strategies",
+          traits: { creativity: 2, leadership: 1 }
+        },
+        {
+          text: "Writing or storytelling",
+          traits: { creativity: 2, independence: 1 }
+        },
+        {
+          text: "Building something unique",
+          traits: { creativity: 2, physical: 1 }
+        }
+      ]
+    }
+  ],
+
+  social: [
+    {
+      id: "social_followup",
+      category: "adaptive",
+      difficulty: "medium",
+      question: "What type of people-focused work sounds best?",
+      options: [
+        {
+          text: "Helping someone through a hard situation",
+          traits: { social: 3 }
+        },
+        {
+          text: "Teaching or guiding people",
+          traits: { social: 2, leadership: 1 }
+        },
+        {
+          text: "Leading teams or projects",
+          traits: { leadership: 2, social: 1 }
+        },
+        {
+          text: "Supporting people behind the scenes",
+          traits: { social: 1, structure: 1 }
+        }
+      ]
+    }
+  ],
+
+  physical: [
+    {
+      id: "physical_followup",
+      category: "adaptive",
+      difficulty: "medium",
+      question: "What kind of hands-on work sounds most interesting?",
+      options: [
+        {
+          text: "Repairing equipment",
+          traits: { physical: 3, analytical: 1 }
+        },
+        {
+          text: "Operating machinery",
+          traits: { physical: 3 }
+        },
+        {
+          text: "Building or construction work",
+          traits: { physical: 2, leadership: 1 }
+        },
+        {
+          text: "Outdoor technical work",
+          traits: { physical: 2, independence: 1 }
+        }
+      ]
+    }
+  ]
+
+};
+
 let currentQuestion = 0;
 let answers = [];
 let activeQuestions = quizQuestions;
@@ -585,6 +697,8 @@ function selectAnswer(answer) {
     
     applyTraits(answer.traits);
 
+    injectAdaptiveQuestion();
+
   }
 
   currentQuestion++;
@@ -701,6 +815,36 @@ const careerMatches = [
   { career: "Museum Curator", traits: { creativity: 2, structure: 2, educationTolerance: 2 } },
   { career: "Urban Planner", traits: { analytical: 2, creativity: 2, social: 2 } }
   ];
+
+function injectAdaptiveQuestion() {
+
+  const topTrait =
+    Object.keys(userTraits)
+      .sort((a, b) => userTraits[b] - userTraits[a])[0];
+
+  const adaptivePool =
+    adaptiveQuestionPools[topTrait];
+
+  if (!adaptivePool) return;
+
+  const alreadyExists =
+    activeQuestions.some(q =>
+      q.id === adaptivePool[0].id
+    );
+
+  if (alreadyExists) return;
+
+  if (currentQuestion >= 2) {
+
+    activeQuestions.splice(
+      currentQuestion + 1,
+      0,
+      adaptivePool[0]
+    );
+
+  }
+
+}
 
   function explainCareerMatch(career) {
   const details = careerDetails[career];
