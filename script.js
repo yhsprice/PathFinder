@@ -1187,6 +1187,9 @@ if (exploreSection) {
     <div class="result-card">
 
       <h3>Your possible career matches</h3>
+      <p class="mode-label">
+  ${answers.includes("Overwhelmed") ? "🌱 Starting Point Mode" : "🧭 Full PathFinder Mode"}
+</p>
       ${answers.includes("Overwhelmed") ? `
   <div class="overwhelmed-results-note">
     <h4>No pressure.</h4>
