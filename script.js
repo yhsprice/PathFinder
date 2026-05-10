@@ -477,7 +477,14 @@ function lostMode() {
 
   resetTraits();
 
-  quizQuestions.length = 5;
+  const vibeTraits = {
+    "Creative": { creativity: 3, independence: 1 },
+    "Helping People": { social: 3, structure: 1 },
+    "Technology": { analytical: 3, independence: 1 },
+    "Hands-On Work": { physical: 3, analytical: 1 }
+  };
+
+  applyTraits(vibeTraits[vibe] || {});
 
   showQuestion();
 }
