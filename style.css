@@ -1094,3 +1094,12 @@ nav a {
   padding-left: 24px;
   line-height: 1.8;
 }
+
+.guide-toggle-btn {
+  float: right;
+  padding: 7px 12px;
+  border: none;
+  border-radius: 999px;
+  font-weight: bold;
+  cursor: pointer;
+}
