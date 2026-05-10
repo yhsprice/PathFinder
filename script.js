@@ -1241,7 +1241,13 @@ if (exploreSection) {
 </p>
 
 <div class="how-to-use-results">
-  <h4>How to use these results</h4>
+  <button
+    type="button"
+    class="guide-toggle-btn"
+    onclick="toggleGuide(this)"
+  >
+    Hide Guide
+  </button>
 
   <ol>
     <li>Read the summary first.</li>
