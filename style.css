@@ -1112,3 +1112,12 @@ nav a {
   font-weight: bold;
   cursor: pointer;
 }
+
+.hidden-careers-toggle-btn {
+  float: right;
+  padding: 7px 12px;
+  border: none;
+  border-radius: 999px;
+  font-weight: bold;
+  cursor: pointer;
+}
