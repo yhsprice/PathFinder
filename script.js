@@ -1127,6 +1127,18 @@ function goHome() {
   });
 }
 
+function getConfidenceLevel(topTraits) {
+  if (topTraits.length >= 3) {
+    return "Strong direction";
+  }
+
+  if (topTraits.length === 2) {
+    return "Some direction";
+  }
+
+  return "Still exploring";
+}
+
 function showResults() {
 
   const questionBox =
@@ -1188,6 +1200,9 @@ if (exploreSection) {
 
       <h3>Your possible career matches</h3>
       <p class="mode-label">
+      <p class="confidence-label">
+  Confidence level: ${getConfidenceLevel(topTraits)}
+</p>
   ${answers.includes("Overwhelmed") ? "🌱 Starting Point Mode" : "🧭 Full PathFinder Mode"}
 </p>
       ${answers.includes("Overwhelmed") ? `
