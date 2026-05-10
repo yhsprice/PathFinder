@@ -852,15 +852,12 @@ function injectAdaptiveQuestion() {
   if (alreadyExists) return;
 
   if (currentQuestion >= 2) {
-
     activeQuestions.splice(
       currentQuestion + 1,
       0,
       adaptivePool[0]
     );
-
   }
-
 }
 
 function checkForStruggleRedirect() {
@@ -901,34 +898,6 @@ function checkForStruggleRedirect() {
     activeQuestions.splice(currentQuestion + 1, 0, easierQuestion);
     adaptiveModeUsed = true;
   }
-}
-
-  const topTrait =
-    Object.keys(userTraits)
-      .sort((a, b) => userTraits[b] - userTraits[a])[0];
-
-  const adaptivePool =
-    adaptiveQuestionPools[topTrait];
-
-  if (!adaptivePool) return;
-
-  const alreadyExists =
-    activeQuestions.some(q =>
-      q.id === adaptivePool[0].id
-    );
-
-  if (alreadyExists) return;
-
-  if (currentQuestion >= 2) {
-
-    activeQuestions.splice(
-      currentQuestion + 1,
-      0,
-      adaptivePool[0]
-    );
-
-  }
-
 }
 
   function explainCareerMatch(career) {
