@@ -454,21 +454,12 @@ function lostMode() {
 
   resetTraits();
 
-  function lostMode() {
-  document.getElementById("exploreSection").classList.add("hidden");
-  document.getElementById("quizArea").classList.remove("hidden");
-
-  currentQuestion = 0;
-  answers = ["Overwhelmed"];
-
-  resetTraits();
-
   activeQuestions = quizQuestions.slice(0, 3);
 
   showQuestion();
 }
 
-  function startWithVibe(vibe) {
+function startWithVibe(vibe) {
   document.getElementById("exploreSection").classList.add("hidden");
   document.getElementById("quizArea").classList.remove("hidden");
 
@@ -476,6 +467,8 @@ function lostMode() {
   answers = [vibe];
 
   resetTraits();
+
+  activeQuestions = quizQuestions;
 
   const vibeTraits = {
     "Creative": { creativity: 3, independence: 1 },
@@ -488,7 +481,6 @@ function lostMode() {
 
   showQuestion();
 }
-
 function showQuestion() {
 
   const questionBox =
