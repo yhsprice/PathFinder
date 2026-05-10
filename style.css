@@ -1071,3 +1071,12 @@ nav a {
   color: #0f172a;
   line-height: 1.6;
 }
+
+.not-destiny-note {
+  margin: 10px 0 24px;
+  padding: 12px 15px;
+  border-left: 4px solid #38bdf8;
+  background: #f8fafc;
+  color: #334155;
+  line-height: 1.6;
+}
