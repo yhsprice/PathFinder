@@ -558,6 +558,8 @@ const adaptiveQuestionPools = {
 
 };
 
+let struggleSignals = 0;
+let adaptiveModeUsed = false;
 let currentQuestion = 0;
 let answers = [];
 let activeQuestions = quizQuestions;
@@ -575,6 +577,8 @@ if (exploreSection) {
 
   currentQuestion = 0;
   answers = [];
+  struggleSignals = 0;
+  adaptiveModeUsed = false;
 
   compareCareers = [];
 
@@ -600,6 +604,8 @@ function lostMode() {
 
   currentQuestion = 0;
   answers = ["Overwhelmed"];
+  struggleSignals = 1;
+  adaptiveModeUsed = false;
 
   resetTraits();
 
@@ -694,10 +700,21 @@ function selectAnswer(answer) {
   } else {
 
     answers.push(answer.text);
-    
+
+    if (
+      answer.text.includes("confused") ||
+      answer.text.includes("guessing") ||
+      answer.text.includes("not sure") ||
+      answer.text.includes("I am not sure")
+    ) {
+      struggleSignals++;
+    }
+
     applyTraits(answer.traits);
 
     injectAdaptiveQuestion();
+
+    checkForStruggleRedirect();
 
   }
 
@@ -817,6 +834,46 @@ const careerMatches = [
   ];
 
 function injectAdaptiveQuestion() {
+
+  function checkForStruggleRedirect() {
+
+  if (adaptiveModeUsed) return;
+
+  if (struggleSignals < 1) return;
+
+  const easierQuestion = {
+    id: "struggle_redirect",
+    category: "support",
+    difficulty: "easy",
+    question: "No problem. Let’s make this easier. Which one sounds most like you?",
+    options: [
+      {
+        text: "I like solving problems when they are explained clearly.",
+        traits: { analytical: 2, structure: 1 }
+      },
+      {
+        text: "I like helping people when I know what they need.",
+        traits: { social: 2, structure: 1 }
+      },
+      {
+        text: "I like doing hands-on things instead of just talking about them.",
+        traits: { physical: 2, independence: 1 }
+      },
+      {
+        text: "I like creative ideas, but I need examples first.",
+        traits: { creativity: 2, structure: 1 }
+      }
+    ]
+  };
+
+  const alreadyExists =
+    activeQuestions.some(q => q.id === "struggle_redirect");
+
+  if (!alreadyExists) {
+    activeQuestions.splice(currentQuestion + 1, 0, easierQuestion);
+    adaptiveModeUsed = true;
+  }
+}
 
   const topTrait =
     Object.keys(userTraits)
