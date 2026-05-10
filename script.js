@@ -48,7 +48,8 @@ const userTraits = {
   leadership: 0,
   stressTolerance: 0,
   educationTolerance: 0,
-  riskTolerance: 0
+  riskTolerance: 0,
+  persistence: 0
 };
 
 function resetTraits() {
@@ -343,9 +344,12 @@ const careerDetails = {
 
 const quizQuestions = [
   {
+    id: "future_vibe",
+    category: "start",
+    difficulty: "easy",
     question: "What kind of future sounds best right now?",
     options: [
-      { text: "Freedom", traits: { independence: 2, structure: -1 } },
+      { text: "Freedom", traits: { independence: 2, riskTolerance: 1 } },
       { text: "Stability", traits: { structure: 2, riskTolerance: -1 } },
       { text: "High income", traits: { leadership: 1, stressTolerance: 1 } },
       { text: "Helping people", traits: { social: 2 } },
@@ -357,20 +361,24 @@ const quizQuestions = [
   },
 
   {
-    question: "What kind of work would you rather do?",
+    id: "work_preference",
+    category: "work_style",
+    difficulty: "easy",
+    question: "What kind of work sounds least awful?",
     options: [
-      { text: "Solve problems", traits: { analytical: 2, independence: 1 } },
-      { text: "Build things", traits: { physical: 2, analytical: 1 } },
-      { text: "Help people", traits: { social: 2, stressTolerance: 1 } },
-      { text: "Create something", traits: { creativity: 2, independence: 1 } },
-      { text: "Organize details", traits: { structure: 2, analytical: 1 } },
-      { text: "Lead a team", traits: { leadership: 2, social: 1 } },
-      { text: "Work with technology", traits: { analytical: 2, educationTolerance: 1 } },
-      { text: "Work outdoors", traits: { physical: 2, independence: 1 } }
+      { text: "Solving problems", traits: { analytical: 2, independence: 1 } },
+      { text: "Building or fixing things", traits: { physical: 2, analytical: 1 } },
+      { text: "Helping people", traits: { social: 2 } },
+      { text: "Creating something", traits: { creativity: 2 } },
+      { text: "Organizing details", traits: { structure: 2, analytical: 1 } },
+      { text: "Leading a team", traits: { leadership: 2, social: 1 } }
     ]
   },
 
   {
+    id: "drain_check",
+    category: "struggle_signal",
+    difficulty: "easy",
     question: "What drains you the fastest?",
     options: [
       { text: "Too much talking", traits: { social: -2, independence: 1 } },
@@ -378,33 +386,62 @@ const quizQuestions = [
       { text: "Repetitive work", traits: { creativity: 2, independence: 1 } },
       { text: "High pressure", traits: { stressTolerance: -2, structure: 1 } },
       { text: "Physical labor", traits: { physical: -2, analytical: 1 } },
-      { text: "Strict routines", traits: { independence: 2, structure: -2 } },
-      { text: "Unclear directions", traits: { structure: 2 } },
-      { text: "Being micromanaged", traits: { independence: 2 } }
+      { text: "Unclear directions", traits: { structure: 2 } }
     ]
   },
 
   {
-    question: "What matters most in a career path?",
+    id: "problem_solving",
+    category: "adaptive_core",
+    difficulty: "medium",
+    question: "Something goes wrong right before it is needed. What would you probably do first?",
     options: [
-      { text: "Good pay", traits: { stressTolerance: 1, leadership: 1 } },
-      { text: "Job security", traits: { structure: 2, riskTolerance: -1 } },
-      { text: "Flexible schedule", traits: { independence: 2 } },
-      { text: "Helping others", traits: { social: 2 } },
-      { text: "Room to grow", traits: { leadership: 1, educationTolerance: 1 } },
-      { text: "Low debt", traits: { educationTolerance: -1, structure: 1 } },
-      { text: "Fast training", traits: { educationTolerance: -2, physical: 1 } },
-      { text: "Meaningful work", traits: { social: 1, creativity: 1 } }
+      { text: "Figure out what caused it", traits: { analytical: 3, structure: 1 } },
+      { text: "Try a quick practical fix", traits: { physical: 2, stressTolerance: 1 } },
+      { text: "Ask someone who knows more", traits: { social: 1, structure: 1 } },
+      { text: "Create a backup plan", traits: { creativity: 2, stressTolerance: 1 } },
+      { text: "Take charge and assign tasks", traits: { leadership: 3, stressTolerance: 1 } }
     ]
   },
 
   {
-    question: "How serious are you about figuring this out today?",
+    id: "environment_fit",
+    category: "environment",
+    difficulty: "easy",
+    question: "Which work environment sounds most tolerable?",
     options: [
-      { text: "Just curious", traits: { independence: 1 } },
-      { text: "A little serious", traits: { structure: 1 } },
-      { text: "Pretty serious", traits: { structure: 1, analytical: 1 } },
-      { text: "I need direction now", traits: { structure: 2, stressTolerance: -1 } }
+      { text: "Quiet and focused", traits: { independence: 2, analytical: 1 } },
+      { text: "Active and moving around", traits: { physical: 2 } },
+      { text: "Busy with people", traits: { social: 2, stressTolerance: 1 } },
+      { text: "Organized and predictable", traits: { structure: 2 } },
+      { text: "Different every day", traits: { creativity: 1, riskTolerance: 1 } }
+    ]
+  },
+
+  {
+    id: "training_tolerance",
+    category: "career_reality",
+    difficulty: "medium",
+    question: "How much training are you willing to deal with if the career is worth it?",
+    options: [
+      { text: "As little as possible", traits: { educationTolerance: -2, physical: 1 } },
+      { text: "A short certificate or training program", traits: { educationTolerance: 1, structure: 1 } },
+      { text: "Two years if it leads somewhere solid", traits: { educationTolerance: 2, structure: 1 } },
+      { text: "Four years or more if I believe in the path", traits: { educationTolerance: 3, persistence: 1 } },
+      { text: "I am not sure yet", traits: { structure: 1 } }
+    ]
+  },
+
+  {
+    id: "confidence_check",
+    category: "confidence",
+    difficulty: "easy",
+    question: "How confident do you feel about your answers so far?",
+    options: [
+      { text: "Pretty confident", traits: { structure: 1 } },
+      { text: "Somewhat confident", traits: {} },
+      { text: "Still confused", traits: { structure: 1, stressTolerance: -1 } },
+      { text: "I am mostly guessing", traits: { stressTolerance: -1 } }
     ]
   }
 ];
