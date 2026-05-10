@@ -1373,3 +1373,19 @@ nav a {
     font-size: 1.5rem;
   }
 }
+
+.lab-card {
+  text-decoration: none;
+  display: block;
+}
+
+.lab-start {
+  display: inline-block;
+  margin-top: 14px;
+  font-weight: 900;
+  color: #0369a1;
+}
+
+.locked-lab {
+  opacity: 0.75;
+}
