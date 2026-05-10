@@ -1026,3 +1026,13 @@ nav a {
   border-radius: 999px;
   cursor: pointer;
 }
+
+.overwhelmed-btn {
+  margin-top: 10px;
+}
+
+.overwhelmed-caption {
+  margin-top: 8px;
+  font-size: 0.95rem;
+  opacity: 0.8;
+}
