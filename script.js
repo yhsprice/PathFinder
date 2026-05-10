@@ -1159,6 +1159,19 @@ function getNextBestAction(topTraits) {
   return "Save one career that seems interesting and take one small research step.";
 }
 
+function toggleGuide(button) {
+  const guide = button.closest(".how-to-use-results");
+  const list = guide.querySelector("ol");
+
+  if (!list) return;
+
+  list.classList.toggle("hidden");
+
+  button.textContent = list.classList.contains("hidden")
+    ? "Show Guide"
+    : "Hide Guide";
+}
+
 function showResults() {
 
   const questionBox =
@@ -1523,3 +1536,4 @@ window.filterCareerCards = filterCareerCards;
 window.toggleCareerExtra = toggleCareerExtra;
 window.addToCompare = addToCompare;
 window.goHome = goHome;
+window.toggleGuide = toggleGuide;
