@@ -1134,3 +1134,47 @@ nav a {
   margin-bottom: 8px;
   color: #0369a1;
 }
+
+.center-buttons {
+  justify-content: center;
+}
+
+.overwhelmed-caption {
+  text-align: center;
+  color: #475569;
+  margin: 18px auto 28px;
+  font-weight: 700;
+}
+
+.vibe-starts {
+  text-align: center;
+  margin: 30px auto;
+}
+
+.vibe-starts p {
+  color: #334155;
+  font-weight: 800;
+  margin-bottom: 14px;
+}
+
+.vibe-starts button {
+  border: 1px solid #cbd5e1;
+  background: white;
+  color: #0f172a;
+  border-radius: 999px;
+  padding: 12px 18px;
+  margin: 6px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.vibe-starts button:hover {
+  transform: translateY(-2px);
+  border-color: #0284c7;
+  background: #e0f2fe;
+}
+
+.pathfinder-extra-starts {
+  margin-top: 30px;
+}
