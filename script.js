@@ -1536,7 +1536,14 @@ ${answers.includes("Overwhelmed") ? `
   <div id="compareArea"></div>
 </div>
 
-    <div id="savedCareersArea"></div>
+   <div class="results-tool-section">
+  <h3>Saved Careers</h3>
+  <p>
+    Save careers you want to revisit, research, or talk through later.
+  </p>
+
+  <div id="savedCareersArea"></div>
+</div>
 
     <div id="careerDetailArea"></div>
     
