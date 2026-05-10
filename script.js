@@ -636,6 +636,38 @@ function startWithVibe(vibe) {
 
   showQuestion();
 }
+
+function getAdaptiveStatusMessage(question) {
+
+  if (!question) return "";
+
+  if (question.id === "struggle_redirect") {
+    return `
+      <div class="adaptive-status support-status">
+        🌱 Pathfinder noticed this may need a simpler starting point. No problem — let’s make it clearer.
+      </div>
+    `;
+  }
+
+  if (question.category === "adaptive") {
+    return `
+      <div class="adaptive-status">
+        🧭 Pathfinder adjusted this question based on your answers so far.
+      </div>
+    `;
+  }
+
+  if (question.id === "confidence_check") {
+    return `
+      <div class="adaptive-status confidence-status">
+        🔎 Quick check-in: this helps Pathfinder understand how clear your direction feels.
+      </div>
+    `;
+  }
+
+  return "";
+}
+
 function showQuestion() {
 
   const questionBox =
@@ -649,6 +681,8 @@ function showQuestion() {
     `Question ${currentQuestion + 1} of ${activeQuestions.length}`;
 
   questionBox.innerHTML = `
+    ${getAdaptiveStatusMessage(q)}
+
     <h3>${q.question}</h3>
 
     <div class="quiz-options">
