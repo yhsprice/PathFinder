@@ -100,62 +100,19 @@ function showPatternResults() {
     patternTimes.reduce((total, time) => total + time, 0) / patternTimes.length;
 
   let level = "Developing Pattern Hunter";
-  let message = "You may need more practice with pattern recognition, but this can improve quickly with repetition.";
+let traitSignal = "Pattern recognition is still developing.";
+let careerSignal = "This may still connect with careers that use practice-based problem solving.";
+let message = "You may need more practice with pattern recognition, but this can improve quickly with repetition.";
 
-  if (patternScore >= 4) {
-    level = "Strong Pattern Hunter";
-    message = "You showed strong pattern recognition and logical sequencing.";
-  } else if (patternScore >= 3) {
-    level = "Steady Pattern Hunter";
-    message = "You noticed several patterns and may do well with systems, troubleshooting, or analytical tasks.";
-  }
-
-  document.getElementById("patternArea").classList.add("hidden");
-
-  document.getElementById("patternResults").classList.remove("hidden");
-
-  document.getElementById("patternResults").innerHTML = `
-    <h2>${level}</h2>
-
-    <p>
-      You answered <strong>${patternScore}</strong> out of
-      <strong>${patternQuestions.length}</strong> correctly.
-    </p>
-
-    <p>
-      Average answer time: <strong>${averageTime.toFixed(1)} seconds</strong>
-    </p>
-
-    <p>${message}</p>
-
-    <div class="pattern-career-box">
-      <h3>Careers this skill can support</h3>
-      <p>
-        Pattern recognition can connect with data analysis, technology,
-        engineering, troubleshooting, skilled trades, cybersecurity,
-        logistics, and research.
-      </p>
-    </div>
-
-    <button type="button" onclick="restartPatternHunter()">
-      Try Again
-    </button>
-
-    <a class="back-home-link" href="index.html">
-      Back to Pathfinder
-    </a>
-  `;
+if (patternScore >= 4) {
+  level = "Strong Pattern Hunter";
+  traitSignal = "Strong signal: analytical thinking, logic, sequencing, and systems awareness.";
+  careerSignal = "This can support careers in data, technology, engineering, cybersecurity, logistics, skilled trades, and research.";
+  message = "You showed strong pattern recognition and logical sequencing.";
+} else if (patternScore >= 3) {
+  level = "Steady Pattern Hunter";
+  traitSignal = "Moderate signal: you noticed several patterns and may do well with structured problem solving.";
+  careerSignal = "This can support careers in troubleshooting, operations, technology, skilled trades, and quality control.";
+  message = "You noticed several patterns and may do well with systems, troubleshooting, or analytical tasks.";
 }
-
-function restartPatternHunter() {
-  currentPatternQuestion = 0;
-  patternScore = 0;
-  patternTimes = [];
-
-  document.getElementById("patternArea").classList.remove("hidden");
-  document.getElementById("patternResults").classList.add("hidden");
-
-  showPatternQuestion();
-}
-
 showPatternQuestion();
