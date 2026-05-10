@@ -749,6 +749,34 @@ function selectAnswer(answer) {
     injectAdaptiveQuestion();
 
     checkForStruggleRedirect();
+    function restartPathfinderSupportMode() {
+
+  currentQuestion = 0;
+  answers = ["Retake Support Mode"];
+
+  struggleSignals = 1;
+  adaptiveModeUsed = false;
+
+  resetTraits();
+
+  activeQuestions = [
+    {
+      id: "retake_support_intro",
+      category: "support",
+      difficulty: "easy",
+      question: "Let’s try this again with simpler questions. Which sounds easiest to answer?",
+      options: [
+        { text: "What I like doing", traits: { creativity: 1 } },
+        { text: "What I do not like doing", traits: { structure: 1 } },
+        { text: "Where I want to work", traits: { independence: 1 } },
+        { text: "How much training I can handle", traits: { educationTolerance: 1 } }
+      ]
+    },
+    ...quizQuestions.slice(1, 4)
+  ];
+
+  showQuestion();
+}
 
   }
 
@@ -1788,6 +1816,10 @@ ${answers.includes("Overwhelmed") ? `
 </div>
 </div>
 
+<button type="button" class="retake-support-btn" onclick="restartPathfinderSupportMode()">
+  🌱 Try Easier Questions
+</button>
+
 <button type="button" class="start-over-btn" onclick="goHome()">
   🗺️ Start a New Path
 </button>
@@ -1865,3 +1897,4 @@ window.goHome = goHome;
 window.toggleGuide = toggleGuide;
 window.toggleMoreCareers = toggleMoreCareers;
 window.toggleHiddenCareers = toggleHiddenCareers;
+window.restartPathfinderSupportMode = restartPathfinderSupportMode;
