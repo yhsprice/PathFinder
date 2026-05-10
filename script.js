@@ -1527,7 +1527,14 @@ ${answers.includes("Overwhelmed") ? `
   🖨️ Print or Save Results
 </button>
 
-    <div id="compareArea"></div>
+    <div class="results-tool-section">
+  <h3>Compare Careers</h3>
+  <p>
+    Choose up to two careers to compare training, stress, job market, and first steps.
+  </p>
+
+  <div id="compareArea"></div>
+</div>
 
     <div id="savedCareersArea"></div>
 
