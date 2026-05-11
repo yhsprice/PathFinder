@@ -1490,3 +1490,9 @@ nav a {
 .pattern-career-buttons a:hover {
   background: #bae6fd;
 }
+
+.pattern-save-message {
+  margin: 14px 0;
+  font-weight: 900;
+  color: #166534;
+}
