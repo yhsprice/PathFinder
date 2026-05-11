@@ -205,23 +205,44 @@ if (patternScore >= 4) {
     </p>
   </div>
   
-    <p>
-      You answered <strong>${patternScore}</strong> out of
-      <strong>${patternQuestions.length}</strong> correctly.
-    </p>
+   <div class="pattern-results-grid">
+  <div class="pattern-stat-card">
+    <strong>Score</strong>
+    <span>${patternScore} out of ${patternQuestions.length}</span>
+  </div>
 
-    <p>
-      Average answer time: <strong>${averageTime.toFixed(1)} seconds</strong>
-    </p>
+  <div class="pattern-stat-card">
+    <strong>Average Time</strong>
+    <span>${averageTime.toFixed(1)} seconds</span>
+  </div>
+</div>
 
-    <p>${message}</p>
+<div class="pattern-insight-box">
+  <h3>What this means</h3>
+  <p>${message}</p>
+</div>
 
-    <p><strong>Trait signal:</strong> ${traitSignal}</p>
+<div class="pattern-signal-list">
+  <div>
+    <strong>Trait signal:</strong>
+    <p>${traitSignal}</p>
+  </div>
 
-    <p><strong>Career signal:</strong> ${careerSignal}</p>
-    <p><strong>Speed signal:</strong> ${speedSignal}</p>
+  <div>
+    <strong>Career signal:</strong>
+    <p>${careerSignal}</p>
+  </div>
 
-    <p><strong>Work-style signal:</strong> ${workStyleSignal}</p>
+  <div>
+    <strong>Speed signal:</strong>
+    <p>${speedSignal}</p>
+  </div>
+
+  <div>
+    <strong>Work-style signal:</strong>
+    <p>${workStyleSignal}</p>
+  </div>
+</div>
 
    <div class="pattern-career-box">
   <h3>Careers this skill can support</h3>
