@@ -88,19 +88,18 @@ function choosePatternAnswer(selectedAnswer) {
   patternTimes.push(timeTaken);
 
   if (selectedAnswer === question.answer) {
-  patternScore++;
-  patternCorrectStreak++;
+    patternScore++;
+    patternCorrectStreak++;
 
-   } else {
-  patternCorrectStreak = 0;
-  patternMissedCount++;
-
-  document.getElementById("patternFeedback").innerHTML = `
+    document.getElementById("patternFeedback").innerHTML = `
       <div class="pattern-feedback correct">
         ✅ Correct — nice pattern spotting.
       </div>
     `;
   } else {
+    patternCorrectStreak = 0;
+    patternMissedCount++;
+
     document.getElementById("patternFeedback").innerHTML = `
       <div class="pattern-feedback incorrect">
         Not quite. The answer was <strong>${question.answer}</strong>.
