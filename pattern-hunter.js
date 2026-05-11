@@ -1,30 +1,35 @@
 const patternQuestions = [
   {
     question: "What comes next?",
+    difficulty: "Easy",
     pattern: "🔺 🔷 🔺 🔷 ?",
     options: ["🔺", "🔷", "⭐", "⬛"],
     answer: "🔺"
   },
   {
     question: "What comes next?",
+    difficulty: "Easy",
     pattern: "2 → 4 → 8 → 16 → ?",
     options: ["18", "24", "32", "64"],
     answer: "32"
   },
   {
     question: "Find the pattern.",
+    difficulty: "Medium",
     pattern: "A B C | B C D | C D E | ?",
     options: ["D E F", "A C E", "C E G", "F E D"],
     answer: "D E F"
   },
   {
     question: "What comes next?",
+    difficulty: "Medium",
     pattern: "⬛ ⬛ 🔵 | ⬛ 🔵 🔵 | 🔵 🔵 ?",
     options: ["⬛", "🔵", "⭐", "🔺"],
     answer: "🔵"
   },
   {
     question: "What number comes next?",
+    difficulty: "Medium",
     pattern: "5 → 10 → 20 → 40 → ?",
     options: ["45", "60", "80", "100"],
     answer: "80"
@@ -42,11 +47,23 @@ function showPatternQuestion() {
   document.getElementById("patternFeedback").innerHTML = "";
 
   document.getElementById("patternQuestion").innerHTML = `
-    <div class="pattern-progress">
-      Question ${currentPatternQuestion + 1} of ${patternQuestions.length}
-    </div>
+   <div class="pattern-top-bar">
 
-    <h2>${question.question}</h2>
+  <div class="pattern-progress">
+    Question ${currentPatternQuestion + 1} of ${patternQuestions.length}
+  </div>
+
+  <div class="pattern-score-live">
+    Score: ${patternScore}
+  </div>
+
+</div>
+
+    <div class="difficulty-badge ${question.difficulty.toLowerCase()}">
+  ${question.difficulty}
+</div>
+
+<h2>${question.question}</h2>
 
     <div class="pattern-display">
       ${question.pattern}
