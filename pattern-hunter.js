@@ -139,6 +139,22 @@ function getAdaptivePerformanceMessage() {
   return "";
 }
 
+function savePatternHunterResult() {
+  const savedResult = {
+    lab: "Pattern Hunter",
+    score: patternScore,
+    total: patternQuestions.length,
+    date: new Date().toLocaleDateString(),
+    times: patternTimes
+  };
+
+  localStorage.setItem("patternHunterResult", JSON.stringify(savedResult));
+
+  document.getElementById("patternSaveMessage").innerHTML = `
+    ✅ Pattern Hunter result saved on this device.
+  `;
+}
+
 function showPatternResults() {
   const averageTime =
     patternTimes.reduce((total, time) => total + time, 0) / patternTimes.length;
@@ -189,8 +205,6 @@ if (patternScore >= 4) {
     </p>
   </div>
   
-   <div class="pattern-top-bar">
-   
     <p>
       You answered <strong>${patternScore}</strong> out of
       <strong>${patternQuestions.length}</strong> correctly.
@@ -226,6 +240,11 @@ if (patternScore >= 4) {
   </div>
 </div>
 
+<button type="button" onclick="savePatternHunterResult()">
+  💾 Save My Pattern Hunter Result
+</button>
+
+<div id="patternSaveMessage" class="pattern-save-message"></div>
     <button type="button" onclick="restartPatternHunter()">
       Try Again
     </button>
@@ -249,3 +268,5 @@ function restartPatternHunter() {
 }
 
 showPatternQuestion();
+
+window.savePatternHunterResult = savePatternHunterResult;
