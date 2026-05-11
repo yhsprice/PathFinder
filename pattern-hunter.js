@@ -48,7 +48,8 @@ function showPatternQuestion() {
 
   document.getElementById("patternFeedback").innerHTML = "";
 
-  document.getElementById("patternQuestion").innerHTML = `
+  document.getElementById("patternQuestion").innerHTML = 
+    `${getAdaptivePerformanceMessage()}
    <div class="pattern-top-bar">
 
   <div class="pattern-progress">
