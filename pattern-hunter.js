@@ -160,6 +160,10 @@ function showPatternResults() {
     patternTimes.reduce((total, time) => total + time, 0) / patternTimes.length;
 
   let level = "Developing Pattern Hunter";
+  let performancePercent =
+  Math.round((patternScore / patternQuestions.length) * 100);
+
+let rank = "Emerging";
   let traitSignal = "Pattern recognition is still developing.";
   let careerSignal = "This may still connect with careers that use practice-based problem solving.";
   let message = "You may need more practice with pattern recognition, but this can improve quickly with repetition.";
@@ -188,7 +192,16 @@ if (patternScore >= 4) {
   workStyleSignal = "This can improve with practice. Careers with high safety, money, or detail responsibility may require slowing down before deciding.";
 } else {
   speedSignal = "You took your time and still missed several. That does not mean you cannot improve; it means this type of pattern task may need more practice.";
-  workStyleSignal = "This may point toward careers where hands-on learning, examples, coaching, or repetition help more than abstract pattern work.";
+  if (performancePercent >= 90) {
+  rank = "Advanced Pattern Recognition";
+} else if (performancePercent >= 70) {
+  rank = "Strong Pattern Recognition";
+} else if (performancePercent >= 50) {
+  rank = "Developing Pattern Recognition";
+} else {
+  rank = "Emerging Pattern Recognition";
+}
+    workStyleSignal = "This may point toward careers where hands-on learning, examples, coaching, or repetition help more than abstract pattern work.";
 }
   document.getElementById("patternArea").classList.add("hidden");
 
@@ -199,6 +212,21 @@ if (patternScore >= 4) {
 
   <div class="pattern-results-header">
     <h2>${level}</h2>
+
+<div class="pattern-rank">
+  ${rank}
+</div>
+
+<div class="pattern-meter">
+  <div
+    class="pattern-meter-fill"
+    style="width:${performancePercent}%">
+  </div>
+</div>
+
+<div class="pattern-percent">
+  ${performancePercent}% Match Strength
+</div>
 
     <p>
       Pattern Hunter looked at your accuracy, pace, and problem-solving signals.
