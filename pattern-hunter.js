@@ -147,6 +147,8 @@ function showPatternResults() {
   let traitSignal = "Pattern recognition is still developing.";
   let careerSignal = "This may still connect with careers that use practice-based problem solving.";
   let message = "You may need more practice with pattern recognition, but this can improve quickly with repetition.";
+  let speedSignal = "Your pace shows how you approached the patterns.";
+  let workStyleSignal = "This lab looks at both accuracy and how quickly you process patterns.";
 
 if (patternScore >= 4) {
   level = "Strong Pattern Hunter";
@@ -158,6 +160,19 @@ if (patternScore >= 4) {
   traitSignal = "Moderate signal: you noticed several patterns and may do well with structured problem solving.";
   careerSignal = "This can support careers in troubleshooting, operations, technology, skilled trades, and quality control.";
   message = "You noticed several patterns and may do well with systems, troubleshooting, or analytical tasks.";
+}
+  if (averageTime <= 4 && patternScore >= 3) {
+  speedSignal = "You answered quickly and accurately. That can suggest fast pattern processing.";
+  workStyleSignal = "This may connect with careers that require quick decisions, troubleshooting, technology, logistics, or emergency response.";
+} else if (averageTime > 4 && patternScore >= 3) {
+  speedSignal = "You took more time but answered accurately. That can suggest careful thinking.";
+  workStyleSignal = "This may connect with careers that require precision, quality control, data review, research, accounting, or engineering.";
+} else if (averageTime <= 4 && patternScore < 3) {
+  speedSignal = "You answered quickly, but accuracy was lower. That may mean you process fast but may need to slow down and check details.";
+  workStyleSignal = "This can improve with practice. Careers with high safety, money, or detail responsibility may require slowing down before deciding.";
+} else {
+  speedSignal = "You took your time and still missed several. That does not mean you cannot improve; it means this type of pattern task may need more practice.";
+  workStyleSignal = "This may point toward careers where hands-on learning, examples, coaching, or repetition help more than abstract pattern work.";
 }
   document.getElementById("patternArea").classList.add("hidden");
 
@@ -182,6 +197,9 @@ if (patternScore >= 4) {
     <p><strong>Trait signal:</strong> ${traitSignal}</p>
 
     <p><strong>Career signal:</strong> ${careerSignal}</p>
+    <p><strong>Speed signal:</strong> ${speedSignal}</p>
+
+    <p><strong>Work-style signal:</strong> ${workStyleSignal}</p>
 
     <div class="pattern-career-box">
       <h3>Careers this skill can support</h3>
