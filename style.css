@@ -1430,3 +1430,23 @@ nav a {
   background: #fee2e2;
   color: #991b1b;
 }
+
+.pattern-adaptive-note {
+  padding: 13px 16px;
+  border-radius: 16px;
+  font-weight: 900;
+  margin-bottom: 16px;
+  line-height: 1.5;
+}
+
+.pattern-adaptive-note.strong {
+  background: #fff7ed;
+  color: #9a3412;
+  border: 1px solid #fdba74;
+}
+
+.pattern-adaptive-note.support {
+  background: #ecfdf5;
+  color: #065f46;
+  border: 1px solid #86efac;
+}
