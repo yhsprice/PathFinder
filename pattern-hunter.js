@@ -209,14 +209,22 @@ if (patternScore >= 4) {
 
     <p><strong>Work-style signal:</strong> ${workStyleSignal}</p>
 
-    <div class="pattern-career-box">
-      <h3>Careers this skill can support</h3>
-      <p>
-        Pattern recognition can connect with data analysis, technology,
-        engineering, troubleshooting, skilled trades, cybersecurity,
-        logistics, and research.
-      </p>
-    </div>
+   <div class="pattern-career-box">
+  <h3>Careers this skill can support</h3>
+
+  <p>
+    Pattern recognition can connect with data analysis, technology,
+    engineering, troubleshooting, skilled trades, cybersecurity,
+    logistics, and research.
+  </p>
+
+  <div class="pattern-career-buttons">
+    <a href="index.html">Data Analyst</a>
+    <a href="index.html">Cybersecurity</a>
+    <a href="index.html">Electrician</a>
+    <a href="index.html">Logistics Coordinator</a>
+  </div>
+</div>
 
     <button type="button" onclick="restartPatternHunter()">
       Try Again
