@@ -180,6 +180,14 @@ if (patternScore >= 4) {
 
   document.getElementById("patternResults").innerHTML = `
   ${getAdaptivePerformanceMessage()}
+
+  <div class="pattern-results-header">
+    <h2>${level}</h2>
+
+    <p>
+      Pattern Hunter looked at your accuracy, pace, and problem-solving signals.
+    </p>
+  </div>
   
    <div class="pattern-top-bar">
    
