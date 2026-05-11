@@ -1450,3 +1450,22 @@ nav a {
   color: #065f46;
   border: 1px solid #86efac;
 }
+
+.pattern-results-header {
+  background: #e0f2fe;
+  border: 1px solid #7dd3fc;
+  border-radius: 22px;
+  padding: 22px;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.pattern-results-header h2 {
+  color: #0369a1;
+  margin-bottom: 10px;
+}
+
+.pattern-results-header p {
+  color: #334155;
+  margin-bottom: 0;
+}
