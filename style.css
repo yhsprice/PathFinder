@@ -1469,3 +1469,24 @@ nav a {
   color: #334155;
   margin-bottom: 0;
 }
+
+.pattern-career-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.pattern-career-buttons a {
+  background: #e0f2fe;
+  color: #075985;
+  border: 1px solid #7dd3fc;
+  border-radius: 999px;
+  padding: 10px 14px;
+  font-weight: 900;
+  text-decoration: none;
+}
+
+.pattern-career-buttons a:hover {
+  background: #bae6fd;
+}
