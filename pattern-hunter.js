@@ -40,6 +40,8 @@ let currentPatternQuestion = 0;
 let patternScore = 0;
 let patternStartTime = Date.now();
 let patternTimes = [];
+let patternCorrectStreak = 0;
+let patternMissedCount = 0;
 
 function showPatternQuestion() {
   const question = patternQuestions[currentPatternQuestion];
@@ -86,9 +88,14 @@ function choosePatternAnswer(selectedAnswer) {
   patternTimes.push(timeTaken);
 
   if (selectedAnswer === question.answer) {
-    patternScore++;
+  patternScore++;
+  patternCorrectStreak++;
 
-    document.getElementById("patternFeedback").innerHTML = `
+   } else {
+  patternCorrectStreak = 0;
+  patternMissedCount++;
+
+  document.getElementById("patternFeedback").innerHTML = `
       <div class="pattern-feedback correct">
         ✅ Correct — nice pattern spotting.
       </div>
@@ -110,6 +117,26 @@ function choosePatternAnswer(selectedAnswer) {
       showPatternResults();
     }
   }, 900);
+}
+
+function getAdaptivePerformanceMessage() {
+  if (patternCorrectStreak >= 2) {
+    return `
+      <div class="pattern-adaptive-note strong">
+        🔥 You’re on a streak. Pathfinder may increase difficulty in future versions.
+      </div>
+    `;
+  }
+
+  if (patternMissedCount >= 2) {
+    return `
+      <div class="pattern-adaptive-note support">
+        🌱 Pattern Hunter noticed this may need more practice. That is useful information, not failure.
+      </div>
+    `;
+  }
+
+  return "";
 }
 
 function showPatternResults() {
@@ -137,8 +164,10 @@ if (patternScore >= 4) {
   document.getElementById("patternResults").classList.remove("hidden");
 
   document.getElementById("patternResults").innerHTML = `
-    <h2>${level}</h2>
-
+  ${getAdaptivePerformanceMessage()}
+  
+   <div class="pattern-top-bar">
+   
     <p>
       You answered <strong>${patternScore}</strong> out of
       <strong>${patternQuestions.length}</strong> correctly.
@@ -176,6 +205,8 @@ function restartPatternHunter() {
   currentPatternQuestion = 0;
   patternScore = 0;
   patternTimes = [];
+  patternCorrectStreak = 0;
+  patternMissedCount = 0;
 
   document.getElementById("patternArea").classList.remove("hidden");
   document.getElementById("patternResults").classList.add("hidden");
