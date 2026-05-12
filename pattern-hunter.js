@@ -1,38 +1,113 @@
 const patternQuestions = [
   {
+    id: "sequence_easy_1",
+    type: "sequence",
+    skill: "logical_progression",
+    question: "What comes next?",
+    difficulty: "Easy",
+    pattern: "2 → 4 → 6 → 8 → ?",
+    options: ["9", "10", "12", "16"],
+    answer: "10",
+    explanation: "The numbers increase by 2 each time."
+  },
+  {
+    id: "sequence_easy_2",
+    type: "sequence",
+    skill: "logical_progression",
+    question: "What comes next?",
+    difficulty: "Easy",
+    pattern: "A → C → E → G → ?",
+    options: ["H", "I", "J", "K"],
+    answer: "I",
+    explanation: "The pattern skips one letter each time."
+  },
+  {
+    id: "visual_easy_1",
+    type: "visual",
+    skill: "visual_pattern",
     question: "What comes next?",
     difficulty: "Easy",
     pattern: "🔺 🔷 🔺 🔷 ?",
     options: ["🔺", "🔷", "⭐", "⬛"],
-    answer: "🔺"
+    answer: "🔺",
+    explanation: "The shapes alternate triangle, diamond, triangle, diamond."
   },
   {
-    question: "What comes next?",
-    difficulty: "Easy",
-    pattern: "2 → 4 → 8 → 16 → ?",
-    options: ["18", "24", "32", "64"],
-    answer: "32"
+    id: "number_medium_1",
+    type: "number",
+    skill: "doubling",
+    question: "What number comes next?",
+    difficulty: "Medium",
+    pattern: "3 → 6 → 12 → 24 → ?",
+    options: ["30", "36", "48", "72"],
+    answer: "48",
+    explanation: "Each number doubles."
   },
   {
+    id: "letter_medium_1",
+    type: "letter",
+    skill: "sequence_shift",
     question: "Find the pattern.",
     difficulty: "Medium",
     pattern: "A B C | B C D | C D E | ?",
     options: ["D E F", "A C E", "C E G", "F E D"],
-    answer: "D E F"
+    answer: "D E F",
+    explanation: "Each group shifts forward one letter."
   },
   {
+    id: "visual_medium_1",
+    type: "visual",
+    skill: "visual_change",
     question: "What comes next?",
     difficulty: "Medium",
     pattern: "⬛ ⬛ 🔵 | ⬛ 🔵 🔵 | 🔵 🔵 ?",
     options: ["⬛", "🔵", "⭐", "🔺"],
-    answer: "🔵"
+    answer: "🔵",
+    explanation: "The blue circles are replacing the black squares one step at a time."
   },
   {
+    id: "sequence_medium_2",
+    type: "sequence",
+    skill: "increasing_difference",
     question: "What number comes next?",
     difficulty: "Medium",
-    pattern: "5 → 10 → 20 → 40 → ?",
-    options: ["45", "60", "80", "100"],
-    answer: "80"
+    pattern: "1 → 2 → 4 → 7 → 11 → ?",
+    options: ["14", "15", "16", "18"],
+    answer: "16",
+    explanation: "The increases are +1, +2, +3, +4, so the next increase is +5."
+  },
+  {
+    id: "rule_medium_1",
+    type: "rule",
+    skill: "hidden_rule",
+    question: "What comes next?",
+    difficulty: "Medium",
+    pattern: "2 → 5 → 11 → 23 → ?",
+    options: ["35", "43", "47", "50"],
+    answer: "47",
+    explanation: "Each number doubles, then adds 1."
+  },
+  {
+    id: "visual_hard_1",
+    type: "visual",
+    skill: "rotation_pattern",
+    question: "Which arrow comes next?",
+    difficulty: "Hard",
+    pattern: "⬆️ → ➡️ → ⬇️ → ⬅️ → ?",
+    options: ["⬆️", "➡️", "⬇️", "⬅️"],
+    answer: "⬆️",
+    explanation: "The arrow rotates clockwise each step."
+  },
+  {
+    id: "number_hard_1",
+    type: "number",
+    skill: "multi_step_logic",
+    question: "What number comes next?",
+    difficulty: "Hard",
+    pattern: "4 → 9 → 19 → 39 → ?",
+    options: ["59", "69", "79", "89"],
+    answer: "79",
+    explanation: "Each number doubles, then adds 1."
   }
 ];
 
