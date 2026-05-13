@@ -1,4 +1,4 @@
-const patternQuestions = [
+const basePatternQuestions = [
   {
     id: "sequence_easy_1",
     type: "sequence",
@@ -101,6 +101,8 @@ const patternQuestions = [
      }
 ];
 
+let patternQuestions = shuffleArray(basePatternQuestions);
+
 let currentPatternQuestion = 0;
 let patternScore = 0;
 let patternStartTime = Date.now();
@@ -120,6 +122,21 @@ const patternSkillScores = {
   rotation_pattern: { correct: 0, total: 0 },
   multi_step_logic: { correct: 0, total: 0 }
 };
+
+function shuffleArray(array) {
+
+  const copy = [...array];
+
+  for (let i = copy.length - 1; i > 0; i--) {
+
+    const j = Math.floor(Math.random() * (i + 1));
+
+    [copy[i], copy[j]] = [copy[j], copy[i]];
+
+  }
+
+  return copy;
+}
 
 function showPatternQuestion() {
   const question = patternQuestions[currentPatternQuestion];
@@ -152,8 +169,14 @@ function showPatternQuestion() {
     </div>
   `;
 
-  document.getElementById("patternOptions").innerHTML = question.options.map(option => `
-    <button type="button" onclick="choosePatternAnswer('${option}')">
+ const shuffledOptions =
+  shuffleArray(question.options);
+
+document.getElementById("patternOptions").innerHTML =
+  shuffledOptions.map(option => `
+    <button
+      type="button"
+      onclick="choosePatternAnswer('${option}')">
       ${option}
     </button>
   `).join("");
@@ -435,6 +458,7 @@ if (patternScore >= 4) {
     </a>
   `;
 }
+
 function restartPatternHunter() {
   if (patternAttemptCount >= maxPatternAttempts) {
     document.getElementById("patternSaveMessage").innerHTML = `
@@ -457,9 +481,13 @@ function restartPatternHunter() {
   document.getElementById("patternArea").classList.remove("hidden");
   document.getElementById("patternResults").classList.add("hidden");
 
+ patternQuestions =
+  shuffleArray(basePatternQuestions);
+  
   showPatternQuestion();
 }
 
 showPatternQuestion();
 
 window.savePatternHunterResult = savePatternHunterResult;
+
