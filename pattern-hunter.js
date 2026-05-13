@@ -461,12 +461,37 @@ if (patternScore >= 4) {
 
 function restartPatternHunter() {
   if (patternAttemptCount >= maxPatternAttempts) {
-    document.getElementById("patternSaveMessage").innerHTML = `
-      You have reached the max attempts for Pattern Hunter.
-      To keep results accurate, move to the next aptitude lab.
-    `;
+    const saveMessage = document.getElementById("patternSaveMessage");
+
+    if (saveMessage) {
+      saveMessage.innerHTML = `
+        You have reached the max attempts for Pattern Hunter.
+        To keep results accurate, move to the next aptitude lab.
+      `;
+    }
+
     return;
   }
+
+  patternAttemptCount++;
+
+  currentPatternQuestion = 0;
+  patternScore = 0;
+  patternTimes = [];
+  patternCorrectStreak = 0;
+  patternMissedCount = 0;
+
+  resetPatternSkillScores();
+
+  if (typeof basePatternQuestions !== "undefined") {
+    patternQuestions = shuffleArray(basePatternQuestions);
+  }
+
+  document.getElementById("patternArea").classList.remove("hidden");
+  document.getElementById("patternResults").classList.add("hidden");
+
+  showPatternQuestion();
+}
 
   patternAttemptCount++;
 
