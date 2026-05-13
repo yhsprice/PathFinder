@@ -487,12 +487,13 @@ function restartPatternHunter() {
 
   resetPatternSkillScores();
 
-  document.getElementById("patternArea").classList.remove("hidden");
-  document.getElementById("patternResults").classList.add("hidden");
+  patternQuestions = shuffleArray(basePatternQuestions);
 
- patternQuestions =
-  shuffleArray(basePatternQuestions);
-  
+  document.getElementById("patternResults").classList.add("hidden");
+  document.getElementById("patternArea").classList.remove("hidden");
+  document.getElementById("patternOptions").innerHTML = "";
+  document.getElementById("patternFeedback").innerHTML = "";
+
   showPatternQuestion();
 }
 
