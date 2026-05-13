@@ -430,12 +430,7 @@ if (patternScore >= 4) {
   Try Again Once
 </button>
 
-<div id="patternSaveMessage" class="pattern-save-message"></div>
-    <button type="button" onclick="restartPatternHunter()">
-      Try Again
-    </button>
-
-    <a class="back-home-link" href="index.html">
+<a class="back-home-link" href="index.html">
       Back to Pathfinder
     </a>
   `;
