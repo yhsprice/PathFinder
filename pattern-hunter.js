@@ -107,6 +107,8 @@ let patternStartTime = Date.now();
 let patternTimes = [];
 let patternCorrectStreak = 0;
 let patternMissedCount = 0;
+let patternAttemptCount = 1;
+const maxPatternAttempts = 2;
 const patternSkillScores = {
   logical_progression: { correct: 0, total: 0 },
   visual_pattern: { correct: 0, total: 0 },
@@ -424,6 +426,10 @@ if (patternScore >= 4) {
   💾 Save My Pattern Hunter Result
 </button>
 
+<button type="button" onclick="restartPatternHunter()">
+  Try Again Once
+</button>
+
 <div id="patternSaveMessage" class="pattern-save-message"></div>
     <button type="button" onclick="restartPatternHunter()">
       Try Again
@@ -435,11 +441,23 @@ if (patternScore >= 4) {
   `;
 }
 function restartPatternHunter() {
+  if (patternAttemptCount >= maxPatternAttempts) {
+    document.getElementById("patternSaveMessage").innerHTML = `
+      You have reached the max attempts for Pattern Hunter.
+      To keep results accurate, move to the next aptitude lab.
+    `;
+    return;
+  }
+
+  patternAttemptCount++;
+
   currentPatternQuestion = 0;
   patternScore = 0;
   patternTimes = [];
   patternCorrectStreak = 0;
   patternMissedCount = 0;
+
+  resetPatternSkillScores();
 
   document.getElementById("patternArea").classList.remove("hidden");
   document.getElementById("patternResults").classList.add("hidden");
