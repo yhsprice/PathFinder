@@ -142,7 +142,6 @@ const patternSkillScores = {
 
 function showPatternQuestion() {
   const question = patternQuestions[currentPatternQuestion];
-  patternSkillScores[question.skill].total++;
 
   document.getElementById("patternFeedback").innerHTML = "";
 
@@ -188,6 +187,7 @@ document.getElementById("patternOptions").innerHTML =
 
 function choosePatternAnswer(selectedAnswer) {
   const question = patternQuestions[currentPatternQuestion];
+  patternSkillScores[question.skill].total++;
 
   const timeTaken = Math.round((Date.now() - patternStartTime) / 1000);
   patternTimes.push(timeTaken);
