@@ -1,3 +1,19 @@
+
+function shuffleArray(array) {
+
+  const copy = [...array];
+
+  for (let i = copy.length - 1; i > 0; i--) {
+
+    const j = Math.floor(Math.random() * (i + 1));
+
+    [copy[i], copy[j]] = [copy[j], copy[i]];
+
+  }
+
+  return copy;
+}
+
 const basePatternQuestions = [
   {
     id: "sequence_easy_1",
@@ -123,20 +139,6 @@ const patternSkillScores = {
   multi_step_logic: { correct: 0, total: 0 }
 };
 
-function shuffleArray(array) {
-
-  const copy = [...array];
-
-  for (let i = copy.length - 1; i > 0; i--) {
-
-    const j = Math.floor(Math.random() * (i + 1));
-
-    [copy[i], copy[j]] = [copy[j], copy[i]];
-
-  }
-
-  return copy;
-}
 
 function showPatternQuestion() {
   const question = patternQuestions[currentPatternQuestion];
@@ -472,26 +474,6 @@ function restartPatternHunter() {
 
     return;
   }
-
-  patternAttemptCount++;
-
-  currentPatternQuestion = 0;
-  patternScore = 0;
-  patternTimes = [];
-  patternCorrectStreak = 0;
-  patternMissedCount = 0;
-
-  resetPatternSkillScores();
-
-  if (typeof basePatternQuestions !== "undefined") {
-    patternQuestions = shuffleArray(basePatternQuestions);
-  }
-
-  document.getElementById("patternArea").classList.remove("hidden");
-  document.getElementById("patternResults").classList.add("hidden");
-
-  showPatternQuestion();
-}
 
   patternAttemptCount++;
 
