@@ -107,9 +107,21 @@ let patternStartTime = Date.now();
 let patternTimes = [];
 let patternCorrectStreak = 0;
 let patternMissedCount = 0;
+const patternSkillScores = {
+  logical_progression: { correct: 0, total: 0 },
+  visual_pattern: { correct: 0, total: 0 },
+  doubling: { correct: 0, total: 0 },
+  sequence_shift: { correct: 0, total: 0 },
+  visual_change: { correct: 0, total: 0 },
+  increasing_difference: { correct: 0, total: 0 },
+  hidden_rule: { correct: 0, total: 0 },
+  rotation_pattern: { correct: 0, total: 0 },
+  multi_step_logic: { correct: 0, total: 0 }
+};
 
 function showPatternQuestion() {
   const question = patternQuestions[currentPatternQuestion];
+  patternSkillScores[question.skill].total++;
 
   document.getElementById("patternFeedback").innerHTML = "";
 
@@ -155,6 +167,8 @@ function choosePatternAnswer(selectedAnswer) {
 
   if (selectedAnswer === question.answer) {
     patternScore++;
+    patternSkillScores[question.skill].correct++;
+    
     patternCorrectStreak++;
 
     document.getElementById("patternFeedback").innerHTML = `
@@ -218,6 +232,50 @@ function savePatternHunterResult() {
   document.getElementById("patternSaveMessage").innerHTML = `
     ✅ Pattern Hunter result saved on this device.
   `;
+}
+
+function generateSkillBreakdown() {
+
+  return Object.entries(patternSkillScores)
+    .map(([skill, data]) => {
+
+      const percent =
+        data.total === 0
+          ? 0
+          : Math.round((data.correct / data.total) * 100);
+
+      return `
+        <div class="skill-breakdown-card">
+
+          <div class="skill-breakdown-top">
+            <span class="skill-name">
+              ${formatSkillName(skill)}
+            </span>
+
+            <span class="skill-percent">
+              ${percent}%
+            </span>
+          </div>
+
+          <div class="skill-meter">
+            <div
+              class="skill-meter-fill"
+              style="width:${percent}%">
+            </div>
+          </div>
+
+        </div>
+      `;
+
+    }).join("");
+}
+
+function formatSkillName(skill) {
+
+  return skill
+    .replaceAll("_", " ")
+    .replace(/\b\w/g, c => c.toUpperCase());
+
 }
 
 function showPatternResults() {
@@ -335,6 +393,14 @@ if (patternScore >= 4) {
     <strong>Work-style signal:</strong>
     <p>${workStyleSignal}</p>
   </div>
+</div>
+
+<div class="pattern-skill-section">
+
+  <h3>Skill Breakdown</h3>
+
+  ${generateSkillBreakdown()}
+
 </div>
 
    <div class="pattern-career-box">
