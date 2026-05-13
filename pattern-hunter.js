@@ -515,4 +515,4 @@ function restartPatternHunter() {
 showPatternQuestion();
 
 window.savePatternHunterResult = savePatternHunterResult;
-
+window.restartPatternHunter = restartPatternHunter;
