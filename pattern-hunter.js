@@ -305,6 +305,35 @@ function formatSkillName(skill) {
 
 }
 
+function getSkillStrengthSummary() {
+  const attemptedSkills = Object.entries(patternSkillScores)
+    .filter(([skill, data]) => data.total > 0)
+    .map(([skill, data]) => ({
+      skill,
+      percent: Math.round((data.correct / data.total) * 100)
+    }))
+    .sort((a, b) => b.percent - a.percent);
+
+  const strongest = attemptedSkills[0];
+  const weakest = attemptedSkills[attemptedSkills.length - 1];
+
+  return `
+    <div class="pattern-strength-summary">
+      <h3>Strongest / Weakest Skill Areas</h3>
+
+      <p>
+        <strong>Strongest:</strong>
+        ${strongest ? formatSkillName(strongest.skill) + " — " + strongest.percent + "%" : "Not enough data yet"}
+      </p>
+
+      <p>
+        <strong>Needs more practice:</strong>
+        ${weakest ? formatSkillName(weakest.skill) + " — " + weakest.percent + "%" : "Not enough data yet"}
+      </p>
+    </div>
+  `;
+}
+
 function showPatternResults() {
   const averageTime =
     patternTimes.reduce((total, time) => total + time, 0) / patternTimes.length;
@@ -422,6 +451,7 @@ if (patternScore >= 4) {
   </div>
 </div>
 
+${getSkillStrengthSummary()}
 <div class="pattern-skill-section">
 
   <h3>Skill Breakdown</h3>
