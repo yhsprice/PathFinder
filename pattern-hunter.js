@@ -451,6 +451,8 @@ if (patternScore >= 4) {
   💾 Save My Pattern Hunter Result
 </button>
 
+<div id="patternSaveMessage" class="pattern-save-message"></div>
+
 <button type="button" onclick="restartPatternHunter()">
   Try Again Once
 </button>
